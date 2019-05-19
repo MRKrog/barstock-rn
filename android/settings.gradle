@@ -1,0 +1,3 @@
+rootProject.name = 'barstock_ui'
+
+include ':app'
