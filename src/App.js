@@ -73,7 +73,7 @@ import NotificationScreen from './NotificationScreen2';
 const HomeStack = createStackNavigator(
   {
     Home: {
-      screen: OrderContainer
+      screen: HomeScreen
     }
   },
   {
@@ -81,6 +81,14 @@ const HomeStack = createStackNavigator(
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#11212a',
+        height: 60,
+        shadowColor: '#231f20',
+        shadowRadius: 5,
+        shadowOpacity: 0.2,
+        shadowOffset: {
+          height: 3,
+          width: 0,
+        },
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -90,26 +98,23 @@ const HomeStack = createStackNavigator(
   }
 );
 
-const NotificationStack = createStackNavigator({
-  Notification: {
-    screen: NotificationScreen
-  },
-}, {
-  initialRouteName: 'Notification'
-});
+// const NotificationStack = createStackNavigator({
+//   Notification: {
+//     screen: NotificationScreen
+//   },
+// }, {
+//   initialRouteName: 'Notification'
+// });
 
 const Drawer = createDrawerNavigator({
   Home: {
     screen: HomeStack,
-  },
-  Notifications: {
-    screen: NotificationStack,
-  },
+  }
 },
 {
-  initialRouteName: 'Home',
+  // initialRouteName: 'Home',
   // contentComponent: DrawerContent,
-  drawerWidth: 250,
+  // drawerWidth: 250,
   drawerPosition: 'left',
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
@@ -123,10 +128,13 @@ const Drawer = createDrawerNavigator({
 //   initialRouteName: 'Login'
 // });
 
+
+
+
 const App = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
-    Home : HomeStack
+    Home: Drawer
   },
   {
     initialRouteName: 'Login'
