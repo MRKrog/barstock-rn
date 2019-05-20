@@ -3,37 +3,84 @@ import {
   View,
   Image,
   Button,
-  Text
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Dimensions
 } from "react-native";
+
+import LogoTitle from '../LogoTitle';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import OrderContainer from "../containers/Business/OrderContainer/OrderContianer";
 
 
 class HomeScreen extends Component {
 
-  openMenu = () => {
-    // this.props.navigation.toggleDrawer();
+  static navigationOptions = ({ navigation }) => {
+    const params = navigation.state.params || {};
+
+    return {
+      headerTitle: <LogoTitle />,
+      headerLeft: (
+        <Icon.Button
+          onPress={params.openMenu}
+          name="bars"
+          size={30}
+          backgroundColor="#11212a"
+          color="#fff"
+        />
+      ),
+      headerRight: (
+        <Button title="+1" color="#fff" />
+      ),
+    };
+  };
+
+  componentDidMount() {
+    this.props.navigation.setParams({ openMenu: this._openMenu });
   }
-  // logout = async () => {
-  //   await AsyncStorage.clear();
-  //   this.props.navigation.navigate('Login');
-  // }
+
+  _openMenu = () => {
+    this.props.navigation.toggleDrawer();
+  }
+
+  logout = () => {
+    // await AsyncStorage.clear();
+    this.props.navigation.navigate('Login');
+  }
 
   render() {
     return (
-      <View style={{flex: 1, justifyContent: "center"}}>
-        <View style={{padding: 20}}>
-          <Button
-            onPress={this.openMenu}
-            title="Open Menu"
-          />
-        </View>
-        <View style={{padding: 20}}>
-          <Button
-            title="Logout"
-          />
-        </View>
+      <View style={styles.MainDisplay}>
+        <ImageBackground source={require('../../assets/bg.png')} style={styles.backgroundImage}>
+          <OrderContainer />
+        </ImageBackground>
       </View>
     );
   }
 }
+
+const screenWith = Dimensions.get("window").width
+const screenHeight = Dimensions.get("window").height
+
+
+const styles = StyleSheet.create({
+  MainDisplay: {
+    flex: 1,
+    width: screenWith,
+    height: screenHeight,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  backgroundImage: {
+    flex: 1,
+    width: screenWith,
+    height: screenHeight,
+    resizeMode: 'contain',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+})
 
 export default HomeScreen
