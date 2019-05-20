@@ -5,15 +5,20 @@ import DetailsScreen from './Details/Details';
 import ModalScreen from './ModalScreen';
 // import MyHomeScreen from './MyHomeScreen';
 // import MyNotificationsScreen from './Notifications';
+
 import DrawerContent from "./SideBar/SideBar"
 
 import HomeScreen from './HomeScreen/HomeScreen';
+
+import { OrderContainer } from "./containers/Business/OrderContainer/OrderContianer"
+
 // import ModalScreen from './ModalScreen';
 import LoginScreen from './LoginScreen/LoginScreen';
 import NotificationScreen from './NotificationScreen2';
 
 // import { View } from 'react-native';
 // import { Tab } from "./navigation";
+
 
 //
 // const MainStack = createStackNavigator(
@@ -38,6 +43,7 @@ import NotificationScreen from './NotificationScreen2';
 //     },
 //   }
 // );
+
 
 // const RootStack = createStackNavigator(
 //   {
@@ -67,7 +73,7 @@ import NotificationScreen from './NotificationScreen2';
 const HomeStack = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen
+      screen: OrderContainer
     }
   },
   {
