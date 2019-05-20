@@ -5,35 +5,45 @@ import DetailsScreen from './Details/Details';
 import ModalScreen from './ModalScreen';
 // import MyHomeScreen from './MyHomeScreen';
 // import MyNotificationsScreen from './Notifications';
+
+import DrawerContent from "./SideBar/SideBar"
+
+import HomeScreen from './HomeScreen/HomeScreen';
+
 import { OrderContainer } from "./containers/Business/OrderContainer/OrderContianer"
-import HomeScreen from './HomeScreen2';
+
 // import ModalScreen from './ModalScreen';
-import LoginScreen from './LoginScreen2';
+import LoginScreen from './LoginScreen/LoginScreen';
 import NotificationScreen from './NotificationScreen2';
 
+// import { View } from 'react-native';
+// import { Tab } from "./navigation";
 
-const MainStack = createStackNavigator(
-  {
-    Home: {
-      screen: OrderContainer,
-    },
-    Details: {
-      screen: DetailsScreen,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#11212a',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
+
+//
+// const MainStack = createStackNavigator(
+//   {
+//     Home: {
+//       screen: HomeScreen,
+//     },
+//     Details: {
+//       screen: DetailsScreen,
+//     },
+//   },
+//   {
+//     initialRouteName: 'Home',
+//     defaultNavigationOptions: {
+//       headerStyle: {
+//         backgroundColor: '#11212a',
+//       },
+//       headerTintColor: '#fff',
+//       headerTitleStyle: {
+//         fontWeight: 'bold',
+//       },
+//     },
+//   }
+// );
+
 
 // const RootStack = createStackNavigator(
 //   {
@@ -88,9 +98,7 @@ const NotificationStack = createStackNavigator({
   initialRouteName: 'Notification'
 });
 
-
-
-const Drawer =  createDrawerNavigator({
+const Drawer = createDrawerNavigator({
   Home: {
     screen: HomeStack,
   },
@@ -99,7 +107,13 @@ const Drawer =  createDrawerNavigator({
   },
 },
 {
-  initialRouteName: 'Home'
+  initialRouteName: 'Home',
+  // contentComponent: DrawerContent,
+  drawerWidth: 250,
+  drawerPosition: 'left',
+  drawerOpenRoute: 'DrawerOpen',
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle',
 });
 
 // export default createSwitchNavigator({
@@ -112,11 +126,23 @@ const Drawer =  createDrawerNavigator({
 const App = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
-    Home : Drawer
+    Home : HomeStack
   },
   {
     initialRouteName: 'Login'
   })
 );
+
+
+//
+// class App extends Component {
+//   render() {
+//       return(
+//         <Tab />
+//       );
+//   }
+// }
+
+
 
 export default App

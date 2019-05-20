@@ -1,40 +1,64 @@
-import React, { Component } from "react";
-import {
-  View,
-  Image,
-  Button,
-  Text
-} from "react-native";
+import React, { Component } from 'react';
+import { NavigationActions } from 'react-navigation';
+import { ScrollView, Text, View } from 'react-native';
+import { Button, Drawer, Avatar } from 'react-native-material-ui';
+// import { Button } from 'react-native-elements';
+import styles from './SideBar.style';
+import PropTypes from 'prop-types';
 
 
+class DrawerContent extends Component {
+  //
+  // navigateToScreen = (route) => () => {
+  //   const navigate = NavigationActions.navigate({
+  //     routeName: route
+  //   });
+  //   this.props.navigation.dispatch(navigate);
+  // }
 
-class Sidebar extends Component {
-
-  openMenu = () => {
-    this.props.navigation.toggleDrawer();
-  }
-  logout = async () => {
-    await AsyncStorage.clear();
-    this.props.navigation.navigate('Login');
-  }
-  render() {
+  render () {
     return (
-      <View style={{flex: 1, justifyContent: "center"}}>
-        <View style={{padding: 20}}>
+      <View style={styles.container}>
+        <ScrollView>
+
+          <Text style={styles.separatorTop}>
+          </Text>
+
           <Button
-            onPress={this.openMenu}
-            title="Open Menu"
-          />
-        </View>
-        <View style={{padding: 20}}>
+            raised
+            icon={{name: 'trash-o', type: 'font-awesome', size: 20}}
+            title='Home'
+            buttonStyle={styles.button}
+    />
+
+            <Text style={styles.sectionHeadingStyle}>
+            </Text>
+
           <Button
-            onPress={this.logout}
-            title="Logout"
+            raised
+            icon={{name: 'umbrella', type: 'font-awesome', size: 20}}
+            title='Four'
+            buttonStyle={styles.button}
           />
-        </View>
+
+            <Text style={styles.sectionHeadingStyle}>
+           </Text>
+
+          <Button
+            raised
+            icon={{name: 'user-circle', type: 'font-awesome', size: 20}}
+            title='Five'
+            buttonStyle={styles.button}
+        />
+
+        </ScrollView>
       </View>
     );
   }
 }
 
-export default HomeScreen
+DrawerContent.propTypes = {
+  navigation: PropTypes.object
+};
+
+export default DrawerContent;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   View,
   Image,
@@ -7,11 +7,12 @@ import {
   AsyncStorage
 } from "react-native";
 
-class LoginScreen extends React.Component {
+class LoginScreen extends Component {
 
   login = () => {
     this.props.navigation.navigate('Home');
   }
+
   render() {
     return (
       <View style={{flex: 1, justifyContent: "center"}}>
