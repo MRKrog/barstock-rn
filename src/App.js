@@ -5,7 +5,7 @@ import DetailsScreen from './Details/Details';
 import ModalScreen from './ModalScreen';
 // import MyHomeScreen from './MyHomeScreen';
 // import MyNotificationsScreen from './Notifications';
-
+import { OrderContainer } from "./containers/Business/OrderContainer/OrderContianer"
 import HomeScreen from './HomeScreen2';
 // import ModalScreen from './ModalScreen';
 import LoginScreen from './LoginScreen2';
@@ -15,7 +15,7 @@ import NotificationScreen from './NotificationScreen2';
 const MainStack = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: OrderContainer,
     },
     Details: {
       screen: DetailsScreen,
@@ -63,7 +63,7 @@ const MainStack = createStackNavigator(
 const HomeStack = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen
+      screen: OrderContainer
     }
   },
   {
