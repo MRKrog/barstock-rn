@@ -10,12 +10,12 @@ import {
 class HomeScreen extends Component {
 
   openMenu = () => {
-    this.props.navigation.toggleDrawer();
+    // this.props.navigation.toggleDrawer();
   }
-  logout = async () => {
-    await AsyncStorage.clear();
-    this.props.navigation.navigate('Login');
-  }
+  // logout = async () => {
+  //   await AsyncStorage.clear();
+  //   this.props.navigation.navigate('Login');
+  // }
 
   render() {
     return (
@@ -28,7 +28,6 @@ class HomeScreen extends Component {
         </View>
         <View style={{padding: 20}}>
           <Button
-            onPress={this.logout}
             title="Logout"
           />
         </View>
