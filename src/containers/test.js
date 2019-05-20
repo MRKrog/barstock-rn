@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 
 import { Button, Drawer, Avatar } from 'react-native-material-ui';
 
-import { fetchData } from '../../utility/fetchData';
+import { fetchData } from '../../utility/fetchData'
 
 import Login from '../Login/Login';
 import Header from '../Header/Header';
@@ -19,15 +19,13 @@ import DrawerSpec from '../Drawer/Drawer'
 // $dark-gray: #777777;
 // $white: #fff;
 
+
 class MainDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-      };
+
+    };
   }
 
   componentDidMount() {
@@ -39,24 +37,12 @@ class MainDisplay extends Component {
     console.log('response', response);
   }
 
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open,
-    });
-  };
-
-
   render() {
 
     return (
       <View style={styles.MainDisplay}>
         <ImageBackground source={require('../../../assets/bg.png')} style={styles.backgroundImage}>
-        <View>
-            <Button primary text="Primary" />
-            <Button accent text="Accent" />
-            <Button raised primary text="Primary" />
-            <Button disabled text="Disabled" />
-        </View>
+          <Header />
         </ImageBackground>
       </View>
     )
