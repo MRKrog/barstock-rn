@@ -7,7 +7,6 @@ import {
 } from "react-native";
 
 
-
 class HomeScreen extends Component {
 
   openMenu = () => {
