@@ -5,7 +5,7 @@ import { CurrentOrder } from "../CurrentOrder/CurrentOrder";
 import { DistributorInventory } from "../DistributorInventory/DistributorInventory";
 import HomeScreen from '../../../HomeScreen2';
 
-export class OrderContainer extends Component{
+class OrderContainer extends Component{
     constructor(){
         super();
         this.state = {
@@ -16,7 +16,6 @@ export class OrderContainer extends Component{
     render(){
         return(
             <Swiper index={0}>
-                {/* <HomeScreen /> */}
                 <DistributorInventory />
                 <CurrentOrder />
             </Swiper>
@@ -31,3 +30,5 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     }
 })
+
+export default OrderContainer

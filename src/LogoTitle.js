@@ -5,8 +5,11 @@ class LogoTitle extends Component {
   render() {
     return (
       <Image
-        source={require('./images/barStock.png')}
-        style={{ width: 30, height: 30 }}
+        source={require('./images/BarStock_Logo.png')}
+        style={{
+          width: 150,
+          height: 50,
+        }}
       />
     );
   }
