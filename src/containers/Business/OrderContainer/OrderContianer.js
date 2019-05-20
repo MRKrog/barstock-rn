@@ -15,7 +15,7 @@ export class OrderContainer extends Component{
 
     render(){
         return(
-            <Swiper index={1}>
+            <Swiper index={0}>
                 {/* <HomeScreen /> */}
                 <DistributorInventory />
                 <CurrentOrder />
