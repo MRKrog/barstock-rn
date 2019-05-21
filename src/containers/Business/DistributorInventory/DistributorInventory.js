@@ -1,31 +1,18 @@
 import React, { Component } from "react"
 import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native"
-import { AlchoholCategory } from "../AlcoholCategory/AlcoholCategory"
+import AlchoholCategory from "../AlcoholCategory/AlcoholCategory"
+import { connect } from "react-redux"
+import { setAlchohol } from "../../../redux/actions"
 
 export class DistributorInventory extends Component{
-    constructor(){
-        super();
-        this.state = {
-            test: "DistributorInventory",
-            array: [{
-                name: "beer",
-                description: "hello im am beer"
-            },{
-                name: "wine",
-                description: "hello im am wine"
-            },{
-                name: "lager",
-                description: "hello im am lager"
-            },{
-                name: "juice",
-                description: "hello im am juice"
-            }]
-        }
+
+    componentDidMount(){
+      this.props.setAlchohol()
     }
 
     render(){
-      
-        const category = this.state.array.map(cat => {
+        const category = this.props.alchohol.map(cat => {
+
             return(
                 <AlchoholCategory info={cat} key={cat.name}/>
             )
@@ -48,8 +35,28 @@ export class DistributorInventory extends Component{
     }
 }
 
+export const mapStateToProps = (state) => ({
+  alchohol: state.alchohol
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  setAlchohol: alchohol => dispatch(setAlchohol(alchohol))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DistributorInventory)
 const styles = StyleSheet.create({
     container: {
+        margin: 20,
+        flex: 1,
+        shadowOpacity: 0.75,
+        shadowRadius: 3,
+        shadowColor: '#000000',
+        shadowOffset: { height: 4, width: 0 },
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    inventory: {
+
         flex: 1,
         alignSelf: "center",
         shadowOpacity: 0.3,
