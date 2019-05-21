@@ -54,7 +54,6 @@ class HomeScreen extends Component {
   }
 
   logout = () => {
-    // await AsyncStorage.clear();
     this.props.navigation.navigate('Login');
   }
 
@@ -71,7 +70,6 @@ class HomeScreen extends Component {
 
 const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
-
 
 const styles = StyleSheet.create({
   MainDisplay: {
