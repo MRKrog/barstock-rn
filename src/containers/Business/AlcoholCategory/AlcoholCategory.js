@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import {TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation} from "react-native";
+
+import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
+import styled from 'styled-components';
 import { connect } from "react-redux";
 import { removeFromCart, addToCart } from "../../../redux/actions"
 
@@ -10,7 +12,6 @@ export class AlchoholCategory extends Component{
             test: "test"
         }
     }
-
 
     changeLayout = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
@@ -64,22 +65,24 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(AlchoholCategory)
 
 
+
 const styles = StyleSheet.create({
     category: {
-        shadowOpacity: 0.75,
+        shadowOpacity: 0.3,
         shadowRadius: 3,
-        shadowColor: '#000000',
+        shadowColor: '#231f20',
         shadowOffset: { height: 4, width: 0 },
-        margin: 10,
+        marginTop: 10,
         padding: 10,
         borderRadius: 5,
         backgroundColor: "#11212A",
     },
     font: {
         fontSize: 20,
-        fontFamily: "roboto",
-        fontWeight: "bold",
+        textTransform: "uppercase",
+        fontFamily: 'abel',
         textAlign: "center",
-        color: "#ffffff"
+        color: "#ffffff",
+        letterSpacing: 1
     }
 })

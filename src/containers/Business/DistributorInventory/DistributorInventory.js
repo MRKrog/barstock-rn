@@ -5,16 +5,19 @@ import { connect } from "react-redux"
 import { setAlchohol } from "../../../redux/actions"
 
 export class DistributorInventory extends Component{
+
     componentDidMount(){
       this.props.setAlchohol()
     }
 
     render(){
         const category = this.props.alchohol.map(cat => {
+
             return(
-                <AlchoholCategory info={cat}/>
+                <AlchoholCategory info={cat} key={cat.name}/>
             )
         })
+
         return(
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
@@ -24,7 +27,7 @@ export class DistributorInventory extends Component{
                 </View>
                 <ScrollView style={styles.inventory}>
                     {
-                        category
+                      category
                     }
                 </ScrollView>
             </View>
@@ -53,20 +56,34 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     inventory: {
+
         flex: 1,
-        borderBottomLeftRadius: 5,
-        borderBottomRightRadius: 5,
-        width: Dimensions.get("window").width * 0.8
+        alignSelf: "center",
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        shadowColor: '#231f20',
+        shadowOffset: { height: 2, width: 0 },
+        marginTop: 50,
+        width: Dimensions.get("window").width * .95,
+        height: Dimensions.get("window").height,
     },
     titleContainer: {
         borderRadius: 5,
+        backgroundColor: "#2c4969",
         padding: 10,
-        width: Dimensions.get("window").width * 0.8,
-        backgroundColor: "#C4C4C4"
     },
     title: {
-        fontSize: 20,
+        fontSize: 22,
+        textTransform: "uppercase",
         color: "#ffffff",
-        textAlign: "center"
+        textAlign: "center",
+        fontFamily: 'abel'
+    },
+    inventory: {
+        flexDirection: "column",
+
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+
     }
 })
