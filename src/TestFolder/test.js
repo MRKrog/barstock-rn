@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, ImageBackground, Dimensions } from 'react-native';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
+// import { connect } from 'react-redux';
+// import * as actions from '../../actions';
 
 import { Button, Drawer, Avatar } from 'react-native-material-ui';
 
-import { fetchData } from '../../utility/fetchData'
-
-import Login from '../Login/Login';
-import Header from '../Header/Header';
-import DrawerSpec from '../Drawer/Drawer'
+// import { fetchData } from '../../utility/fetchData'
+//
+// import Login from '../Login/Login';
+// import Header from '../Header/Header';
+// import DrawerSpec from '../Drawer/Drawer'
 
 // $dark-blue: #11212a;
 // $medium-blue: #2c4969;
@@ -33,17 +33,15 @@ class MainDisplay extends Component {
   }
 
   getData = async () => {
-    const response = await fetchData('http://whateverly-datasets.herokuapp.com/api/v1/distributor')
-    console.log('response', response);
+    // const response = await fetchData('http://whateverly-datasets.herokuapp.com/api/v1/distributor')
+    // console.log('response', response);
   }
 
   render() {
 
     return (
       <View style={styles.MainDisplay}>
-        <ImageBackground source={require('../../../assets/bg.png')} style={styles.backgroundImage}>
-          <Header />
-        </ImageBackground>
+
       </View>
     )
   }

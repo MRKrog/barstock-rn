@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 import { CurrentOrder } from "../CurrentOrder/CurrentOrder";
 import { DistributorInventory } from "../DistributorInventory/DistributorInventory";
-import HomeScreen from '../../../HomeScreen2';
 
 class OrderContainer extends Component{
     constructor(){

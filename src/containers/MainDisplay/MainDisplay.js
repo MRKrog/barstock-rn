@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, ImageBackground, Dimensions } from 'react-native';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
+// import { connect } from 'react-redux';
+// import * as actions from '../../actions';
 
 import { Button, Drawer, Avatar } from 'react-native-material-ui';
 

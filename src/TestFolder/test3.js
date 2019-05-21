@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
-import LogoTitle from './LogoTitle';
+
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {

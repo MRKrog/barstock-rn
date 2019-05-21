@@ -2,9 +2,8 @@ import { AppRegistry } from 'react-native';
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 import App from './src/App';
-import { OrderContainer } from "./src/containers/Business/OrderContainer/OrderContianer"
 
-import { rootReducer } from './src/reducers';
+import { rootReducer } from './src/redux/reducers';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
