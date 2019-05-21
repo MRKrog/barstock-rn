@@ -7,16 +7,16 @@ import * as actions from "../../../redux/actions";
 export class CategoryItem extends Component{
 
   render(){
-    const { removeFromCart, addToCart, count, alchohol } = this.props;
+    const { removeFromCart, addToCart, count, alcohol } = this.props;
 
     return(
       <View style={styles.category_item}>
-        <Text>{alchohol.name}</Text>
-        <TouchableOpacity onPress={() => {removeFromCart(alchohol)}}>
+        <Text>{alcohol.name}</Text>
+        <TouchableOpacity onPress={() => {removeFromCart(alcohol)}}>
           <Text>-</Text>
         </TouchableOpacity>
         <Text>{count}</Text>
-        <TouchableOpacity onPress={() => {addToCart(alchohol)}}>
+        <TouchableOpacity onPress={() => {addToCart(alcohol)}}>
           <Text>+</Text>
         </TouchableOpacity>
       </View>
@@ -29,8 +29,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addToCart: alchohol => dispatch(actions.addToCart(alchohol)),
-  removeFromCart: alchohol => dispatch(actions.removeFromCart(alchohol))
+  addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
+  removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem)

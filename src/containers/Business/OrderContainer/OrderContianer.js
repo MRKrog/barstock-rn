@@ -14,7 +14,7 @@ class OrderContainer extends Component{
 
     render(){
         return(
-            <Swiper index={0}>
+            <Swiper index={0} loop={false}>
                 <DistributorInventory />
                 <CurrentOrder />
             </Swiper>

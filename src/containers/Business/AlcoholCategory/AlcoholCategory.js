@@ -5,7 +5,7 @@ import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation }
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 
-export class AlchoholCategory extends Component{
+export class AlcoholCategory extends Component{
   constructor(){
     super();
     this.state ={
@@ -19,18 +19,13 @@ export class AlchoholCategory extends Component{
   }
 
   render(){
-    const alchohol = this.props.info.alchohol.map(alchohol => {
-      let count
-      const check = this.props.cart.find(alchoholCart => {
-        return alchoholCart.id === alchohol.id
-      })
-      if(check){
-        count = check.count
-      }else{
-        count = 0
-      }
+    const alcohol = this.props.info.alcohol.map(alcohol => {
+      const  count = this.props.cart.filter(alcoholCart => {
+        return alcoholCart.id === alcohol.id
+      }).length
+     
       return(
-        <CategoryItem alchohol={alchohol} count={count} />
+        <CategoryItem alcohol={alcohol} count={count} />
       )
     })
 
@@ -41,7 +36,7 @@ export class AlchoholCategory extends Component{
         </TouchableOpacity>
         <View style={[styles.alc_catInventory, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
           <View><Text>Header</Text></View>
-          { alchohol }
+          { alcohol }
         </View>
       </View>
     )
@@ -53,8 +48,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addToCart: alchohol => dispatch(actions.addToCart(alchohol)),
-  removeFromCart: alchohol => dispatch(actions.removeFromCart(alchohol))
+  addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
+  removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlchoholCategory)
+export default connect(mapStateToProps, mapDispatchToProps)(AlcoholCategory)

@@ -1,27 +1,27 @@
 import React, { Component } from "react"
 import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native"
-import AlchoholCategory from "../AlcoholCategory/AlcoholCategory";
+import AlcoholCategory from "../AlcoholCategory/AlcoholCategory";
 import styles from './DistributorInventory.style';
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 
 export class DistributorInventory extends Component{
   componentDidMount(){
-    this.props.setAlchohol()
+    this.props.setAlcohol()
   }
 
   render() {
-    const { alchohol } = this.props;
-    const category = alchohol.map(cat => {
+    const { alcohol } = this.props;
+    const category = alcohol.map(cat => {
       return (
-        <AlchoholCategory info={cat} key={cat.name}/>
+        <AlcoholCategory info={cat} key={cat.name}/>
       )
     })
 
     return (
       <View style={styles.container}>
         <View style={styles.alc_typeContainer}>
-          <Text style={styles.alc_typeTitle}>Alchohol type</Text>
+          <Text style={styles.alc_typeTitle}>Alcohol type</Text>
         </View>
 
         <ScrollView style={styles.alc_catSection}>
@@ -34,11 +34,11 @@ export class DistributorInventory extends Component{
 }
 
 export const mapStateToProps = (state) => ({
-  alchohol: state.alchohol
+  alcohol: state.alcohol
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  setAlchohol: alchohol => dispatch(actions.setAlchohol(alchohol))
+  setAlcohol: alcohol => dispatch(actions.setAlcohol(alcohol))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DistributorInventory)

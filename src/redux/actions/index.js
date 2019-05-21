@@ -3,17 +3,17 @@ export const setLoading = loading => ({
   loading
 });
 
-export const setAlchohol = alchohol => ({
-  type: "SET_ALCHOHOL",
-  alchohol
+export const setAlcohol = alcohol => ({
+  type: "SET_ALCOHOL",
+  alcohol
 })
 
-export const addToCart = alchohol => ({
-  type: "ADD_ALCHOHOL",
-  alchohol
+export const addToCart = alcohol => ({
+  type: "ADD_ALCOHOL",
+  alcohol
 })
 
-export const removeFromCart = alchohol => ({
-  type: "REMOVE_ALCHOHOL",
-  alchohol
+export const removeFromCart = alcohol => ({
+  type: "REMOVE_ALCOHOL",
+  alcohol
 })

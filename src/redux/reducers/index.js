@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { alchoholReducer } from "./alchoholReducer"
+import { alcoholReducer } from "./alcoholReducer"
 import { cartReducer } from "./cartReducer"
 import { loadingReducer } from './loadingReducer';
 
 export const rootReducer = combineReducers({
   loading: loadingReducer,
-  alchohol: alchoholReducer,
+  alcohol: alcoholReducer,
   cart: cartReducer
 })
