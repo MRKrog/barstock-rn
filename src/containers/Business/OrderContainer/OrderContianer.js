@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
-import { CurrentOrder } from "../CurrentOrder/CurrentOrder";
-import { DistributorInventory } from "../DistributorInventory/DistributorInventory";
+import  CurrentOrder from "../CurrentOrder/CurrentOrder";
+import  DistributorInventory from "../DistributorInventory/DistributorInventory";
 
 class OrderContainer extends Component{
     constructor(){
