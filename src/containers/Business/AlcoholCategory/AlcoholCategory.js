@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import {TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation} from "react-native";
+import { connect } from "react-redux";
+import { removeFromCart, addToCart } from "../../../redux/actions"
 
 export class AlchoholCategory extends Component{
     constructor(){
@@ -16,18 +18,50 @@ export class AlchoholCategory extends Component{
       }
 
     render(){
+        const alchohol = this.props.info.alchohol.map(alchohol => {
+          let count
+          const check = this.props.cart.find(alchoholCart => {
+            return alchoholCart.id === alchohol.id
+          })
+          if(check){
+            count = check.count
+          }else{
+            count = 0
+          }
+          return(
+            <View>
+              <Text>{alchohol.name}</Text>
+              <TouchableOpacity onPress={() => {this.props.removeFromCart(alchohol)}}><Text>-</Text></TouchableOpacity>
+              <Text>{count}</Text>
+              <TouchableOpacity onPress={() => {this.props.addToCart(alchohol)}}><Text>+</Text></TouchableOpacity>
+            </View>
+          )
+        })
         return(
             <View>
                  <TouchableOpacity onPress={this.changeLayout} style={styles.category}>
-                        <Text style={styles.font}>{this.props.info.name}</Text>
+                        <Text style={styles.font}>{this.props.info.catName}</Text>
                 </TouchableOpacity>
                 <View style={{ height: this.state.expanded ? null : 0, overflow: 'hidden' }}>
-                    <Text style={styles.text}>{this.props.info.description}</Text>
+                    {
+                      alchohol
+                    }
                 </View>
             </View>
         )
     }
 }
+
+export const mapStateToProps = (state) => ({
+  cart: state.cart
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  addToCart: alchohol => dispatch(addToCart(alchohol)),
+  removeFromCart: alchohol => dispatch(removeFromCart(alchohol))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlchoholCategory)
 
 
 const styles = StyleSheet.create({
