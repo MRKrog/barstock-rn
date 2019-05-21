@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Dimensions
 } from "react-native";
+import { Avatar } from 'react-native-elements';
 
 import LogoTitle from '../../components/LogoTitle/LogoTitle';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -22,7 +23,6 @@ class HomeScreen extends Component {
     const params = navigation.state.params || {};
 
     return {
-      headerTitle: <LogoTitle />,
       headerLeft: (
         <Icon.Button
           onPress={params.openMenu}
@@ -32,8 +32,15 @@ class HomeScreen extends Component {
           color="#fff"
         />
       ),
+      headerTitle: ( <LogoTitle /> ),
       headerRight: (
-        <Button title="+1" color="#fff" />
+        <Avatar
+          rounded
+          source={{
+            uri:
+              'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
+          }}
+        />
       ),
     };
   };
@@ -62,14 +69,14 @@ class HomeScreen extends Component {
   }
 }
 
-const screenWith = Dimensions.get("window").width
+const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
 
 
 const styles = StyleSheet.create({
   MainDisplay: {
     flex: 1,
-    width: screenWith,
+    width: screenWidth,
     height: screenHeight,
     justifyContent: 'center',
     alignItems: 'center'
@@ -77,7 +84,7 @@ const styles = StyleSheet.create({
 
   backgroundImage: {
     flex: 1,
-    width: screenWith,
+    width: screenWidth,
     height: screenHeight,
     resizeMode: 'contain',
     alignItems: 'center',

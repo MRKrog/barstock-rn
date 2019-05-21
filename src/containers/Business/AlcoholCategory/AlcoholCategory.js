@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation} from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
+import styled from 'styled-components';
 
 export class AlchoholCategory extends Component{
     constructor(){
@@ -8,7 +9,6 @@ export class AlchoholCategory extends Component{
             test: "test"
         }
     }
-
 
     changeLayout = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
@@ -19,7 +19,7 @@ export class AlchoholCategory extends Component{
         return(
             <View>
                  <TouchableOpacity onPress={this.changeLayout} style={styles.category}>
-                        <Text style={styles.font}>{this.props.info.name}</Text>
+                    <Text style={styles.font}>{this.props.info.name}</Text>
                 </TouchableOpacity>
                 <View style={{ height: this.state.expanded ? null : 0, overflow: 'hidden' }}>
                     <Text style={styles.text}>{this.props.info.description}</Text>
@@ -30,22 +30,24 @@ export class AlchoholCategory extends Component{
 }
 
 
+
 const styles = StyleSheet.create({
     category: {
-        shadowOpacity: 0.75,
+        shadowOpacity: 0.3,
         shadowRadius: 3,
-        shadowColor: '#000000',
+        shadowColor: '#231f20',
         shadowOffset: { height: 4, width: 0 },
-        margin: 10,
+        marginTop: 10,
         padding: 10,
         borderRadius: 5,
         backgroundColor: "#11212A",
     },
     font: {
         fontSize: 20,
-        fontFamily: "roboto",
-        fontWeight: "bold",
+        textTransform: "uppercase",
+        fontFamily: 'abel',
         textAlign: "center",
-        color: "#ffffff"
+        color: "#ffffff",
+        letterSpacing: 1
     }
 })

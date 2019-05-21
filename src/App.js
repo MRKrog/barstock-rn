@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
+import { StatusBar, View, Text } from "react-native";
 // import DetailsScreen from './Details/Details';
 // import HomeScreen from './HomeScreen';
 // import ModalScreen from './ModalScreen';
@@ -14,6 +15,7 @@ import HomeScreen from './containers/HomeScreen/HomeScreen';
 
 // import ModalScreen from './ModalScreen';
 import LoginScreen from './containers/LoginScreen/LoginScreen';
+import SideMenu from './containers/SideMenu/SideMenu';
 // import NotificationScreen from './NotificationScreen2';
 
 // import { View } from 'react-native';
@@ -80,6 +82,8 @@ const HomeStack = createStackNavigator(
     initialRouteName: 'Home',
     defaultNavigationOptions: {
       headerStyle: {
+        marginRight: 10,
+        marginLeft: 10,
         backgroundColor: '#11212a',
         height: 60,
         shadowColor: '#231f20',
@@ -90,10 +94,7 @@ const HomeStack = createStackNavigator(
           width: 0,
         },
       },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
+      headerTintColor: '#fff'
     },
   }
 );
@@ -107,18 +108,12 @@ const HomeStack = createStackNavigator(
 // });
 
 const Drawer = createDrawerNavigator({
-  Home: {
-    screen: HomeStack,
-  }
+  Home: { screen: HomeStack },
+  Login: { screen: LoginScreen }
 },
 {
-  // initialRouteName: 'Home',
-  // contentComponent: DrawerContent,
-  // drawerWidth: 250,
-  drawerPosition: 'left',
-  drawerOpenRoute: 'DrawerOpen',
-  drawerCloseRoute: 'DrawerClose',
-  drawerToggleRoute: 'DrawerToggle',
+  contentComponent: SideMenu,
+  drawerWidth: 200,
 });
 
 // export default createSwitchNavigator({
@@ -131,7 +126,7 @@ const Drawer = createDrawerNavigator({
 
 
 
-const App = createAppContainer(
+const AppConatiner = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
     Home: Drawer
@@ -142,15 +137,10 @@ const App = createAppContainer(
 );
 
 
-//
-// class App extends Component {
-//   render() {
-//       return(
-//         <Tab />
-//       );
-//   }
-// }
-
-
-
-export default App
+export default class App extends Component {
+  render() {
+      return(
+        <AppConatiner />
+      );
+  }
+}
