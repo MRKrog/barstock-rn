@@ -18,27 +18,39 @@ export class AlcoholCategory extends Component{
     this.setState({ expanded: !this.state.expanded });
   }
 
+//   alc_category:
+// "lager"
+// alc_type:
+// "beer"
+// name:
+// "Bud Light"
+// ounces:
+// 288
+// price:
+// 24.35
+// thumbnail:
+// "https://products0.imgix.drizly.com/ci-bud-light-19699dcd3e7591e3.png?auto=format%2Ccompress&fm=jpeg&q=20"
+// unit:
+// "case"
+
   render(){
-    const alcohol = this.props.info.alcohol.map(alcohol => {
-      const  count = this.props.cart.filter(alcoholCart => {
-        return alcoholCart.id === alcohol.id
-      }).length
-     
+    const alcohol = this.props.info.map(alcohol => {
       return(
-        <CategoryItem alcohol={alcohol} count={count} />
+        <CategoryItem alcohol={alcohol} key={alcohol.id}/>
       )
     })
+
 
     return(
       <View style={styles.alc_catContainer}>
         <TouchableOpacity onPress={this.changeLayout} style={styles.alc_catBtn}>
-          <Text style={styles.alc_catTitle}>{this.props.info.catName}</Text>
+          <Text style={styles.alc_catTitle}>{this.props.title}</Text>
         </TouchableOpacity>
         <View style={[styles.alc_catInventory, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
-          <View><Text>Header</Text></View>
           { alcohol }
         </View>
       </View>
+
     )
   }
 }

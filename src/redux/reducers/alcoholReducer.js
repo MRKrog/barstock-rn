@@ -1,34 +1,8 @@
-const mock = [{
-  id: 123,
-  catName: "beer",
-  alcohol: [
-    {
-      id: 234,
-      name: "blue moon",
-    },
-    {
-      id: 345,
-      name: "coors",
-    }
-  ]
-},{
-  id: 456,
-  catName: "wine",
-  alcohol: [
-    {
-      id: 567,
-      name: "red",
-    },
-    {
-      id: 789,
-      name: "white",
-    }
-  ]
-}]
-
 export const alcoholReducer = (state = [], action) => {
   switch(action.type){
+    case "SET_ALCOHOL":
+      return action.alcohol
     default:
-      return mock
+      return state
   }
 }

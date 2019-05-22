@@ -9,7 +9,7 @@ export class CurrentOrder extends Component{
     const cart = this.props.cart.map(alcohol => {
       return(
         <View>
-          <Text>{alcohol.count}X{alcohol.name}</Text>
+          <Text>X {alcohol.name}</Text>
         </View>
         )
       })
