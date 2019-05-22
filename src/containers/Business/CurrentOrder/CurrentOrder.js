@@ -35,7 +35,7 @@ export class CurrentOrder extends Component{
             <Text style={styles.cart_priceText}>$1000</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.cart_checkoutButton}>
+        <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => {this.props.navigation.navigate("SubmitOrder")}}>
           <Text style={styles.cart_checkoutText}>Checkout</Text>
         </TouchableOpacity>
       </View>
