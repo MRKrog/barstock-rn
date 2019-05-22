@@ -63,8 +63,9 @@ class HomeScreen extends Component {
     const url = "https://barstock-backend.herokuapp.com/api/v1/items?api_key=0yWwUm5CZ8CGR8MhT7FL9w";
     try {
       const response = await fetch(url)
-      const data = await response.json()
-      this.props.setAlcohol(data)
+      const allData = await response.json()
+      this.props.setAlcohol(allData.data)
+      console.log(this.props);
       this.props.setLoading(false)
     } catch (error) {
       console.log(error);

@@ -70,5 +70,15 @@ export default {
     color: "#ffffff",
     textAlign: "center",
     fontFamily: 'abel'
+  },
+  item_row: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 10,
+    justifyContent: 'space-between',
+    alignItems: "center",
+    borderBottomColor: '#ececec',
+    borderBottomWidth: 1,
+    height: 60
   }
 };

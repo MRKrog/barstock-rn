@@ -1,17 +1,22 @@
 import { Dimensions } from "react-native";
 
 export default {
-  alc_catContainer: {
-    marginTop: 10,
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    shadowColor: '#231f20',
-    shadowOffset: { height: 2, width: 0 },
+  container: {
+    marginTop: 10
   },
   alc_catBtn: {
     backgroundColor: "#11212A",
     padding: 10,
-    borderRadius: 5
+    borderRadius: 5,
+    marginTop: 10
+  },
+  alc_catContainer: {
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 2, width: 0 },
+    maxHeight: 300,
+    overflow:"scroll"
   },
   alc_catTitle: {
     fontSize: 20,

@@ -3,16 +3,55 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { connect } from "react-redux"
 import styles from "./CurrentOrder.style"
 
-export class CurrentOrder extends Component{
+export class CurrentOrder extends Component {
+  constructor() {
+    super();
+    this.state = {
+      total_cost: 0,
+      potential_returns: 0
+    }
+  }
+
   render(){
-    console.log(this.props.cart)
-    const cart = this.props.cart.map(alcohol => {
+    const { cart } = this.props;
+    // const { total_cost, potential_returns } = this.state;
+
+    let quantityAmount = cart.reduce((acc, el) => {
+      console.log(el);
+      if (!acc[el.name]) {
+        acc[el.name] = 0;
+      }
+      acc[el.name]++;
+      return acc;
+    }, {});
+
+    let combinedCart = Object.keys(quantityAmount).map((item, index) => {
+      let itemInfo = cart.find(cartItem => cartItem.name === item);
+      return {
+        id: itemInfo.id,
+        name: itemInfo.name,
+        total: itemInfo.price * quantityAmount[item],
+        ounces: itemInfo.ounces * quantityAmount[item],
+        alc_category: itemInfo.alc_category,
+        alc_type: itemInfo.alc_type,
+        thumbnail: itemInfo.thumbnail,
+        unit: itemInfo.unit,
+        quantity: quantityAmount[item]
+      }
+    })
+
+    console.log(combinedCart);
+
+    let displayCart = combinedCart.map(item => {
       return(
-        <View>
-          <Text>X {alcohol.name}</Text>
+        <View key={item.name} style={styles.item_row}>
+          <Text>{item.quantity} X</Text>
+          <Text>{item.name}</Text>
+          <Text>${item.total.toFixed(2)}</Text>
         </View>
-        )
-      })
+      )
+    })
+
     return(
       <View style={styles.cart_container}>
         <View style={styles.cart_titleContainer}>
@@ -20,9 +59,7 @@ export class CurrentOrder extends Component{
         </View>
         <View style={styles.cart_items}>
           <ScrollView>
-          {
-            cart
-          }
+            { displayCart }
           </ScrollView>
         </View>
         <View style={styles.cart_priceContainer}>
