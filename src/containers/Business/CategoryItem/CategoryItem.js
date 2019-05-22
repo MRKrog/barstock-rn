@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from './CategoryItem.style';
-import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -34,21 +34,38 @@ export class CategoryItem extends Component{
   };
 
   render(){
-    const { alcohol } = this.props;
+    const { name, unit, price, thumbnail } = this.props.alcohol;
+    const { quantity } = this.state;
+    let quantityStatus = quantity < 1 ? true : false;
+    let btnStatus = quantity < 1 ? styles.textinvalid : styles.textvalid;
+    const { category_item, btnMinus } = styles;
 
     return(
-      <View style={styles.category_item}>
+      <View style={category_item}>
         <View style={styles.item_info}>
-          <Text>{alcohol.name}</Text>
+          <View style={styles.item_image}>
+            <Image style={{width: 40, height: 40}}
+            source={{ uri: thumbnail }} />
+          </View>
+          <View style={styles.item_details}>
+            <Text style={styles.item_name}>{name}</Text>
+            <Text style={styles.item_price}>{unit} / ${price}</Text>
+          </View>
         </View>
+
         <View style={styles.item_action}>
-          <TouchableOpacity onPress={this.minusProduct} style={styles.btnMinus}>
-            <Icon raised name='minus' color='#ffffff' />
-          </TouchableOpacity>
-          <Text>{this.state.quantity}</Text>
-          <TouchableOpacity onPress={this.addProduct} style={styles.btnPlus}>
-            <Icon raised name='plus' color='#ffffff' />
-          </TouchableOpacity>
+          <View style={styles.quantityContainer}>
+            <TouchableOpacity onPress={this.minusProduct} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
+              <Icon raised name='minus' color='#ffffff' size={14} />
+            </TouchableOpacity>
+            <Text style={styles.quantity}>{this.state.quantity}</Text>
+            <TouchableOpacity onPress={this.addProduct} style={styles.btnPlus}>
+              <Icon raised name='plus' color='#ffffff' size={14} />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={styles.quantityText}>Current Quantity</Text>
+          </View>
         </View>
       </View>
     )

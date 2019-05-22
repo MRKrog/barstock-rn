@@ -5,15 +5,18 @@ const screenHeight = Dimensions.get("window").height
 
 export default {
   container: {
+    display: "flex",
+    flexDirection: "column",
     flex: 1,
     margin: 10,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     height: screenHeight
   },
   alc_typeContainer: {
     borderRadius: 5,
     backgroundColor: "#2c4969",
     padding: 10,
+    marginTop: 10,
     shadowOpacity: 0.3,
     shadowRadius: 3,
     shadowColor: '#231f20',

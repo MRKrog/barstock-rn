@@ -9,35 +9,35 @@ export class DistributorInventory extends Component{
   constructor() {
     super()
     this.state = {
-      currentType: 'beer'
+      currentType: 'liquor'
     }
   }
 
   render() {
     let category;
-    if(this.props.alcohol.data) {
-      const { data } = this.props.alcohol;
-      let filterCategories = data.filter(type => {
+
+    if(this.props.alcohol) {
+
+      const { alcohol } = this.props;
+
+      let selectedType = alcohol.filter(type => {
         return type.attributes.alc_type === this.state.currentType
       })
 
-
-
-      let reducedCat = filterCategories.reduce((acc, cat) => {
+      let reducedCat = selectedType.reduce((acc, cat) => {
+        let liquor_item = {...cat.attributes, id: cat.id}
         if(!acc[cat.attributes.alc_category]){
           acc[cat.attributes.alc_category] = []
         }
-        acc[cat.attributes.alc_category].push(cat.attributes)
+        acc[cat.attributes.alc_category].push(liquor_item)
         return acc
       }, {})
-      console.log(reducedCat);
+
       category = Object.keys(reducedCat).map(item => {
-          console.log(item);
         return (
-          <AlcoholCategory title={item} info={reducedCat[item]} key={reducedCat[item].id}/>
+          <AlcoholCategory title={item} info={reducedCat[item]} key={reducedCat[item][0].alc_category}/>
         )
       })
-
 
     }
 
@@ -46,13 +46,9 @@ export class DistributorInventory extends Component{
         <View style={styles.alc_typeContainer}>
           <Text style={styles.alc_typeTitle}>{this.state.currentType}</Text>
         </View>
-
-          <ScrollView style={styles.alc_catSection}>
-            {
-              category
-            }
-          </ScrollView>
-
+        <View style={styles.alc_catSection}>
+          { category }
+        </View>
       </View>
     )
   }
