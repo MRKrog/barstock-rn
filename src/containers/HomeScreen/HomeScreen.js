@@ -19,42 +19,12 @@ import * as actions from '../../redux/actions';
 
 class HomeScreen extends Component {
 
-  // static navigationOptions = ({ navigation }) => {
-  //   const params = navigation.state.params || {};
-
-  //   return {
-  //     headerLeft: (
-  //       <Icon.Button
-  //         onPress={params.openMenu}
-  //         name="bars"
-  //         size={30}
-  //         backgroundColor="#11212a"
-  //         color="#fff"
-  //       />
-  //     ),
-  //     headerTitle: ( <LogoTitle /> ),
-  //     headerRight: (
-  //       <Avatar
-  //         rounded
-  //         source={{
-  //           uri:
-  //             'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
-  //         }}
-  //       />
-  //     ),
-  //   };
-  // };
-
   componentDidMount() {
     this.props.navigation.setParams({ openMenu: this._openMenu });
     this.props.setLoading(true)
     this.getData()
   }
-
-  _openMenu = () => {
-    this.props.navigation.toggleDrawer();
-  }
-
+  
   logout = () => {
     this.props.navigation.navigate('Login');
   }
