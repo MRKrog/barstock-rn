@@ -16,7 +16,7 @@ class OrderContainer extends Component{
         return(
             <Swiper index={0} loop={false}>
                 <DistributorInventory />
-                <CurrentOrder />
+                <CurrentOrder navigation={this.props.navigation}/>
             </Swiper>
         )
     }

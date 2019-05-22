@@ -14,7 +14,7 @@ export class AlcoholCategory extends Component{
   }
 
   changeLayout = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
+    LayoutAnimation.configureNext(LayoutAnimation.create(100));
     this.setState({ expanded: !this.state.expanded });
   }
 

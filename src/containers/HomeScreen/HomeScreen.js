@@ -19,31 +19,31 @@ import * as actions from '../../redux/actions';
 
 class HomeScreen extends Component {
 
-  static navigationOptions = ({ navigation }) => {
-    const params = navigation.state.params || {};
+  // static navigationOptions = ({ navigation }) => {
+  //   const params = navigation.state.params || {};
 
-    return {
-      headerLeft: (
-        <Icon.Button
-          onPress={params.openMenu}
-          name="bars"
-          size={30}
-          backgroundColor="#11212a"
-          color="#fff"
-        />
-      ),
-      headerTitle: ( <LogoTitle /> ),
-      headerRight: (
-        <Avatar
-          rounded
-          source={{
-            uri:
-              'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
-          }}
-        />
-      ),
-    };
-  };
+  //   return {
+  //     headerLeft: (
+  //       <Icon.Button
+  //         onPress={params.openMenu}
+  //         name="bars"
+  //         size={30}
+  //         backgroundColor="#11212a"
+  //         color="#fff"
+  //       />
+  //     ),
+  //     headerTitle: ( <LogoTitle /> ),
+  //     headerRight: (
+  //       <Avatar
+  //         rounded
+  //         source={{
+  //           uri:
+  //             'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
+  //         }}
+  //       />
+  //     ),
+  //   };
+  // };
 
   componentDidMount() {
     this.props.navigation.setParams({ openMenu: this._openMenu });
@@ -61,7 +61,7 @@ class HomeScreen extends Component {
     return (
       <View style={styles.MainDisplay}>
         <ImageBackground source={require('../../../assets/bg.png')} style={styles.backgroundImage}>
-          <OrderContainer />
+          <OrderContainer navigation={this.props.navigation}/>
         </ImageBackground>
       </View>
     );

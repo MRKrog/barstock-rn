@@ -8,6 +8,9 @@ import { StatusBar, View, Text } from "react-native";
 // import MyNotificationsScreen from './Notifications';
 
 // import DrawerContent from "./SideBar/SideBar"
+import Icon from 'react-native-vector-icons/FontAwesome';
+import LogoTitle from './components/LogoTitle/LogoTitle';
+import { Avatar } from 'react-native-elements';
 
 import HomeScreen from './containers/HomeScreen/HomeScreen';
 
@@ -16,6 +19,7 @@ import HomeScreen from './containers/HomeScreen/HomeScreen';
 // import ModalScreen from './ModalScreen';
 import LoginScreen from './containers/LoginScreen/LoginScreen';
 import SideMenu from './containers/SideMenu/SideMenu';
+import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 // import NotificationScreen from './NotificationScreen2';
 
 // import { View } from 'react-native';
@@ -75,7 +79,60 @@ import SideMenu from './containers/SideMenu/SideMenu';
 const HomeStack = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen
+      screen: HomeScreen,
+      navigationOptions: ({ navigation }) => {
+        const params = navigation.state.params || {};
+    
+        return {
+          headerLeft: (
+            <Icon.Button
+              onPress={navigation.toggleDrawer}
+              name="bars"
+              size={30}
+              backgroundColor="#11212a"
+              color="#fff"
+            />
+          ),
+          headerTitle: ( <LogoTitle /> ),
+          headerRight: (
+            <Avatar
+              rounded
+              source={{
+                uri:
+                  'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
+              }}
+            />
+          ),
+        };
+      }
+    },
+    SubmitOrder: {
+      screen: SubmitOrder,
+      navigationOptions: ({ navigation }) => {
+        const params = navigation.state.params || {};
+    
+        return {
+          headerLeft: (
+            <Icon.Button
+              onPress={navigation.toggleDrawer}
+              name="bars"
+              size={30}
+              backgroundColor="#11212a"
+              color="#fff"
+            />
+          ),
+          headerTitle: ( <LogoTitle /> ),
+          headerRight: (
+            <Avatar
+              rounded
+              source={{
+                uri:
+                  'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
+              }}
+            />
+          ),
+        };
+      }
     }
   },
   {
@@ -129,7 +186,7 @@ const Drawer = createDrawerNavigator({
 const AppConatiner = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
-    Home: Drawer
+    Home: Drawer,
   },
   {
     initialRouteName: 'Login'
