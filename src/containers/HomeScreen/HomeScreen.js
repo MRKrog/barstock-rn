@@ -47,6 +47,8 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     this.props.navigation.setParams({ openMenu: this._openMenu });
+    this.props.setLoading(true)
+    this.getData()
   }
 
   _openMenu = () => {
@@ -57,11 +59,26 @@ class HomeScreen extends Component {
     this.props.navigation.navigate('Login');
   }
 
+  getData = async () => {
+    const url = "https://barstock-backend.herokuapp.com/api/v1/items?api_key=0yWwUm5CZ8CGR8MhT7FL9w";
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      this.props.setAlcohol(data)
+      this.props.setLoading(false)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   render() {
     return (
       <View style={styles.MainDisplay}>
         <ImageBackground source={require('../../../assets/bg.png')} style={styles.backgroundImage}>
-          <OrderContainer />
+          {
+            this.props.alcohol &&
+            <OrderContainer />
+          }
         </ImageBackground>
       </View>
     );
@@ -90,4 +107,14 @@ const styles = StyleSheet.create({
   },
 })
 
-export default HomeScreen
+export const mapStateToProps = (state) => ({
+  alcohol: state.alcohol,
+  loading: state.loading,
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  setAlcohol: alcohol => dispatch(actions.setAlcohol(alcohol)),
+  setLoading: status => dispatch(actions.setLoading(status)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
