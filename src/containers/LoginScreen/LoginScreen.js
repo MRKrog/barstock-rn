@@ -22,7 +22,7 @@ class LoginScreen extends Component {
     this.state = { text: 'Email' };
   }
   login = () => {
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('MainApp');
   }
 
   componentDidMount() {
