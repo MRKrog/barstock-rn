@@ -20,12 +20,12 @@ export class AlcoholCategory extends Component{
 
   render(){
     const alcohol = this.props.info.map(alcohol => {
-      return(
+      return (
         <CategoryItem alcohol={alcohol} key={alcohol.name}/>
       )
     })
 
-    return(
+    return (
       <View >
         <TouchableOpacity onPress={this.changeLayout} style={styles.alc_catBtn}>
           <Text style={styles.alc_catTitle}>{this.props.title}</Text>

@@ -1,7 +1,18 @@
 export const cartReducer = (state = [], action) => {
   switch(action.type){
     case "ADD_ALCOHOL":
-      return [...state, action.alcohol];
+      let newCartItem = {...action.alcohol, count: 1}
+      return [...state, newCartItem];
+    case "UPDATE_ALCOHOL":
+      let updatedState = state.map(item => {
+        if(item.id === action.id && action.number === 1) {
+          item.count++
+        } else if (item.id === action.id && action.number === -1) {
+          item.count--
+        }
+        return item
+      })
+      return updatedState
     case "REMOVE_ALCOHOL":
       const itemIndex = state.indexOf(action.alcohol)
       state.splice(itemIndex, 1)

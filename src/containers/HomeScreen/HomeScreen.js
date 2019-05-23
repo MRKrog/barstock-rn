@@ -35,7 +35,9 @@ class HomeScreen extends Component {
     try {
       const response = await fetch(url)
       const allData = await response.json()
+      console.log("Allalcohol", allData);
       this.props.setAlcohol(allData.data)
+
       this.props.setLoading(false)
     } catch (error) {
       console.log(error);
@@ -45,7 +47,7 @@ class HomeScreen extends Component {
   getBusinessData = async  () => {
     let response = await fetch("https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w")
     let items = await response.json()
-    console.log("hello", items.data)
+    console.log("Business Items", items.data)
   }
 
   render() {
