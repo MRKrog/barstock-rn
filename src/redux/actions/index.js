@@ -18,6 +18,11 @@ export const removeFromCart = alcohol => ({
   alcohol
 })
 
+export const setBusinessItems = businessItems => ({
+  type: "SET_BUSINESS_ITEMS",
+  businessItems
+})
+
 export const removeCartGroup = id => ({
   type: "REMOVE_ALCOHOL_GROUP",
   id

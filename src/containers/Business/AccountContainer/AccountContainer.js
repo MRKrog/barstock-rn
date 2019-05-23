@@ -1,13 +1,19 @@
 import React, { Component } from "react"
+import Swiper from "react-native-swiper"
+import AccountInfo from "../AccountInfo/AccountInfo"
+import BarInventory from "../BarInventory/BarInventory"
 import { View, Text, ImageBackground, Dimensions, StyleSheet } from "react-native"
+import PassOrder from "../PassOrder/PassOrder";
 
 export default class AccountContainer extends Component{
   render(){
     return(
       <ImageBackground source={require('../../../../assets/bg.png')} style={styles.backgroundImage}>
-        <View>
-          <Text>hello world</Text>
-        </View>
+        <Swiper index={0} loop={false}>
+          <AccountInfo />
+          <BarInventory />
+          <PassOrder />
+        </Swiper>
       </ImageBackground>
     )
   }
