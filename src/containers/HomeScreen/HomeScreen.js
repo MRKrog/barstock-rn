@@ -35,7 +35,9 @@ class HomeScreen extends Component {
     try {
       const response = await fetch(url)
       const allData = await response.json()
+      console.log("Allalcohol", allData);
       this.props.setAlcohol(allData.data)
+
       this.props.setLoading(false)
     } catch (error) {
       console.log(error);

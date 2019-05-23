@@ -42,3 +42,9 @@ export const setAlcoholInfo = info => ({
   type: "SET_ALCOHOL_INFO",
   info
 })
+
+export const updateCart = (id, number) => ({
+  type: "UPDATE_ALCOHOL",
+  id,
+  number
+})
