@@ -1,0 +1,15 @@
+import React, { Component } from 'react';
+import { Button, Image, View, Text } from 'react-native';
+
+class Loading extends Component {
+  render() {
+    return (
+      <Image
+        source={require('../../images/BarStock_Logo.png')}
+        style={{width: 150, height: 33}}
+      />
+    );
+  }
+}
+
+export default Loading

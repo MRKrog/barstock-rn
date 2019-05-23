@@ -13,6 +13,10 @@ export class CategoryItem extends Component{
     }
   }
 
+  componentDidMount() {
+    console.log('cat item');
+  }
+
   minusProduct = () => {
     const { removeFromCart, alcohol } = this.props;
     if (this.state.quantity > 0) {
