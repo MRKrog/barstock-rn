@@ -13,7 +13,7 @@ export default {
     backgroundColor: "rgba(0,0,0,0.5)",
   },
   modal_container: {
-    backgroundColor: "#EBEBEB",
+    backgroundColor: "#ffffff",
     height: screenHeight * 0.45,
     width: screenWidth * 0.8,
     borderRadius: 5
@@ -37,7 +37,8 @@ export default {
   modal_textInput: {
     fontSize: 25,
     borderRadius: 5,
-    backgroundColor: "#ffffff",
+    borderColor: "#C4C4C4",
+    borderWidth: 2,
     height: 50,
     width: screenWidth * 0.3
   },

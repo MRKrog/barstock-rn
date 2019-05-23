@@ -43,9 +43,11 @@ class HomeScreen extends Component {
   }
 
   getBusinessData = async  () => {
+    // make a thunks folder and transfer the fetch into it
     let response = await fetch("https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w")
     let items = await response.json()
-    console.log("hello", items.data)
+    console.log(items.data)
+    this.props.setBusinessItems(items.data)
   }
 
   render() {
@@ -92,6 +94,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   setAlcohol: alcohol => dispatch(actions.setAlcohol(alcohol)),
   setLoading: status => dispatch(actions.setLoading(status)),
+  setBusinessItems: businessItems => dispatch(actions.setBusinessItems(businessItems))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

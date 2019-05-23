@@ -32,3 +32,13 @@ export const updateOrder = order => ({
   type: "UPDATE_ORDER",
   order
 })
+
+export const toggleModalDisplay = bool => ({
+  type: "TOGGLE_MODAL",
+  bool
+})
+
+export const setAlcoholInfo = info => ({
+  type: "SET_ALCOHOL_INFO",
+  info
+})
