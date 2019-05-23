@@ -6,6 +6,9 @@ export const cartReducer = (state = [], action) => {
       const itemIndex = state.indexOf(action.alcohol)
       state.splice(itemIndex, 1)
       return [...state];
+    case "REMOVE_ALCOHOL_GROUP":
+      let newItem = state.filter(item => action.id !== item.id)
+      return newItem
     default:
       return state;
   }

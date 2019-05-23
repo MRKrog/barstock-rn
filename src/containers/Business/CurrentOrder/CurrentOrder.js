@@ -1,32 +1,38 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, TouchableHighlight } from "react-native";
 import { connect } from "react-redux"
-import styles from "./CurrentOrder.style"
+import * as actions from "../../../redux/actions";
+import styles from "./CurrentOrder.style";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Swipeable from 'react-native-swipeable';
 
 export class CurrentOrder extends Component {
-  constructor() {
-    super();
-    this.state = {
-      total_cost: 0,
-      potential_returns: 0
-    }
+
+  submitOrder = () => {
+    let combinedOrder = this.createOrderDisplay()
+    this.props.updateOrder(combinedOrder);
+    this.props.navigation.navigate("SubmitOrder")
   }
 
-  render(){
-    const { cart } = this.props;
-    // const { total_cost, potential_returns } = this.state;
+  createOrderDisplay = () => {
+    let quantityAmount = this.combineQuantities();
+    let combinedOrder = this.createOrder(quantityAmount);
+    return combinedOrder
+  }
 
-    let quantityAmount = cart.reduce((acc, el) => {
-      console.log(el);
-      if (!acc[el.name]) {
-        acc[el.name] = 0;
-      }
+  combineQuantities = () => {
+    let quantityAmount = this.props.cart.reduce((acc, el) => {
+      if (!acc[el.name]) acc[el.name] = 0
       acc[el.name]++;
       return acc;
     }, {});
+    return quantityAmount;
+  }
 
+  createOrder = (quantityAmount) => {
     let combinedCart = Object.keys(quantityAmount).map((item, index) => {
-      let itemInfo = cart.find(cartItem => cartItem.name === item);
+      let itemInfo = this.props.cart.find(cartItem => cartItem.name === item);
+      let type = this.findType(itemInfo.alc_type, quantityAmount[item])
       return {
         id: itemInfo.id,
         name: itemInfo.name,
@@ -36,19 +42,75 @@ export class CurrentOrder extends Component {
         alc_type: itemInfo.alc_type,
         thumbnail: itemInfo.thumbnail,
         unit: itemInfo.unit,
-        quantity: quantityAmount[item]
+        quantity: quantityAmount[item],
+        type: type,
+        profits: 10
       }
     })
+    return combinedCart;
+  }
 
-    console.log(combinedCart);
+  findType = (type, quantity) => {
+    let liquorType;
+    switch (type) {
+      case "beer":
+        liquorType = quantity <= 1 ? "Case" : "Cases"
+        break;
+      case "liquor":
+        liquorType = quantity <= 1 ? "Btl" : "Btls"
+        break;
+      default:
+        liquorType = "Quantity"
+    }
+    return liquorType
+  }
 
-    let displayCart = combinedCart.map(item => {
+  generateCost = (cartItems) => {
+    let totalCost = cartItems.reduce((acc, item) => {
+      acc += item.total
+      return acc
+    }, 0)
+    return totalCost
+  }
+
+  generateReturn = (cartItems) => {
+    let totalReturn = cartItems.reduce((acc, item) => {
+      acc += item.profits
+      return acc
+    }, 0)
+    return totalReturn
+  }
+
+  removeFromCart = (itemId) => {
+    this.props.removeCartGroup(itemId)
+  }
+
+  render() {
+    let cartDisplay;
+    let allItems = this.createOrderDisplay()
+    let totalCost = this.generateCost(allItems)
+    let totalReturn = this.generateReturn(allItems)
+
+    cartDisplay = allItems.map(item => {
+      let marginColor = styles.marginGreen
+      let deleteBtn = [
+        <TouchableHighlight style={styles.rightSwipeItem} key={item.name}>
+          <Icon name='times' color='#fff' size={30} />
+        </TouchableHighlight>,
+      ];
       return(
-        <View key={item.name} style={styles.item_row}>
-          <Text>{item.quantity} X</Text>
-          <Text>{item.name}</Text>
-          <Text>${item.total.toFixed(2)}</Text>
-        </View>
+        <Swipeable key={item.name}
+                   rightContent={deleteBtn}
+                   rightButtonWidth={45}
+                   rightActionActivationDistance={80}
+                   onRightActionRelease={() => this.removeFromCart(item.id)}>
+          <View style={[styles.item_info, marginColor]} id={item.id}>
+            <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
+            <Text style={styles.item_unit}>{item.quantity} x {item.type}</Text>
+            <Text style={styles.item_profit}>${item.profits}</Text>
+            <Text style={styles.item_cost}>${item.total.toFixed(2)}</Text>
+          </View>
+        </Swipeable>
       )
     })
 
@@ -58,21 +120,28 @@ export class CurrentOrder extends Component {
           <Text style={styles.cart_title}>Current Order</Text>
         </View>
         <View style={styles.cart_items}>
+          <View style={styles.cart_header}>
+            <Text style={styles.cart_rowOne}>Name</Text>
+            <Text style={styles.cart_rowTwo}>Quantity</Text>
+            <Text style={styles.cart_rowThree}>Profit</Text>
+            <Text style={styles.cart_rowFour}>Cost</Text>
+            <Text style={styles.cart_rowFive}></Text>
+          </View>
           <ScrollView>
-            { displayCart }
+            { cartDisplay }
           </ScrollView>
         </View>
         <View style={styles.cart_priceContainer}>
           <View style={styles.cart_potential}>
-            <Text style={styles.cart_potentialText}>Potential Return*</Text>
-            <Text style={styles.cart_potentialText}>$9080808</Text>
+            <Text style={styles.cart_potentialText}>Potential Return</Text>
+            <Text style={styles.cart_potentialText}>${totalReturn.toFixed(2)}</Text>
           </View>
           <View style={styles.cart_price}>
             <Text style={styles.cart_priceText}>Total Cost</Text>
-            <Text style={styles.cart_priceText}>$1000</Text>
+            <Text style={styles.cart_priceText}>${totalCost.toFixed(2)}</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => {this.props.navigation.navigate("SubmitOrder")}}>
+        <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => this.submitOrder()}>
           <Text style={styles.cart_checkoutText}>Checkout</Text>
         </TouchableOpacity>
       </View>
@@ -81,8 +150,14 @@ export class CurrentOrder extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
+  order: state.order
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  removeCartGroup: id => dispatch(actions.removeCartGroup(id)),
+  updateOrder: data => dispatch(actions.updateOrder(data))
 })
 
 
-export default connect(mapStateToProps)(CurrentOrder)
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentOrder)
