@@ -3,47 +3,26 @@ import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Toucha
 import * as actions from "../../../redux/actions";
 import styles from './SubmitOrder.style';
 import { connect } from "react-redux";
+import { generateCost } from "../../../utility/liquorCleaner.js"
 
 export class SubmitOrder extends Component{
-  constructor() {
-    super();
-    this.state = {
-      test: "SubmitOrder",
-      currentOrder: []
-    }
-  }
-
-  componentDidMount() {
-    this.cleanOrder()
-  }
-
-  cleanOrder = () => {
-    console.log('Store In State Order To Clean');
-  }
 
   goBack = () => {}
 
   submitOrder = () => {}
 
-  generateCost = (cartItems) => {
-    let totalCost = cartItems.reduce((acc, item) => {
-      acc += item.total
-      return acc
-    }, 0)
-    return totalCost
-  }
-
   render(){
+    const { cart } = this.props;
     let cartDisplay;
 
-    let totalCost = this.generateCost(this.props.order)
-    cartDisplay = this.props.order.map(item => {
+    let totalCost = generateCost(cart)
+    cartDisplay = cart.map(item => {
       let marginColor = styles.marginGreen
       return(
         <View key={item.name} style={styles.item_info} id={item.id}>
           <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
-          <Text style={styles.item_unit}>x{item.quantity}</Text>
-          <Text style={styles.item_cost}>${item.total.toFixed(2)}</Text>
+          <Text style={styles.item_unit}>x{item.count}</Text>
+          <Text style={styles.item_cost}>${(item.price * item.count).toFixed(2)}</Text>
         </View>
       )
     })

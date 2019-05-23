@@ -5,44 +5,40 @@ import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export class CategoryItem extends Component{
-  constructor() {
-    super()
-    this.state = {
-      quantity: 0
-    }
-  }
+export class CategoryItem extends Component {
 
-  componentDidMount() {
-    console.log('cat item');
-  }
-
-  minusProduct = () => {
-    const { removeFromCart, alcohol } = this.props;
-    if (this.state.quantity > 0) {
+  minusProduct = (id, number) => {
+    const { removeFromCart, alcohol, cart, updateCart } = this.props;
+    let cartItem = cart.find(item => item.id === id)
+    if(cartItem.count > 1) {
+      updateCart(id, number)
+    } else {
       removeFromCart(alcohol)
-      let newQuantity = this.state.quantity - 1
-      this.setState({
-        quantity: newQuantity
-      });
     }
   };
 
-  addProduct = () => {
-    const { addToCart, alcohol } = this.props;
-    addToCart(alcohol);
-    let newQuantity = this.state.quantity + 1
-    this.setState({
-      quantity: newQuantity
-    });
+  addProduct = (id, number) => {
+    const { addToCart, alcohol, cart, updateCart } = this.props;
+    let itemExists = false;
+    cart.forEach(item => item.id === id ? itemExists = true : null);
+    itemExists ? updateCart(id, number) : addToCart(alcohol);
   };
 
-  render(){
-    const { name, unit, price, thumbnail } = this.props.alcohol;
-    const { quantity } = this.state;
-    let quantityStatus = quantity < 1 ? true : false;
-    let btnStatus = quantity < 1 ? styles.textinvalid : styles.textvalid;
+  render() {
     const { category_item, btnMinus } = styles;
+    const { name, unit, price, thumbnail, id } = this.props.alcohol;
+
+    let currentCount = 0;
+    let quantityStatus = true;
+    let btnStatus = styles.textinvalid
+
+    this.props.cart.forEach(item => {
+      if(item.id === id) {
+        currentCount = item.count
+        quantityStatus = false;
+        btnStatus = styles.textvalid
+      }
+    })
 
     return(
       <View style={category_item}>
@@ -58,11 +54,11 @@ export class CategoryItem extends Component{
 
         <View style={styles.item_action}>
           <View style={styles.quantityContainer}>
-            <TouchableOpacity onPress={this.minusProduct} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
+            <TouchableOpacity onPress={() => this.minusProduct(id, -1)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
               <Icon raised name='minus' color='#ffffff' size={14} />
             </TouchableOpacity>
-            <Text style={styles.quantity}>{this.state.quantity}</Text>
-            <TouchableOpacity onPress={this.addProduct} style={styles.btnPlus}>
+            <Text style={styles.quantity}>{currentCount}</Text>
+            <TouchableOpacity onPress={() => this.addProduct(id, 1)} style={styles.btnPlus}>
               <Icon raised name='plus' color='#ffffff' size={14} />
             </TouchableOpacity>
           </View>
@@ -81,6 +77,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
+  updateCart: (id, number) => dispatch(actions.updateCart(id, number)),
   removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol))
 })
 

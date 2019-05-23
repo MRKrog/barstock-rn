@@ -32,3 +32,9 @@ export const updateOrder = order => ({
   type: "UPDATE_ORDER",
   order
 })
+
+export const updateCart = (id, number) => ({
+  type: "UPDATE_ALCOHOL",
+  id,
+  number
+})
