@@ -17,3 +17,13 @@ export const removeFromCart = alcohol => ({
   type: "REMOVE_ALCOHOL",
   alcohol
 })
+
+export const removeCartGroup = id => ({
+  type: "REMOVE_ALCOHOL_GROUP",
+  id
+})
+
+export const updateOrder = order => ({
+  type: "UPDATE_ORDER",
+  order
+})
