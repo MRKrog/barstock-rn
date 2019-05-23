@@ -33,6 +33,16 @@ export const updateOrder = order => ({
   order
 })
 
+export const toggleModalDisplay = bool => ({
+  type: "TOGGLE_MODAL",
+  bool
+})
+
+export const setAlcoholInfo = info => ({
+  type: "SET_ALCOHOL_INFO",
+  info
+})
+
 export const updateCart = (id, number) => ({
   type: "UPDATE_ALCOHOL",
   id,

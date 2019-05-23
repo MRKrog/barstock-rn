@@ -1,46 +1,34 @@
 import React, { Component } from "react"
+import { connect } from "react-redux"
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native"
 import styles from "./BarInventory.style"
 import AlcoholModal from "../AlcoholModal/AlcoholModal"
+import * as actions from "../../../redux/actions"
 
-export default class BarInventory extends Component{
+export class BarInventory extends Component{
   constructor(){
     super();
     this.state = {
       test: "bar inventory",
-      items: [],
-      modal: false
     }
   }
 
-  async componentDidMount(){
-    let response = await fetch("https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w")
-    let items = await response.json()
-    console.log(items.data)
-    this.setState({
-      items: items.data
-    })
-  }
-
-  toggleModal = () => {
-    console.log("hello")
-    this.setState({
-      modal: !this.state.modal
-    })
+  toggleModal = (alcohol) => {
+    this.props.setAlcoholInfo(alcohol)
+    this.props.toggleModalDisplay(true)
   }
 
   render(){
-    console.log(this.state.items)
-    let BarItems = this.state.items.map(item => {
+    let BarItems = this.props.businessItems.map(item => {
       return(
-        <TouchableOpacity onPress={this.toggleModal} style={styles.item_card}>
+        <TouchableOpacity onPress={() => {this.toggleModal(item)}} style={styles.item_card}>
           <View style={styles.item_info}>
           <View style={styles.item_image}>
-            <Image style={{width: 40, height: 40}}
+            <Image resizeMode="contain" style={{width: 40, height: 40}}
             source={{uri: item.attributes.thumbnail}}/>
             </View>
           <View style={styles.item_details}>
-            <Text style={styles.item_name}>{item.attributes.id}</Text>
+            <Text style={styles.item_name}>{item.attributes.item_name}</Text>
             <Text style={styles.item_price}>{item.attributes.serving_size} / ${item.attributes.price_sold}</Text>
           </View>
           </View>
@@ -58,7 +46,9 @@ export default class BarInventory extends Component{
         <View style={styles.bar_titleContainer}>
          <Text style={styles.bar_title}>{this.state.test}</Text>
         </View>
-        <AlcoholModal modal={this.state.modal} toggleModal={this.toggleModal}/>
+        {
+          this.props.modalDisplay && <AlcoholModal modal={this.state.modal} toggleModal={this.toggleModal}/>
+        }
         <ScrollView>
           {
             BarItems
@@ -68,3 +58,15 @@ export default class BarInventory extends Component{
     )
   }
 }
+
+export const mapStateToProps = (state) => ({
+  businessItems: state.businessItems,
+  modalDisplay: state.modalDisplay,
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
+  setAlcoholInfo: info => dispatch(actions.setAlcoholInfo(info))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BarInventory)

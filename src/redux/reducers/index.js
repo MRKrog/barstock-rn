@@ -3,12 +3,16 @@ import { alcoholReducer } from "./alcoholReducer";
 import { cartReducer } from "./cartReducer";
 import { orderReducer } from "./orderReducer";
 import { loadingReducer } from './loadingReducer';
-import { businessItemsReducer } from "./businessItemsReducer"
+import { businessItemsReducer } from "./businessItemsReducer";
+import { modalReducer } from "./modalReducer";
+import { alcoholInfoReducer } from "./alcoholInfoReducer"
 
 export const rootReducer = combineReducers({
   loading: loadingReducer,
   alcohol: alcoholReducer,
   businessItems: businessItemsReducer,
   cart: cartReducer,
-  order: orderReducer
+  order: orderReducer,
+  modalDisplay: modalReducer,
+  alcoholInfo: alcoholInfoReducer
 })
