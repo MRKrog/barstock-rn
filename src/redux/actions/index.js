@@ -17,3 +17,8 @@ export const removeFromCart = alcohol => ({
   type: "REMOVE_ALCOHOL",
   alcohol
 })
+
+export const setBusinessItems = businessItems => ({
+  type: "SET_BUSINESS_ITEMS",
+  businessItems
+})

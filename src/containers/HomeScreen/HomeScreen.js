@@ -23,6 +23,7 @@ class HomeScreen extends Component {
     this.props.navigation.setParams({ openMenu: this._openMenu });
     this.props.setLoading(true)
     this.getData()
+    this.getBusinessData()
   }
   
   logout = () => {
@@ -35,11 +36,16 @@ class HomeScreen extends Component {
       const response = await fetch(url)
       const allData = await response.json()
       this.props.setAlcohol(allData.data)
-      console.log(this.props);
       this.props.setLoading(false)
     } catch (error) {
       console.log(error);
     }
+  }
+
+  getBusinessData = async  () => {
+    let response = await fetch("https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w")
+    let items = await response.json()
+    console.log("hello", items.data)
   }
 
   render() {

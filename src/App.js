@@ -43,7 +43,8 @@ const header = ({ navigation }) => {
         width: 0,
       },
     },
-    headerTintColor: '#fff'
+    headerTintColor: '#fff',
+    gesturesEnabled: false,
   };
 }
 
@@ -79,7 +80,7 @@ const AppConatiner = createAppContainer(
     MainApp: Drawer,
   },
   {
-    initialRouteName: 'Login'
+    initialRouteName: 'Login',
   })
 );
 
