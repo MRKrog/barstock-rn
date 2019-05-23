@@ -13,6 +13,10 @@ export class CategoryItem extends Component{
     }
   }
 
+  componentDidMount() {
+    console.log('cat item');
+  }
+
   minusProduct = () => {
     const { removeFromCart, alcohol } = this.props;
     if (this.state.quantity > 0) {
@@ -44,8 +48,7 @@ export class CategoryItem extends Component{
       <View style={category_item}>
         <View style={styles.item_info}>
           <View style={styles.item_image}>
-            <Image style={{width: 40, height: 40}}
-            source={{ uri: thumbnail }} />
+            <Image style={{width: 40, height: 40}} source={{ uri: thumbnail }} />
           </View>
           <View style={styles.item_details}>
             <Text style={styles.item_name}>{name}</Text>

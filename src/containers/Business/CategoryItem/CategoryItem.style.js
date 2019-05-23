@@ -28,14 +28,13 @@ export default {
   },
   item_name: {
     color: "#11212a",
-    fontFamily: "lato",
-    fontWeight: "100",
+    fontFamily: "Lato-Light",
     fontSize: 16,
     paddingBottom: 3
   },
   item_price: {
     color: "#adadad",
-    fontFamily: "raleway",
+    fontFamily: "Raleway-Light",
     fontStyle: "italic",
     fontWeight: "100",
     fontSize: 15

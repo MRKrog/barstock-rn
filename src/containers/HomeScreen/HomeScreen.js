@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Avatar } from 'react-native-elements';
 
-import LogoTitle from '../../components/LogoTitle/LogoTitle';
+import Loading from '../../components/Loading/Loading';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import OrderContainer from "../Business/OrderContainer/OrderContianer";
 
@@ -24,7 +24,7 @@ class HomeScreen extends Component {
     this.props.setLoading(true)
     this.getData()
   }
-  
+
   logout = () => {
     this.props.navigation.navigate('Login');
   }
