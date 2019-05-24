@@ -9,14 +9,19 @@ import LoginScreen from './containers/LoginScreen/LoginScreen';
 import SideMenu from './containers/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 
+// 191414
+// 232121
+
 const header = ({ navigation }) => {
   return {
     headerLeft: (
       <Icon.Button
         onPress={navigation.toggleDrawer}
         name="bars"
-        size={30}
-        backgroundColor="#11212a"
+        size={25}
+        backgroundColor="#232121"
+        padding={0}
+        marginLeft={15}
         color="#fff"
       />
     ),
@@ -24,6 +29,8 @@ const header = ({ navigation }) => {
     headerRight: (
       <Avatar
         rounded
+        marginRight={15}
+        size={30}
         source={{
           uri:
             'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
@@ -31,19 +38,18 @@ const header = ({ navigation }) => {
       />
     ),
     headerStyle: {
-      marginRight: 10,
-      marginLeft: 10,
-      backgroundColor: '#11212a',
-      height: 60,
+      borderBottomWidth: 0,
+      backgroundColor: '#232121',
+      height: 50,
       shadowColor: '#231f20',
-      shadowRadius: 5,
-      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      shadowOpacity: 0.1,
       shadowOffset: {
-        height: 3,
+        height: 1,
         width: 0,
       },
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#231f20',
     gesturesEnabled: false,
   };
 }

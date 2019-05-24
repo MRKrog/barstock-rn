@@ -35,8 +35,6 @@ export default {
   item_price: {
     color: "#adadad",
     fontFamily: "Raleway-Light",
-    fontStyle: "italic",
-    fontWeight: "100",
     fontSize: 15
   },
   item_action: {

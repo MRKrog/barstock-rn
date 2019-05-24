@@ -2,11 +2,11 @@ import { Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
-
+// 11212a
+//161515
 export default {
   cart_container: {
     flex: .92,
-    margin: 10,
   },
   cart_title: {
     fontSize: 22,
@@ -14,36 +14,47 @@ export default {
     color: "#ffffff",
     textAlign: "center",
     fontFamily: 'abel'
+    // textShadowOpacity: 0.9,
+    // textShadowRadius: 3,
+    // textShadowColor: '#231f20',
+    // textShadowOffset: { height: 4, width: 0 }
   },
   cart_titleContainer: {
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
+    // borderTopRightRadius: 5,
+    // borderTopLeftRadius: 5,
+    // backgroundColor: "#11212A",
     backgroundColor: "#2c4969",
     padding: 10,
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    shadowColor: '#231f20',
-    shadowOffset: { height: 4, width: 0 }
+    // borderBottomColor: "#2D2D2D",
+    // borderBottomWidth: .2,
+
   },
   cart_items: {
     height: screenHeight * 0.55,
-    backgroundColor: "#ffffff",
-    borderLeftColor: "#2c4969",
-    borderLeftWidth: 2,
-    borderRightColor: "#2c4969",
-    borderRightWidth: 2
+    // backgroundColor: "#0D191F",
   },
   cart_header: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "row",
     paddingHorizontal: 15,
     paddingVertical: 5,
-    backgroundColor: "#E8E8E8"
+    backgroundColor: "#E8E8E8",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    // backgroundColor: "#11212A",
+    borderBottomColor: "#2D2D2D",
+    // opacity: .8,
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 1, width: 0 },
+    zIndex: 9
   },
   cart_rowOne: {
-    flex: 1,
+    flex: 1.5,
     fontSize: 13,
     fontFamily: "raleway",
     color: "#8e8e8e"
@@ -52,22 +63,22 @@ export default {
     flex: 1,
     fontSize: 13,
     fontFamily: "raleway",
-    color: "#8e8e8e",
-    textAlign: "right"
+    textAlign: "center",
+    color: "#8e8e8e"
   },
   cart_rowThree: {
     flex: 1,
+    textAlign: "right",
     fontSize: 13,
     fontFamily: "raleway",
-    color: "#8e8e8e",
-    textAlign: "right",
+    color: "#8e8e8e"
   },
   cart_rowFour: {
     flex: 1,
+    textAlign: "right",
     fontSize: 13,
     fontFamily: "raleway",
-    color: "#8e8e8e",
-    textAlign: "right"
+    color: "#8e8e8e"
   },
   item_info: {
     display: 'flex',
@@ -77,44 +88,56 @@ export default {
     alignItems: "center",
     borderBottomColor: '#ececec',
     borderBottomWidth: 1,
-    height: 60,
+    height: 50,
     flex: 1
   },
   item_name: {
-    flex: 1,
-    color: "#464646",
-    fontFamily: "abel",
-    fontSize: 16,
+    flex: 1.5,
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
   },
   item_unit: {
     flex: 1,
-    color: "#464646",
-    fontFamily: "abel",
-    fontSize: 16,
-    textAlign: "right",
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
+    textAlign: "center",
   },
   item_profit: {
     flex: 1,
-    color: "#464646",
-    fontFamily: "abel",
-    fontSize: 16,
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
     textAlign: "right",
   },
   item_cost: {
     flex: 1,
-    color: "#464646",
-    fontFamily: "abel",
-    fontSize: 16,
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
     textAlign: "right"
   },
   marginGreen: {
-    backgroundColor: "#E1FFCF"
+    backgroundColor: "#79B473",
+    borderBottomColor: "#254D32",
+    borderBottomWidth: .2,
+  },
+  marginYellow: {
+    backgroundColor: "#FFE066",
+    borderBottomColor: "#254D32",
+    borderBottomWidth: .2,
+  },
+  marginRed: {
+    backgroundColor: "#DB504A",
+    borderBottomColor: "#254D32",
+    borderBottomWidth: .2,
   },
   rightSwipeItem: {
     flex: 1,
     justifyContent: 'center',
     paddingLeft: 10,
-    backgroundColor: "#d80707"
+    backgroundColor: "#D90429"
   },
   cart_priceContainer: {
     flex: 1,
@@ -125,11 +148,6 @@ export default {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#E8E8E8",
-    borderBottomLeftRadius: 5,
-    borderLeftColor: "#2c4969",
-    borderLeftWidth: 2,
-    // borderBottomColor: "#2c4969",
-    // borderBottomWidth: 2,
   },
   cart_potentialText: {
     color: "#464646",
@@ -141,7 +159,6 @@ export default {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#2C4969",
-    borderBottomRightRadius: 5,
   },
   cart_priceText: {
     color: "#ffffff",
@@ -149,22 +166,24 @@ export default {
     fontSize: 18
   },
   cart_checkoutButton: {
-    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    flex: .8,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#EEAD0C",
     borderRadius: 5,
-    marginTop: 10,
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    shadowColor: '#231f20',
-    shadowOffset: { height: 4, width: 0 }
+    marginVertical: 15,
+    marginHorizontal: 15,
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowColor: '#fffff',
+    shadowOffset: { height: 1, width: 0 }
   },
   cart_checkoutText: {
     fontSize: 22,
     textTransform: "uppercase",
     color: "#ffffff",
-    textAlign: "center",
     fontFamily: 'abel'
   }
 };
