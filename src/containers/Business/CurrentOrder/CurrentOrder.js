@@ -53,6 +53,27 @@ export class CurrentOrder extends Component {
     return singleProfit
   };
 
+  getRowColor = (num) => {
+    let color;
+    if(num >= 80) {
+      color = styles.marginGreen
+    } else {
+      color = styles.marginYellow
+    }
+    console.log(num);
+    // switch (num) {
+    //   case (num > 79):
+    //
+    //     break;
+    //   case num > 69:
+    //     color = styles.marginYellow
+    //     break;
+    //   default:
+    //
+    // }
+    return color
+  }
+
   removeFromCart = (itemId) => {
     this.props.removeCartGroup(itemId)
   }
@@ -65,9 +86,9 @@ export class CurrentOrder extends Component {
     let totalReturn = this.getTotalReturn()
 
     cartDisplay = cart.map(item => {
-      let marginColor = styles.marginGreen
       let itemType = this.findType(item.alc_type, item)
       let itemReturn = this.getSingleReturn(item)
+      let marginColor = this.getRowColor(itemReturn)
       let deleteBtn = [
         <TouchableHighlight style={styles.rightSwipeItem} key={item.name}>
           <Icon name='times' color='#fff' size={30} />

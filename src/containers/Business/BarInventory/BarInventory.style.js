@@ -7,19 +7,13 @@ export default {
   bar_invContainer: {
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
-    flex: 0.9,
-    margin: 10,
+    flex: 1,
     backgroundColor: "#ffffff"
   },
   bar_titleContainer: {
-    borderRadius: 5,
     backgroundColor: "#2c4969",
     padding: 10,
-    marginTop: 10,
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    shadowColor: '#231f20',
-    shadowOffset: { height: 4, width: 0 },
+    zIndex: 8
   },
   bar_title: {
     fontSize: 22,
@@ -31,12 +25,44 @@ export default {
   item_card: {
     display: "flex",
     flexDirection: "row",
-    borderRadius: 5,
-    marginTop: 5,
+    alignItems: "center",
     backgroundColor: "#ffffff",
+    borderBottomColor: '#ececec',
     borderBottomWidth: 1,
-    borderBottomColor: "#000000",
-    height: 50,
+    height: 55,
+  },
+  bar_itemsHeader: {
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    backgroundColor: "#E8E8E8",
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 1, width: 0 },
+    zIndex: 9
+
+  },
+  items_rowOne: {
+    flex: 2,
+    fontSize: 13,
+    fontFamily: "raleway",
+    color: "#8e8e8e"
+  },
+  items_rowTwo: {
+    flex: 1,
+    fontSize: 13,
+    fontFamily: "raleway",
+    textAlign: "center",
+    color: "#8e8e8e"
+  },
+  items_rowThree: {
+    flex: 1,
+    textAlign: "right",
+    fontSize: 13,
+    fontFamily: "raleway",
+    color: "#8e8e8e"
   },
   item_info: {
     flex: 2,
@@ -53,16 +79,14 @@ export default {
   },
   item_name: {
     color: "#11212a",
-    fontFamily: "lato",
-    fontWeight: "100",
-    fontSize: 16,
-    paddingBottom: 3
+    fontFamily: "Lato-Light",
+    fontSize: 15,
+    paddingBottom: 1
   },
   item_price: {
     color: "#adadad",
-    fontFamily: "raleway",
-    fontStyle: "italic",
-    fontWeight: "100",
+    // fontFamily: "Raleway-Light",
+    fontFamily: "Abel",
     fontSize: 15
   },
   item_action: {
@@ -74,37 +98,36 @@ export default {
     justifyContent: "center",
     alignItems: "center"
   },
+  item_marginsText: {
+    // flex: 1,
+    color: "#11212a",
+    // justifyContent: "center",
+    // fontFamily: "Abel",
+    // fontFamily: "Raleway-Light",
+    fontFamily: "Lato-Light",
+    fontSize: 17
+    // alignItems: "center",
+    // textAlign: "center"
+  },
   item_stock: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center"
   },
-  bar_itemsHeader: {
-    display: "flex",
-    flexDirection: "row",
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    backgroundColor: "#E8E8E8"
+  item_stockText: {
+    textAlign: "right",
+    // fontFamily: "Raleway-Light",
+    fontFamily: "Lato-Light",
+    fontSize: 17
   },
-  items_rowOne: {
-    flex: 2,
-    textAlign: "center",
-    fontSize: 13,
-    fontFamily: "raleway",
-    color: "#8e8e8e"
-  },
-  items_rowTwo: {
+  footer: {
     flex: 1,
-    textAlign: "center",
-    fontSize: 13,
-    fontFamily: "raleway",
-    color: "#8e8e8e"
-  },
-  items_rowThree: {
-    flex: 1,
-    textAlign: "center",
-    fontSize: 13,
-    fontFamily: "raleway",
-    color: "#8e8e8e"
+    backgroundColor: "#E8E8E8",
+    paddingVertical: 25,
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 1, width: 0 },
+    zIndex: 10
   }
 }

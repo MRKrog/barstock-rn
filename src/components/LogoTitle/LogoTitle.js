@@ -6,7 +6,7 @@ class LogoTitle extends Component {
     return (
       <Image
         source={require('../../images/BarStock_Logo.png')}
-        style={{width: 150, height: 33}}
+        style={{width: 100, height: 22}}
       />
     );
   }
