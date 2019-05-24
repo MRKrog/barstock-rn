@@ -48,7 +48,7 @@ class HomeScreen extends Component {
     // make a thunks folder and transfer the fetch into it
     let response = await fetch("https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w")
     let items = await response.json()
-    console.log(items.data)
+    console.log("Business Items", items.data)
     this.props.setBusinessItems(items.data)
   }
 
