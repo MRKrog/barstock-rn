@@ -28,18 +28,30 @@ export class CurrentOrder extends Component {
     return liquorType
   }
 
-  generateReturn = (cart) => {
-    const { businessItems } = this.props;
-    console.log("businessItems", businessItems);
-    // let totalReturn = cartItems.reduce((acc, item) => {
-    //   acc += item.profits
-    //   return acc
-    // }, 0)
-    let totalReturn = 0
+  getTotalReturn = () => {
+    const { businessItems, cart } = this.props;
+    let totalReturn = cart.reduce((acc, distItem) => {
+      let busItem = businessItems.find(item => item.id === distItem.id)
+      let distProdServSize = distItem.ounces;
+      let menuProdServSize = busItem.attributes.serving_size;
+      let menuPrice = busItem.attributes.price_sold;
+      let distCost = distItem.price;
+      return (acc +=
+        (distProdServSize / menuProdServSize) * menuPrice - distCost);
+    }, 0);
     return totalReturn
   }
 
-
+  getSingleReturn = (distItem) => {
+    const { businessItems } = this.props;
+    let busItem = businessItems.find(item => item.id === distItem.id)
+    let distProdServSize = distItem.ounces;
+    let menuProdServSize = busItem.attributes.serving_size;
+    let menuPrice = busItem.attributes.price_sold;
+    let distCost = distItem.price;
+    let singleProfit = ((distProdServSize / menuProdServSize) * menuPrice - distCost);
+    return singleProfit
+  };
 
   removeFromCart = (itemId) => {
     this.props.removeCartGroup(itemId)
@@ -50,11 +62,12 @@ export class CurrentOrder extends Component {
 
     let cartDisplay;
     let totalCost = generateCost(cart)
-    let totalReturn = this.generateReturn(cart)
+    let totalReturn = this.getTotalReturn()
 
     cartDisplay = cart.map(item => {
       let marginColor = styles.marginGreen
       let itemType = this.findType(item.alc_type, item)
+      let itemReturn = this.getSingleReturn(item)
       let deleteBtn = [
         <TouchableHighlight style={styles.rightSwipeItem} key={item.name}>
           <Icon name='times' color='#fff' size={30} />
@@ -69,7 +82,7 @@ export class CurrentOrder extends Component {
           <View style={[styles.item_info, marginColor]} id={item.id}>
             <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
             <Text style={styles.item_unit}>{item.count} x {itemType}</Text>
-            <Text style={styles.item_profit}>$99</Text>
+            <Text style={styles.item_profit}>${itemReturn.toFixed(2)}</Text>
             <Text style={styles.item_cost}>${(item.price * item.count).toFixed(2)}</Text>
           </View>
         </Swipeable>
