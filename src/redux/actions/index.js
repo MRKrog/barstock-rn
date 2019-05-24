@@ -48,3 +48,13 @@ export const updateCart = (id, number) => ({
   id,
   number
 })
+
+export const addBusinessItems = businessItems => ({
+  type: "ADD_BUSINESS_ITEM",
+  businessItems
+})
+
+export const updateBusinessItems = businessItems => ({
+  type: "UPDATE_BUSINESS_ITEM",
+  businessItems
+})
