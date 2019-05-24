@@ -39,6 +39,7 @@ export default {
     height: 50,
   },
   item_info: {
+    flex: 2,
     display: 'flex',
     flexDirection: 'row',
   },
@@ -67,5 +68,43 @@ export default {
   item_action: {
     display: 'flex',
     flexDirection: 'column'
+  },
+  item_margins: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  item_stock: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  bar_itemsHeader: {
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    backgroundColor: "#E8E8E8"
+  },
+  items_rowOne: {
+    flex: 2,
+    textAlign: "center",
+    fontSize: 13,
+    fontFamily: "raleway",
+    color: "#8e8e8e"
+  },
+  items_rowTwo: {
+    flex: 1,
+    textAlign: "center",
+    fontSize: 13,
+    fontFamily: "raleway",
+    color: "#8e8e8e"
+  },
+  items_rowThree: {
+    flex: 1,
+    textAlign: "center",
+    fontSize: 13,
+    fontFamily: "raleway",
+    color: "#8e8e8e"
   }
 }
