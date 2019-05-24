@@ -9,17 +9,18 @@ export class AlcoholModal extends Component{
     super();
     this.state = {
         id: null,
-        price: 0
+        price: 0,
+        servingSize: 0
     }
   }
 
   componentDidMount(){
     const { id, attributes } = this.props.alcoholInfo
     if(id){
-      console.log("hello ad;lsfjal;ksdf woksdf ")
       this.setState({
         id,
-        price: attributes.price_sold
+        price: attributes.price_sold,
+        servingSize: attributes.serving_size
       })
     }
   }
@@ -27,6 +28,7 @@ export class AlcoholModal extends Component{
   toggle = () => {
     this.props.toggleModalDisplay(false)
   }
+  
   // this is the regex for money /^[0-9]+(\.[0-9]{1,2})?$/gm
 
   render(){
@@ -46,11 +48,13 @@ export class AlcoholModal extends Component{
                       <Text>Price for Drink $</Text>
                       <TextInput value={`${this.state.price}`} onChangeText={(text) => { this.setState({
                         price: text
-                      })}}keyboardType="numeric" style={styles.modal_textInput}></TextInput>
+                      })}} keyboardType="numeric" style={styles.modal_textInput}></TextInput>
                     </View>
                     <View style={styles.modal_textInputDisplay}>
                       <Text>Size Per Drink</Text>
-                      <TextInput keyboardType="numeric"  style={styles.modal_textInput}></TextInput>
+                      <TextInput value={`${this.state.servingSize}`} onChangeText={(text) => { this.setState({
+                        servingSize: text
+                      })}} keyboardType="numeric"  style={styles.modal_textInput}></TextInput>
                       <Text>oz</Text>
                     </View>
                   </View>

@@ -6,12 +6,6 @@ import AlcoholModal from "../AlcoholModal/AlcoholModal"
 import * as actions from "../../../redux/actions"
 
 export class BarInventory extends Component{
-  constructor(){
-    super();
-    this.state = {
-      test: "bar inventory",
-    }
-  }
 
   toggleModal = (alcohol) => {
     this.props.setAlcoholInfo(alcohol)
@@ -23,16 +17,19 @@ export class BarInventory extends Component{
       return(
         <TouchableOpacity onPress={() => {this.toggleModal(item)}} style={styles.item_card}>
           <View style={styles.item_info}>
-          <View style={styles.item_image}>
             <Image resizeMode="contain" style={{width: 40, height: 40}}
-            source={{uri: item.attributes.thumbnail}}/>
+              source={{uri: item.attributes.thumbnail}}/>
+            <View style={styles.item_details}>
+              <Text style={styles.item_name}>{item.attributes.item_name}</Text>
+              <Text style={styles.item_price}>{item.attributes.serving_size} / ${item.attributes.price_sold}</Text>
             </View>
-          <View style={styles.item_details}>
-            <Text style={styles.item_name}>{item.attributes.item_name}</Text>
-            <Text style={styles.item_price}>{item.attributes.serving_size} / ${item.attributes.price_sold}</Text>
           </View>
+          <View style={styles.item_margins}>
+            <Text>
+              80%
+            </Text>
           </View>
-          <View>
+          <View style={styles.item_stock}>
             <Text>
               {item.attributes.quantity}
             </Text>
@@ -44,11 +41,16 @@ export class BarInventory extends Component{
     return(
       <View style={styles.bar_invContainer}>
         <View style={styles.bar_titleContainer}>
-         <Text style={styles.bar_title}>{this.state.test}</Text>
+         <Text style={styles.bar_title}>bar inventory</Text>
         </View>
         {
-          this.props.modalDisplay && <AlcoholModal modal={this.state.modal} toggleModal={this.toggleModal}/>
+          this.props.modalDisplay && <AlcoholModal/>
         }
+        <View style={styles.bar_itemsHeader}>
+            <Text style={styles.items_rowOne}>Alcohol Info</Text>
+            <Text style={styles.items_rowTwo}>Margins</Text>
+            <Text style={styles.items_rowThree}>In Stock</Text>
+        </View>
         <ScrollView>
           {
             BarItems
