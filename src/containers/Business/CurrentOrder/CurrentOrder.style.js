@@ -6,7 +6,9 @@ const screenHeight = Dimensions.get("window").height
 //161515
 export default {
   cart_container: {
-    flex: .92,
+    display: "flex",
+    flex: 1,
+    justifyContent: 'space-between'
   },
   cart_title: {
     fontSize: 22,
@@ -14,24 +16,13 @@ export default {
     color: "#ffffff",
     textAlign: "center",
     fontFamily: 'abel'
-    // textShadowOpacity: 0.9,
-    // textShadowRadius: 3,
-    // textShadowColor: '#231f20',
-    // textShadowOffset: { height: 4, width: 0 }
   },
   cart_titleContainer: {
-    // borderTopRightRadius: 5,
-    // borderTopLeftRadius: 5,
-    // backgroundColor: "#11212A",
     backgroundColor: "#2c4969",
     padding: 10,
-    // borderBottomColor: "#2D2D2D",
-    // borderBottomWidth: .2,
-
   },
   cart_items: {
     height: screenHeight * 0.55,
-    // backgroundColor: "#0D191F",
   },
   cart_header: {
     display: "flex",
@@ -44,9 +35,7 @@ export default {
     backgroundColor: "#E8E8E8",
     paddingHorizontal: 15,
     paddingVertical: 10,
-    // backgroundColor: "#11212A",
     borderBottomColor: "#2D2D2D",
-    // opacity: .8,
     shadowOpacity: 0.3,
     shadowRadius: 3,
     shadowColor: '#231f20',
@@ -119,25 +108,19 @@ export default {
     textAlign: "right"
   },
   marginGreen: {
-    backgroundColor: "#79B473",
+    backgroundColor: "#B9D7B5",
     borderBottomColor: "#254D32",
     borderBottomWidth: .2,
   },
   marginYellow: {
-    backgroundColor: "#FFE066",
-    borderBottomColor: "#254D32",
+    backgroundColor: "#FFEB9D",
+    borderBottomColor: "#FFE066",
     borderBottomWidth: .2,
   },
   marginRed: {
     backgroundColor: "#DB504A",
     borderBottomColor: "#254D32",
     borderBottomWidth: .2,
-  },
-  rightSwipeItem: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingLeft: 10,
-    backgroundColor: "#D90429"
   },
   cart_priceContainer: {
     flex: 1,

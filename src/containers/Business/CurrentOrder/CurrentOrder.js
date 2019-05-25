@@ -4,8 +4,11 @@ import { connect } from "react-redux"
 import * as actions from "../../../redux/actions";
 import styles from "./CurrentOrder.style";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Swipeable from 'react-native-swipeable';
+import Swipeout from 'react-native-swipeout';
 import { generateCost, generateReturn } from "../../../utility/liquorCleaner.js"
+import Footer from "../../../components/Footer/Footer";
+import AlcoholModal from "../AlcoholModal/AlcoholModal";
+
 
 export class CurrentOrder extends Component {
 
@@ -78,35 +81,43 @@ export class CurrentOrder extends Component {
     this.props.removeCartGroup(itemId)
   }
 
-  render() {
-    const { cart } = this.props
+  toggleModal = (itemId) => {
+    const { businessItems } = this.props;
+    let busItem = businessItems.find(item => item.id == itemId)
+    this.props.setAlcoholInfo(busItem)
+    this.props.toggleModalDisplay(true)
+  }
 
+  render() {
     let cartDisplay;
-    let totalCost = generateCost(cart)
+    let totalCost = generateCost(this.props.cart)
     let totalReturn = this.getTotalReturn()
 
-    cartDisplay = cart.map(item => {
+    cartDisplay = this.props.cart.map(item => {
       let itemType = this.findType(item.alc_type, item)
       let itemReturn = this.getSingleReturn(item)
       let marginColor = this.getRowColor(itemReturn)
-      let deleteBtn = [
-        <TouchableHighlight style={styles.rightSwipeItem} key={item.name}>
-          <Icon name='times' color='#fff' size={30} />
-        </TouchableHighlight>,
-      ];
+      let swipeoutBtns = [{
+          text: (<Icon name='edit' color='#B2BCC8' size={20} />),
+          backgroundColor: "#2C4969",
+          underlayColor: "#2c4969",
+          onPress: () => { this.toggleModal(item.id) }
+        }, {
+          text: (<Icon name='trash' color='#F1BFBD' size={20} />),
+          backgroundColor: '#DB504A',
+          underlayColor: "#DB504A",
+          onPress: () => { this.removeFromCart(item.id) }
+        }
+      ]
       return(
-        <Swipeable key={item.name}
-                   rightContent={deleteBtn}
-                   rightButtonWidth={45}
-                   rightActionActivationDistance={80}
-                   onRightActionRelease={() => this.removeFromCart(item.id)}>
-          <View style={[styles.item_info, marginColor]} id={item.id}>
+        <Swipeout key={item.name} right={swipeoutBtns} autoClose={true} buttonWidth={50} sensitivity={60}>
+          <View style={[styles.item_info, marginColor, styles.listItem]} id={item.id}>
             <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
             <Text style={styles.item_unit}>{item.count} x {itemType}</Text>
             <Text style={styles.item_profit}>${itemReturn.toFixed(2)}</Text>
             <Text style={styles.item_cost}>${(item.price * item.count).toFixed(2)}</Text>
           </View>
-        </Swipeable>
+        </Swipeout>
       )
     })
 
@@ -126,6 +137,7 @@ export class CurrentOrder extends Component {
           <ScrollView>
             { cartDisplay }
           </ScrollView>
+          { this.props.modalDisplay && <AlcoholModal/> }
         </View>
         <View style={styles.cart_priceContainer}>
           <View style={styles.cart_potential}>
@@ -140,6 +152,7 @@ export class CurrentOrder extends Component {
         <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => this.submitOrder()}>
           <Text style={styles.cart_checkoutText}>Checkout</Text>
         </TouchableOpacity>
+        <Footer />
       </View>
     )
   }
@@ -148,12 +161,15 @@ export class CurrentOrder extends Component {
 export const mapStateToProps = (state) => ({
   cart: state.cart,
   order: state.order,
-  businessItems: state.businessItems
+  businessItems: state.businessItems,
+  modalDisplay: state.modalDisplay,
 })
 
 export const mapDispatchToProps = (dispatch) => ({
   removeCartGroup: id => dispatch(actions.removeCartGroup(id)),
-  updateOrder: data => dispatch(actions.updateOrder(data))
+  updateOrder: data => dispatch(actions.updateOrder(data)),
+  toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
+  setAlcoholInfo: info => dispatch(actions.setAlcoholInfo(info))
 })
 
 

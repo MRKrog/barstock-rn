@@ -119,15 +119,5 @@ export default {
     // fontFamily: "Raleway-Light",
     fontFamily: "Lato-Light",
     fontSize: 17
-  },
-  footer: {
-    flex: 1,
-    backgroundColor: "#E8E8E8",
-    paddingVertical: 25,
-    shadowOpacity: 0.9,
-    shadowRadius: 3,
-    shadowColor: '#231f20',
-    shadowOffset: { height: 1, width: 0 },
-    zIndex: 10
   }
 }

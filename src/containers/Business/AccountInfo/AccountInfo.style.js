@@ -6,13 +6,14 @@ const screenHeight = Dimensions.get("window").height
 export default {
   info_container: {
     flex: 1,
-    margin: 10,
+    display: "flex",
+    justifyContent: "space-between"
   },
   account_nameContainer: {
-    borderRadius: 5,
+    // borderRadius: 5,
     backgroundColor: "#2c4969",
     padding: 10,
-    marginTop: 10,
+    // marginTop: 10,
     shadowOpacity: 0.3,
     shadowRadius: 3,
     shadowColor: '#231f20',
@@ -39,10 +40,10 @@ export default {
     borderBottomWidth: 1
   },
   info_text: {
-    textDecorationLine: "underline",
-    textAlign: "center",
+    textAlign: "left",
     fontSize: 20,
-    fontFamily: "abel",
-    color: "#464646"
+    fontFamily: "Lato-Light",
+    color: "#464646",
+    paddingBottom: 5
   }
 }

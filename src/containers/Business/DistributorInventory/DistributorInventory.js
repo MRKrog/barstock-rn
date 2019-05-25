@@ -1,9 +1,12 @@
 import React, { Component } from "react"
 import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native"
 import AlcoholCategory from "../AlcoholCategory/AlcoholCategory";
+import LiquorCategory from "../LiquorCategory/LiquorCategory";
 import styles from './DistributorInventory.style';
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
+import Footer from '../../../components/Footer/Footer';
+
 
 export class DistributorInventory extends Component{
   constructor() {
@@ -13,11 +16,16 @@ export class DistributorInventory extends Component{
     }
   }
 
+  changeAlcoholType = (type) => {
+    const { currentType } = this.state;
+    this.setState({ currentType: type  })
+  }
+
   render() {
     let category;
+    let allTypes = [ "liquor", "beer", "wine" ]
 
     if(this.props.alcohol) {
-
       const { alcohol } = this.props;
 
       let selectedType = alcohol.filter(type => {
@@ -35,20 +43,28 @@ export class DistributorInventory extends Component{
 
       category = Object.keys(reducedCat).map(item => {
         return (
-          <AlcoholCategory title={item} info={reducedCat[item]} key={reducedCat[item][0].alc_category}/>
+          <AlcoholCategory title={item}
+                           info={reducedCat[item]}
+                           key={reducedCat[item][0].alc_category}
+          />
         )
       })
-
     }
 
     return (
       <View style={styles.container}>
-        <View style={styles.alc_typeContainer}>
-          <Text style={styles.alc_typeTitle}>{this.state.currentType}</Text>
+        <View style={styles.content}>
+          <View style={styles.alc_typeContainer}>
+            <LiquorCategory allTypes={allTypes}
+                            currentType={this.state.currentType}
+                            changeType={this.changeAlcoholType}
+            />
+          </View>
+          <View style={styles.alc_catSection}>
+            { category }
+          </View>
         </View>
-        <View style={styles.alc_catSection}>
-          { category }
-        </View>
+        <Footer />
       </View>
     )
   }

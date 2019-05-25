@@ -1,6 +1,7 @@
-import React, { Component } from "react"
-import { View, Text, StyleSheet } from "react-native"
-import styles from "./AccountInfo.style"
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import styles from "./AccountInfo.style";
+import Footer from "../../../components/Footer/Footer";
 
 export default class AccountInfo extends Component{
   constructor(){
@@ -21,7 +22,7 @@ export default class AccountInfo extends Component{
           <View style={styles.info_section}>
             <Text style={styles.info_text}>
               <Text>
-                Address: 
+                Address:
               </Text>
               {this.state.address}
             </Text>
@@ -31,12 +32,13 @@ export default class AccountInfo extends Component{
               Representative
             </Text>
           </View>
-          <View style={styles.info_section}> 
+          <View style={styles.info_section}>
             <Text style={styles.info_text}>
               Distributor
             </Text>
           </View>
         </View>
+        <Footer />
       </View>
     )
   }
