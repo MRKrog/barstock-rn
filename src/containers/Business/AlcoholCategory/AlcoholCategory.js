@@ -12,19 +12,18 @@ import * as actions from "../../../redux/actions";
 
 
 export class AlcoholCategory extends Component{
-  constructor(){
-    super();
-    this.state ={
-      
-    }
-  }
 
   changeLayout = () => {
     LayoutAnimation.configureNext(LayoutAnimation.create(100));
-    this.setState({ expanded: !this.state.expanded });
+    if(this.props.selectedCategory === this.props.title){
+      this.props.categorySelected("")
+    }else{
+      this.props.categorySelected(this.props.title)
+    }
   }
 
   render(){
+    console.log("hello lworkd")
     const alcohol = this.props.info.map(alcohol => {
       return (
         <CategoryItem alcohol={alcohol} key={alcohol.name}/>
@@ -37,7 +36,7 @@ export class AlcoholCategory extends Component{
           <Text style={styles.alc_catTitle}>{this.props.title}</Text>
         </TouchableOpacity>
         <ScrollView style={styles.alc_catContainer}>
-          <View style={[styles.alc_catInventory, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
+          <View style={[styles.alc_catInventory, { height: this.props.selectedCategory === this.props.title ? null : 0, overflow: 'hidden' }]}>
             { alcohol }
           </View>
         </ScrollView>
@@ -47,12 +46,14 @@ export class AlcoholCategory extends Component{
 }
 
 export const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
+  selectedCategory: state.selectedCategory
 })
 
 export const mapDispatchToProps = (dispatch) => ({
   addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
-  removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol))
+  removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol)),
+  categorySelected: cat => dispatch(actions.categorySelected(cat))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlcoholCategory)
