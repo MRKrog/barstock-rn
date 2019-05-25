@@ -23,10 +23,21 @@ export class DistributorInventory extends Component{
 
   render() {
     let category;
-    let allTypes = [ "liquor", "beer", "wine" ]
+    let allTypes;
 
     if(this.props.alcohol) {
       const { alcohol } = this.props;
+
+      let reduceType = alcohol.reduce((acc, type) => {
+        if(!acc.includes(type.attributes.alc_type)) {
+          acc.push(type.attributes.alc_type)
+        }
+        return acc
+      },[])
+
+      allTypes = reduceType.filter(type => {
+        return type !== this.state.currentType
+      })
 
       let selectedType = alcohol.filter(type => {
         return type.attributes.alc_type === this.state.currentType

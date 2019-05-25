@@ -48,32 +48,35 @@ export class CurrentOrder extends Component {
   getSingleReturn = (distItem) => {
     const { businessItems } = this.props;
     let busItem = businessItems.find(item => item.id === distItem.id)
-    let distProdServSize = distItem.ounces;
+    let distProdServSize = distItem.ounces * distItem.count;
     let menuProdServSize = busItem.attributes.serving_size;
     let menuPrice = busItem.attributes.price_sold;
-    let distCost = distItem.price;
+    let distCost = distItem.price * distItem.count;
     let singleProfit = ((distProdServSize / menuProdServSize) * menuPrice - distCost);
     return singleProfit
   };
 
+  getSingleMargin = (distItem) => {
+    const { businessItems, cart, alcohol } = this.props;
+    let busItem = businessItems.find(item => item.id === distItem.id)
+    let distProdServSize = distItem.ounces;
+    let menuProdServSize = busItem.attributes.serving_size;
+    let menuPrice = busItem.attributes.price_sold;
+    let distCost = distItem.price;
+    let singleMargin = (100 - ((distCost / ((distProdServSize / menuProdServSize) * menuPrice)) * 100))
+    return singleMargin
+  };
+
   getRowColor = (num) => {
+    console.log(num);
     let color;
     if(num >= 80) {
       color = styles.marginGreen
-    } else {
+    } else if(num >= 70) {
       color = styles.marginYellow
+    } else {
+      color = styles.marginRed
     }
-    console.log(num);
-    // switch (num) {
-    //   case (num > 79):
-    //
-    //     break;
-    //   case num > 69:
-    //     color = styles.marginYellow
-    //     break;
-    //   default:
-    //
-    // }
     return color
   }
 
@@ -95,8 +98,9 @@ export class CurrentOrder extends Component {
 
     cartDisplay = this.props.cart.map(item => {
       let itemType = this.findType(item.alc_type, item)
-      let itemReturn = this.getSingleReturn(item)
-      let marginColor = this.getRowColor(itemReturn)
+      let itemProfit = this.getSingleReturn(item)
+      let itemMargin = this.getSingleMargin(item)
+      let marginColor = this.getRowColor(itemMargin)
       let swipeoutBtns = [{
           text: (<Icon name='edit' color='#B2BCC8' size={20} />),
           backgroundColor: "#2C4969",
@@ -114,7 +118,7 @@ export class CurrentOrder extends Component {
           <View style={[styles.item_info, marginColor, styles.listItem]} id={item.id}>
             <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
             <Text style={styles.item_unit}>{item.count} x {itemType}</Text>
-            <Text style={styles.item_profit}>${itemReturn.toFixed(2)}</Text>
+            <Text style={styles.item_profit}>${itemProfit.toFixed(2)}</Text>
             <Text style={styles.item_cost}>${(item.price * item.count).toFixed(2)}</Text>
           </View>
         </Swipeout>
@@ -163,6 +167,7 @@ export const mapStateToProps = (state) => ({
   order: state.order,
   businessItems: state.businessItems,
   modalDisplay: state.modalDisplay,
+  alcohol: state.alcohol
 })
 
 export const mapDispatchToProps = (dispatch) => ({
