@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { Modal, View, Text, TouchableOpacity, KeyboardAvoidingView, TextInput, Image} from "react-native";
 import styles from "./AlcoholModal.style";
 import * as actions from "../../../redux/actions";
+import { fetchOptions } from "../../../utility/fetchOptions"
 
 export class AlcoholModal extends Component{
   constructor(){
@@ -25,10 +26,49 @@ export class AlcoholModal extends Component{
     }
   }
 
-  toggle = () => {
+  updateItem = async () => {
+    const { id, attributes } = this.props.alcoholInfo
+ // https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w&price_sold=22&quantity=7&serving_size=1.5
+    const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${1}`
+
+    // const paramsUrl = "https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w&price_sold=22&quantity=7&serving_size=1.5"
+    console.log("this.props.alcoholInfo ", this.props.alcoholInfo);
+    // const itemInfo = {
+    //     data: {
+    //       id: "1",
+    //       type: "business_item",
+    //       attributes: {
+    //         id: 1,
+    //         price_sold: 40,
+    //         serving_size: 1.5,
+    //         quantity: 5
+    //       }
+    //     }
+    // }
+
+    const itemNew = {
+      api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+      price_sold: 100,
+      quantity: 1,
+      serving_size: 5000
+    }
+
+    const options = fetchOptions("PATCH", itemNew)
+
+    console.log("options ", options);
+
+    try {
+      const response = await fetch(url, options)
+      const data = await response.json()
+      console.log('data', data);
+      this.props.updateBusinessItems(data.data)
+    } catch (error) {
+      console.log(error);
+    }
+
     this.props.toggleModalDisplay(false)
   }
-  
+
   // this is the regex for money /^[0-9]+(\.[0-9]{1,2})?$/gm
 
   render(){
@@ -46,20 +86,24 @@ export class AlcoholModal extends Component{
                   <View>
                     <View style={styles.modal_textInputDisplay}>
                       <Text>Price for Drink $</Text>
-                      <TextInput value={`${this.state.price}`} onChangeText={(text) => { this.setState({
-                        price: text
-                      })}} keyboardType="numeric" style={styles.modal_textInput}></TextInput>
+                      <TextInput value={`${this.state.price}`}
+                                 onChangeText={(text) => { this.setState({ price: text })}}
+                                 keyboardType="numeric"
+                                 style={styles.modal_textInput}>
+                      </TextInput>
                     </View>
                     <View style={styles.modal_textInputDisplay}>
                       <Text>Size Per Drink</Text>
-                      <TextInput value={`${this.state.servingSize}`} onChangeText={(text) => { this.setState({
-                        servingSize: text
-                      })}} keyboardType="numeric"  style={styles.modal_textInput}></TextInput>
+                      <TextInput value={`${this.state.servingSize}`}
+                                 onChangeText={(text) => { this.setState({ servingSize: text })}}
+                                 keyboardType="numeric"
+                                 style={styles.modal_textInput}>
+                      </TextInput>
                       <Text>oz</Text>
                     </View>
                   </View>
                 </View>
-                <TouchableOpacity onPress={this.toggle} style={styles.modal_button}>
+                <TouchableOpacity onPress={this.updateItem} style={styles.modal_button}>
                   <Text style={styles.modal_buttonText}>Save</Text>
                 </TouchableOpacity>
               </View>
@@ -72,11 +116,13 @@ export class AlcoholModal extends Component{
 
 export const mapStateToProps = (state) => ({
   modalDisplay: state.modalDisplay,
-  alcoholInfo: state.alcoholInfo
+  alcoholInfo: state.alcoholInfo,
+
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool))
+  toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
+  updateBusinessItems: item => dispatch(actions.updateBusinessItems(item))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlcoholModal)
