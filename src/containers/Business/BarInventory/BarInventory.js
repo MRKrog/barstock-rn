@@ -28,7 +28,6 @@ export class BarInventory extends Component{
   render(){
     let barItems = this.props.businessItems.map(item => {
       let itemMargin = this.getSingleMargin(item)
-      console.log(itemMargin);
       return(
         <TouchableOpacity onPress={() => {this.toggleModal(item)}} style={styles.item_card} key={item.id}>
           <View style={styles.item_info}>
