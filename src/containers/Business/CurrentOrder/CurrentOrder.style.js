@@ -118,7 +118,7 @@ export default {
     borderBottomWidth: .2,
   },
   marginRed: {
-    backgroundColor: "#DB504A",
+    backgroundColor: "#EC6F78",
     borderBottomColor: "#254D32",
     borderBottomWidth: .2,
   },
