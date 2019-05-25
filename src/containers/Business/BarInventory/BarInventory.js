@@ -2,7 +2,8 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native"
 import styles from "./BarInventory.style"
-import AlcoholModal from "../AlcoholModal/AlcoholModal"
+import AlcoholModal from "../AlcoholModal/AlcoholModal";
+import Footer from "../../../components/Footer/Footer";
 import * as actions from "../../../redux/actions"
 
 export class BarInventory extends Component{
@@ -71,7 +72,7 @@ export class BarInventory extends Component{
             barItems
           }
         </ScrollView>
-        <View style={styles.footer}></View>
+        <Footer />
       </View>
     )
   }

@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import {
-  View,
-  Image,
-  Button,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Dimensions
-} from "react-native";
+import { View, Image, Button, Text, StyleSheet, ImageBackground, Dimensions } from "react-native";
 import { Avatar } from 'react-native-elements';
-
+import Footer from '../../components/Footer/Footer';
 import Loading from '../../components/Loading/Loading';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import OrderContainer from "../Business/OrderContainer/OrderContianer";

@@ -1,21 +1,14 @@
 import React, { Component } from "react";
-import styles from './AlcoholCategory.style';
-import CategoryItem from '../CategoryItem/CategoryItem';
+import styles from './LiquorCategory.style';
 import { TouchableOpacity, ScrollView, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 
-// Enable LayoutAnimation under Android
-// if (Platform.OS === 'android') {
-//   UIManager.setLayoutAnimationEnabledExperimental(true)
-// }
-
-
-export class AlcoholCategory extends Component{
+export class LiquorCategory extends Component{
   constructor(){
     super();
     this.state ={
-      
+
     }
   }
 
@@ -24,21 +17,30 @@ export class AlcoholCategory extends Component{
     this.setState({ expanded: !this.state.expanded });
   }
 
+  changeTypeLayout = (type) => {
+    this.props.changeType(type)
+    this.setState({ expanded: !this.state.expanded });
+  }
+
   render(){
-    const alcohol = this.props.info.map(alcohol => {
+    const alcoholTypes = this.props.allTypes.map(type => {
       return (
-        <CategoryItem alcohol={alcohol} key={alcohol.name}/>
+        <TouchableOpacity onPress={() => this.changeTypeLayout(type)} key={type}>
+          <Text style={styles.alc_types}>{type.toUpperCase()}</Text>
+        </TouchableOpacity>
       )
     })
 
     return (
       <View >
-        <TouchableOpacity onPress={this.changeLayout} style={styles.alc_catBtn}>
-          <Text style={styles.alc_catTitle}>{this.props.title}</Text>
+        <TouchableOpacity onPress={this.changeLayout}>
+          <Text style={styles.alc_typeTitle}>
+            {this.props.currentType}
+          </Text>
         </TouchableOpacity>
-        <ScrollView style={styles.alc_catContainer}>
-          <View style={[styles.alc_catInventory, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
-            { alcohol }
+        <ScrollView>
+          <View style={[{ height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
+            { alcoholTypes }
           </View>
         </ScrollView>
       </View>
@@ -55,4 +57,4 @@ export const mapDispatchToProps = (dispatch) => ({
   removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlcoholCategory)
+export default connect(mapStateToProps, mapDispatchToProps)(LiquorCategory)
