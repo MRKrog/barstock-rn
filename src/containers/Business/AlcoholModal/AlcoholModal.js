@@ -11,46 +11,33 @@ export class AlcoholModal extends Component{
     this.state = {
         id: null,
         price: 0,
-        servingSize: 0
+        servingSize: 0,
+        inStock: 0,
     }
   }
 
   componentDidMount(){
     const { id, attributes } = this.props.alcoholInfo
+    console.log("hello im in the modal" ,attributes.quantity)
     if(id){
       this.setState({
         id,
         price: attributes.price_sold,
-        servingSize: attributes.serving_size
+        servingSize: attributes.serving_size,
+        inStock: attributes.quantity
       })
     }
   }
 
   updateItem = async () => {
-    const { id, attributes } = this.props.alcoholInfo
- // https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w&price_sold=22&quantity=7&serving_size=1.5
-    const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${1}`
-
-    // const paramsUrl = "https://barstock-backend.herokuapp.com/api/v1/business_items?api_key=0yWwUm5CZ8CGR8MhT7FL9w&price_sold=22&quantity=7&serving_size=1.5"
-    console.log("this.props.alcoholInfo ", this.props.alcoholInfo);
-    // const itemInfo = {
-    //     data: {
-    //       id: "1",
-    //       type: "business_item",
-    //       attributes: {
-    //         id: 1,
-    //         price_sold: 40,
-    //         serving_size: 1.5,
-    //         quantity: 5
-    //       }
-    //     }
-    // }
-
+    const { id } = this.props.alcoholInfo
+    const { price, servingSize, inStock} = this.state
+    const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${id}`
     const itemNew = {
       api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-      price_sold: 100,
-      quantity: 1,
-      serving_size: 5000
+      price_sold: price,
+      quantity: inStock,
+      serving_size: servingSize
     }
 
     const options = fetchOptions("PATCH", itemNew)
@@ -72,6 +59,7 @@ export class AlcoholModal extends Component{
   // this is the regex for money /^[0-9]+(\.[0-9]{1,2})?$/gm
 
   render(){
+    console.log(" im the state in the modal", this.state)
     return(
       <Modal visible={this.props.modalDisplay}
       transparent={true}>
@@ -100,6 +88,15 @@ export class AlcoholModal extends Component{
                                  style={styles.modal_textInput}>
                       </TextInput>
                       <Text>oz</Text>
+                    </View>
+                    {/* this is the stock */}
+                    <View style={styles.modal_textInputDisplay}>
+                      <Text>In Stock</Text>
+                      <TextInput value={`${this.state.inStock}`}
+                                 onChangeText={(text) => { this.setState({ inStock: text })}}
+                                 keyboardType="numeric"
+                                 style={styles.modal_textInput}>
+                      </TextInput>
                     </View>
                   </View>
                 </View>

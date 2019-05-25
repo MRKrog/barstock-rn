@@ -5,7 +5,7 @@ export default class PassOrder extends Component{
   constructor(){
     super();
     this.state = {
-      test: "pass order"
+      test: "past order"
     }
   }
 
