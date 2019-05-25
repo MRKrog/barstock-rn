@@ -58,3 +58,7 @@ export const updateBusinessItems = businessItems => ({
   type: "UPDATE_BUSINESS_ITEM",
   businessItems
 })
+export const  categorySelected = cat => ({
+  type: "TOGGLE_CATEGORY",
+  cat
+})

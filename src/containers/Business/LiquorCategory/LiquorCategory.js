@@ -7,11 +7,10 @@ import * as actions from "../../../redux/actions";
 export class LiquorCategory extends Component{
   constructor(){
     super();
-    this.state ={
-
+    this.state = {
+      expanded: false
     }
   }
-
   changeLayout = () => {
     LayoutAnimation.configureNext(LayoutAnimation.create(100));
     this.setState({ expanded: !this.state.expanded });

@@ -6,6 +6,7 @@ import { loadingReducer } from './loadingReducer';
 import { businessItemsReducer } from "./businessItemsReducer";
 import { modalReducer } from "./modalReducer";
 import { alcoholInfoReducer } from "./alcoholInfoReducer"
+import { categorySelectedReducer } from "./categorySelectedReducer";
 
 export const rootReducer = combineReducers({
   loading: loadingReducer,
@@ -14,5 +15,6 @@ export const rootReducer = combineReducers({
   cart: cartReducer,
   order: orderReducer,
   modalDisplay: modalReducer,
-  alcoholInfo: alcoholInfoReducer
+  alcoholInfo: alcoholInfoReducer,
+  selectedCategory: categorySelectedReducer
 })
