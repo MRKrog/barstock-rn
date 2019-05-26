@@ -35,6 +35,7 @@ export class CurrentOrder extends Component {
     const { businessItems, cart } = this.props;
     let totalReturn = cart.reduce((acc, distItem) => {
       let busItem = businessItems.find(item => item.id === distItem.id)
+      console.log("this is the inisede of the find", busItem)
       let distProdServSize = distItem.ounces;
       let menuProdServSize = busItem.attributes.serving_size;
       let menuPrice = busItem.attributes.price_sold;
@@ -92,6 +93,8 @@ export class CurrentOrder extends Component {
   }
 
   render() {
+    console.log("this is the cart", this.props.cart)
+    console.log("this is buss", this.props.businessItems)
     let cartDisplay;
     let disabledStatus;
     let disabledStyles;
