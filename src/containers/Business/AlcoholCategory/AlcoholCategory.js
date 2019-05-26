@@ -15,15 +15,14 @@ export class AlcoholCategory extends Component{
 
   changeLayout = () => {
     LayoutAnimation.configureNext(LayoutAnimation.create(100));
-    if(this.props.selectedCategory === this.props.title){
+    if(this.props.selectedCategory === this.props.title) {
       this.props.categorySelected("")
-    }else{
+    } else {
       this.props.categorySelected(this.props.title)
     }
   }
 
   render(){
-    console.log("hello lworkd")
     const alcohol = this.props.info.map(alcohol => {
       return (
         <CategoryItem alcohol={alcohol} key={alcohol.name}/>

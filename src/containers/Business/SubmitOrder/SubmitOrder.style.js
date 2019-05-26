@@ -6,29 +6,28 @@ const screenHeight = Dimensions.get("window").height
 export default {
   backgroundImage: {
     flex: 1,
-    display: "flex",
-    flexDirection: "row",
     width: screenWidth,
     height: screenHeight,
     resizeMode: 'contain',
-    alignItems: 'flex-start',
-
   },
-  submit_container: {
+  container: {
     flex: 1,
     display: "flex",
-    flexDirection: "column",
-    margin: 10
+    justifyContent: 'space-between'
+  },
+  submit_container: {
+    display: "flex",
   },
   cart_titleContainer: {
-    padding: 5,
+    backgroundColor: "#2c4969",
+    padding: 10,
   },
   cart_title: {
     fontSize: 22,
     textTransform: "uppercase",
-    color: "#8e8e8e",
+    color: "#ffffff",
     textAlign: "center",
-    fontFamily: 'abel',
+    fontFamily: 'abel'
   },
   cart_items: {
     height: screenHeight * 0.6,
@@ -37,68 +36,79 @@ export default {
   cart_header: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 10,
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    backgroundColor: "#E8E8E8",
+    paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: "#2c4969",
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5
+    borderBottomColor: "#2D2D2D",
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 1, width: 0 },
+    zIndex: 9
   },
   cart_rowOne: {
-    fontSize: 15,
-    fontFamily: "raleway",
-    color: "#ffffff"
+    flex: 1.5,
+    fontSize: 13,
+    fontFamily: 'Lato-Light',
+    color: "#8e8e8e"
   },
   cart_rowTwo: {
-    fontSize: 15,
-    fontFamily: "raleway",
-    color: "#ffffff"
+    flex: 1,
+    fontSize: 13,
+    fontFamily: 'Lato-Light',
+    textAlign: "center",
+    color: "#8e8e8e"
   },
   cart_rowThree: {
-    fontSize: 15,
-    fontFamily: "raleway",
-    color: "#ffffff"
+    flex: 1,
+    textAlign: "right",
+    fontSize: 13,
+    fontFamily: 'Lato-Light',
+    color: "#8e8e8e"
   },
   item_info: {
     display: 'flex',
     flexDirection: 'row',
-    padding: 10,
+    padding: 15,
     justifyContent: 'space-between',
     alignItems: "center",
     borderBottomColor: '#ececec',
     borderBottomWidth: 1,
-    height: 60
+    height: 50,
+    flex: 1
   },
   item_name: {
-    color: "#464646",
-    fontFamily: "Lato-Light",
-    fontSize: 18,
-    fontWeight: "100",
-    borderRightColor: '#000',
-    borderRightWidth: 1,
-    flex: 1
+    flex: 1.5,
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
   },
   item_unit: {
-    color: "#464646",
-    fontFamily: "Lato-Light",
-    fontSize: 18,
-    display: "flex",
+    flex: 1,
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
     textAlign: "center",
-    flex: 1
   },
   item_cost: {
-    color: "#464646",
-    fontFamily: "Lato-Light",
-    fontSize: 18,
     flex: 1,
-    textAlign: "right",
+    color: "#50514F",
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
+    textAlign: "right"
   },
-
-
   cart_priceContainer: {
-    display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 3, width: 0 },
+    zIndex: 9
   },
   cart_price: {
     display: "flex",
@@ -111,37 +121,51 @@ export default {
   cart_priceText: {
     color: "#ffffff",
     fontFamily: 'abel',
-    fontSize: 22,
-    padding: 10,
-  },
-  cart_backButton: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#EEAD0C",
-    borderBottomLeftRadius: 5,
-    borderRightColor: '#ffffff',
-    borderRightWidth: 2,
-  },
-  cart_checkoutButton: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#EEAD0C",
-    borderBottomRightRadius: 5,
-    paddingVertical: 10
-  },
-  cart_checkoutText: {
     fontSize: 20,
-    textTransform: "uppercase",
-    color: "#ffffff",
-    textAlign: "center",
-    fontFamily: 'abel'
+    padding: 10,
   },
   submitBtn_container: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  cart_backButton: {
+    display: "flex",
+    flexDirection: "row",
+    flex: .5,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#EEAD0C",
+    borderRadius: 5,
+    marginVertical: 20,
+    marginLeft: 15,
+    // marginHorizontal: 15,
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowColor: '#fffff',
+    shadowOffset: { height: 1, width: 0 }
+  },
+  cart_checkoutButton: {
+    display: "flex",
+    flexDirection: "row",
+    flex: .5,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#EEAD0C",
+    borderRadius: 5,
+    marginVertical: 20,
+    marginRight: 15,
+    marginLeft: 15,
+    // marginHorizontal: 15,
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowColor: '#fffff',
+    shadowOffset: { height: 1, width: 0 }
+  },
+  cart_checkoutText: {
+    fontSize: 22,
+    textTransform: "uppercase",
+    color: "#ffffff",
+    fontFamily: 'abel',
+    paddingVertical: 10,
   }
-
-
 };

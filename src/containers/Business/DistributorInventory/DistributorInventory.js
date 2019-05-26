@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 import Footer from '../../../components/Footer/Footer';
 
-
 export class DistributorInventory extends Component{
   constructor() {
     super()

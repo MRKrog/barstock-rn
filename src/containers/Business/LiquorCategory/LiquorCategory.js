@@ -3,6 +3,7 @@ import styles from './LiquorCategory.style';
 import { TouchableOpacity, ScrollView, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
+import { Icon } from 'native-base';
 
 export class LiquorCategory extends Component{
   constructor(){
@@ -24,21 +25,30 @@ export class LiquorCategory extends Component{
   render(){
     const alcoholTypes = this.props.allTypes.map(type => {
       return (
-        <TouchableOpacity onPress={() => this.changeTypeLayout(type)} key={type}>
-          <Text style={styles.alc_types}>{type.toUpperCase()}</Text>
+        <TouchableOpacity onPress={() => this.changeTypeLayout(type)} key={type} style={styles.alc_typeContainer}>
+          <Text style={styles.alc_types}>
+          <Icon name='beer' color='#ffffff' size={20} style={styles.iconStyle} />
+          {type.toUpperCase()}</Text>
         </TouchableOpacity>
       )
     })
 
+    let expandedStyles;
+    if(this.state.expanded === true){
+      expandedStyles = styles.expandedTrue
+    } else {
+      expandedStyles = styles.expandedFalse
+    }
+
     return (
-      <View >
+      <View style={styles.container}>
         <TouchableOpacity onPress={this.changeLayout}>
           <Text style={styles.alc_typeTitle}>
             {this.props.currentType}
           </Text>
         </TouchableOpacity>
-        <ScrollView>
-          <View style={[{ height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
+        <ScrollView style={styles.alc_typeContainer}>
+          <View style={[expandedStyles, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>
             { alcoholTypes }
           </View>
         </ScrollView>

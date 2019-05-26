@@ -49,6 +49,11 @@ export const updateCart = (id, number) => ({
   number
 })
 
+export const emptyCart = data => ({
+  type: "RESET_CART",
+  data
+})
+
 export const addBusinessItems = businessItems => ({
   type: "ADD_BUSINESS_ITEM",
   businessItems
@@ -58,7 +63,8 @@ export const updateBusinessItems = businessItems => ({
   type: "UPDATE_BUSINESS_ITEM",
   businessItems
 })
-export const  categorySelected = cat => ({
+
+export const categorySelected = cat => ({
   type: "TOGGLE_CATEGORY",
   cat
 })

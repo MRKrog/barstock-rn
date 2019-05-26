@@ -93,6 +93,16 @@ export class CurrentOrder extends Component {
 
   render() {
     let cartDisplay;
+    let disabledStatus;
+    let disabledStyles;
+    if(this.props.cart.length > 0){
+      disabledStatus = false
+      disabledStyles = styles.textvalid
+    } else {
+      disabledStatus = true
+      disabledStyles = styles.textinvalid
+    }
+
     let totalCost = generateCost(this.props.cart)
     let totalReturn = this.getTotalReturn()
 
@@ -153,7 +163,10 @@ export class CurrentOrder extends Component {
             <Text style={styles.cart_priceText}>${totalCost.toFixed(2)}</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => this.submitOrder()}>
+        <TouchableOpacity style={[styles.cart_checkoutButton, disabledStyles]}
+                          onPress={() => this.submitOrder()}
+                          disabled={disabledStatus}
+                        >
           <Text style={styles.cart_checkoutText}>Checkout</Text>
         </TouchableOpacity>
         <Footer />

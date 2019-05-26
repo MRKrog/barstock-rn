@@ -1,5 +1,3 @@
-
-
 export const  categorySelectedReducer = (state = "", action) => {
   switch(action.type){
     case "TOGGLE_CATEGORY":

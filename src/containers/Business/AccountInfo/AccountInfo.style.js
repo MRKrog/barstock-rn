@@ -4,16 +4,17 @@ const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
 
 export default {
-  info_container: {
+  conatiner: {
     flex: 1,
     display: "flex",
     justifyContent: "space-between"
   },
+  info_container: {
+    display: "flex"
+  },
   account_nameContainer: {
-    // borderRadius: 5,
     backgroundColor: "#2c4969",
     padding: 10,
-    // marginTop: 10,
     shadowOpacity: 0.3,
     shadowRadius: 3,
     shadowColor: '#231f20',
