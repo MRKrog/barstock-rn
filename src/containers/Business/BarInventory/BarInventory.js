@@ -68,9 +68,7 @@ export class BarInventory extends Component{
             <Text style={styles.items_rowThree}>Inventory</Text>
         </View>
         <ScrollView>
-          {
-            barItems
-          }
+          { barItems }
         </ScrollView>
         <Footer />
       </View>

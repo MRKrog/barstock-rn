@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Image, Text, StyleSheet, ImageBackground, TextInput, Button, TouchableOpacity, StatusBar } from "react-native";
 import styles from './LoginScreen.style';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { fetchOptions } from "../../utility/fetchOptions"
 import { Input } from 'react-native-elements';
 
 class LoginScreen extends Component {
@@ -13,9 +13,50 @@ class LoginScreen extends Component {
     };
   }
 
-  login = () => {
-    const { email, password } = this.state;
-    // alert('email: '+ email + ' ' + 'password: ' + password);
+  checkLoginType = async () => {
+    const { email, password } = this.state
+    const url = "https://barstock-backend.herokuapp.com/api/v1/login";
+
+    // const busCredentials = {
+    //   credential: "michaelryankrog@gmail.com",
+    //   password: "password",
+    // }
+    // const distCredentials = {
+    //   credential: "RNDC",
+    //   password: "password",
+    // }
+
+    const loginCredentials = {
+        credential: email,
+        password: password,
+    }
+
+    const options = fetchOptions("POST", loginCredentials)
+
+    try {
+      const response = await fetch(url, options)
+      const data = await response.json()
+      console.log(data);
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  login = async () => {
+    // const loginInfo = await this.checkLoginType()
+    // let loginType = loginInfo.type
+    // let loginAPI = loginInfo.api_key
+    //
+    // console.log(loginType);
+    // console.log(loginAPI);
+
+    // if(loginType === "Business"){
+    //   this.props.navigation.navigate('MainApp');
+    // } else if (loginType === "Distributor") {
+    //   this.props.navigation.navigate('Distributor');
+    // }
     this.props.navigation.navigate('MainApp');
   }
 
@@ -28,11 +69,10 @@ class LoginScreen extends Component {
       <View style={styles.container}>
         <ImageBackground source={require('../../../assets/beer.jpg')} style={styles.backgroundImage}>
 
-          <Image source={require('../../images/BarStock_Logo.png')} />
-
           <View style={styles.loginContainer}>
 
             <View style={styles.form}>
+              <Image source={require('../../images/BarStock_Logo.png')} />
               <TextInput
                   onChangeText={(text) => { this.setState({ email: text })}}
                   value={`${this.state.email}`}
