@@ -5,7 +5,8 @@ import Footer from "../../../components/Footer/Footer";
 import * as actions from "../../../redux/actions";
 import styles from './SubmitOrder.style';
 import { connect } from "react-redux";
-import { generateCost } from "../../../utility/liquorCleaner.js"
+import { generateCost } from "../../../utility/liquorCleaner.js";
+import { fetchOptions } from "../../../utility/fetchOptions"
 
 export class SubmitOrder extends Component{
 
@@ -13,8 +14,41 @@ export class SubmitOrder extends Component{
     this.props.navigation.navigate("Order")
   }
 
-  submitOrder = () => {
-    this.resetOrder()
+  submitOrder = async () => {
+
+    // Create Order fetch end point
+    const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
+    //
+    const orderToSend = {
+        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+        total_cost: "234234",
+        total_revenue: "2341",
+        items: [
+          {
+            id: "1",
+            quantity: "2",
+            price: "543"
+          },
+          {
+            id: "2",
+            quantity: "4",
+            price: "54"
+          }
+        ]
+    }
+
+    const options = fetchOptions("POST", orderToSend)
+
+    try {
+      const response = await fetch(url, options)
+      const data = await response.json()
+      await this.resetOrder()
+    } catch (error) {
+      console.log(error);
+    }
+
+
+
   }
 
   resetOrder = () => {
