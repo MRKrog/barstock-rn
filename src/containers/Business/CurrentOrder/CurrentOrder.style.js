@@ -22,7 +22,8 @@ export default {
     padding: 10,
   },
   cart_items: {
-    height: screenHeight * 0.55,
+    height: screenHeight * 0.6,
+    backgroundColor: "#ffffff",
   },
   cart_header: {
     display: "flex",
@@ -45,13 +46,13 @@ export default {
   cart_rowOne: {
     flex: 1.5,
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     color: "#8e8e8e"
   },
   cart_rowTwo: {
     flex: 1,
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     textAlign: "center",
     color: "#8e8e8e"
   },
@@ -59,14 +60,14 @@ export default {
     flex: 1,
     textAlign: "right",
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     color: "#8e8e8e"
   },
   cart_rowFour: {
     flex: 1,
     textAlign: "right",
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     color: "#8e8e8e"
   },
   item_info: {
@@ -124,28 +125,33 @@ export default {
   },
   cart_priceContainer: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 3, width: 0 },
+    zIndex: 9
   },
   cart_potential: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#E8E8E8",
+    backgroundColor: "#A8A8A8",
   },
   cart_potentialText: {
-    color: "#464646",
-    fontFamily: 'abel',
+    color: "#696969",
+    fontFamily: 'Lato-Light',
     fontSize: 18
   },
   cart_price: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2C4969",
+    backgroundColor: "#E8E8E8",
   },
   cart_priceText: {
-    color: "#ffffff",
-    fontFamily: 'abel',
+    color: "#696969",
+    fontFamily: 'Lato-Light',
     fontSize: 18
   },
   cart_checkoutButton: {
@@ -168,5 +174,11 @@ export default {
     textTransform: "uppercase",
     color: "#ffffff",
     fontFamily: 'abel'
+  },
+  textvalid: {
+    opacity: 1
+  },
+  textinvalid: {
+    opacity: .5
   }
 };

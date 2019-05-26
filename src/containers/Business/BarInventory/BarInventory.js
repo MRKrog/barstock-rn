@@ -64,8 +64,8 @@ export class BarInventory extends Component{
         }
         <View style={styles.bar_itemsHeader}>
             <Text style={styles.items_rowOne}>Alcohol Info</Text>
-            <Text style={styles.items_rowTwo}>Margins</Text>
-            <Text style={styles.items_rowThree}>In Stock</Text>
+            <Text style={styles.items_rowTwo}>Item Margin</Text>
+            <Text style={styles.items_rowThree}>Inventory</Text>
         </View>
         <ScrollView>
           {

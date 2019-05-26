@@ -3,7 +3,7 @@ import Swiper from "react-native-swiper"
 import AccountInfo from "../AccountInfo/AccountInfo"
 import BarInventory from "../BarInventory/BarInventory"
 import { View, Text, ImageBackground, Dimensions, StyleSheet } from "react-native"
-import PastOrder from "../PastOrder/PastOrder";
+import PastOrders from "../PastOrders/PastOrders";
 
 export default class AccountContainer extends Component{
   render(){
@@ -12,7 +12,7 @@ export default class AccountContainer extends Component{
         <Swiper index={0} loop={false}>
           <AccountInfo />
           <BarInventory />
-          <PastOrder />
+          <PastOrders />
         </Swiper>
       </ImageBackground>
     )

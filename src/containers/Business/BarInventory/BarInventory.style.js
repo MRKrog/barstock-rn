@@ -47,13 +47,13 @@ export default {
   items_rowOne: {
     flex: 2,
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     color: "#8e8e8e"
   },
   items_rowTwo: {
     flex: 1,
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     textAlign: "center",
     color: "#8e8e8e"
   },
@@ -61,7 +61,7 @@ export default {
     flex: 1,
     textAlign: "right",
     fontSize: 13,
-    fontFamily: "raleway",
+    fontFamily: 'Lato-Light',
     color: "#8e8e8e"
   },
   item_info: {
@@ -81,13 +81,12 @@ export default {
     color: "#11212a",
     fontFamily: "Lato-Light",
     fontSize: 15,
-    paddingBottom: 1
+    paddingBottom: 3
   },
   item_price: {
-    color: "#adadad",
-    // fontFamily: "Raleway-Light",
-    fontFamily: "Abel",
-    fontSize: 15
+    color: "#11212a",
+    fontFamily: 'Lato-Light',
+    fontSize: 13
   },
   item_action: {
     display: 'flex',
@@ -96,27 +95,19 @@ export default {
   item_margins: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   item_marginsText: {
-    // flex: 1,
     color: "#11212a",
-    // justifyContent: "center",
-    // fontFamily: "Abel",
-    // fontFamily: "Raleway-Light",
     fontFamily: "Lato-Light",
     fontSize: 17
-    // alignItems: "center",
-    // textAlign: "center"
   },
   item_stock: {
     flex: 1,
-    // justifyContent: "center",
     alignItems: "center"
   },
   item_stockText: {
     textAlign: "right",
-    // fontFamily: "Raleway-Light",
     fontFamily: "Lato-Light",
     fontSize: 17
   }

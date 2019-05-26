@@ -42,8 +42,6 @@ export class AlcoholModal extends Component{
 
     const options = fetchOptions("PATCH", itemNew)
 
-    console.log("options ", options);
-
     try {
       const response = await fetch(url, options)
       const data = await response.json()

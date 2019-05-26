@@ -4,13 +4,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import LogoTitle from './components/LogoTitle/LogoTitle';
 import { Avatar } from 'react-native-elements';
 import HomeScreen from './containers/HomeScreen/HomeScreen';
-import AccountContainer from "./containers/Business/AccountContainer/AccountContainer"
+import AccountContainer from "./containers/Business/AccountContainer/AccountContainer";
+import BarInventory from "./containers/Business/BarInventory/BarInventory";
+import PastOrders from "./containers/Business/PastOrders/PastOrders";
 import LoginScreen from './containers/LoginScreen/LoginScreen';
 import SideMenu from './containers/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
-
-// 191414
-// 232121
 
 const header = ({ navigation }) => {
   return {
@@ -27,18 +26,19 @@ const header = ({ navigation }) => {
     ),
     headerTitle: ( <LogoTitle /> ),
     headerRight: (
-      <Avatar
-        rounded
-        marginRight={15}
-        size={30}
-        source={{
-          uri:
-            'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
-        }}
+      <Avatar rounded
+              marginRight={15}
+              size={30}
+              source={{
+              uri:
+                'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
+              }}
+              onPress={() => { navigation.navigate('Account') } }
       />
     ),
     headerStyle: {
       borderBottomWidth: 0,
+      marginRight: 15,
       backgroundColor: '#232121',
       height: 50,
       shadowColor: '#231f20',
@@ -54,17 +54,12 @@ const header = ({ navigation }) => {
   };
 }
 
-const MainApp = createStackNavigator(
-  {
-    Order: {
-      screen: HomeScreen,
-    },
-    SubmitOrder: {
-      screen: SubmitOrder,
-    },
-    Account: {
-      screen: AccountContainer,
-    }
+const MainApp = createStackNavigator({
+    Order: { screen: HomeScreen },
+    SubmitOrder: { screen: SubmitOrder },
+    Account: { screen: AccountContainer },
+    BarInventory: {screen: BarInventory},
+    PastOrders: {screen: PastOrders},
   },
   {
     initialRouteName: 'Order',

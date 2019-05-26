@@ -20,6 +20,9 @@ export const cartReducer = (state = [], action) => {
     case "REMOVE_ALCOHOL_GROUP":
       let newItem = state.filter(item => action.id !== item.id)
       return newItem
+    case "RESET_CART":
+      let resetCart = []
+      return resetCart
     default:
       return state;
   }

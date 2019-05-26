@@ -80,19 +80,3 @@ export default {
     opacity: .5
   }
 };
-
-
-//   alc_category:
-// "lager"
-// alc_type:
-// "beer"
-// name:
-// "Bud Light"
-// ounces:
-// 288
-// price:
-// 24.35
-// thumbnail:
-// "https://products0.imgix.drizly.com/ci-bud-light-19699dcd3e7591e3.png?auto=format%2Ccompress&fm=jpeg&q=20"
-// unit:
-// "case"
