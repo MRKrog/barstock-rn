@@ -4,50 +4,32 @@ const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
 
 export default {
-  tabContainer: {
-    backgroundColor: "#232121",
-    height: 10
-  },
-  tabHeading: {
-    backgroundColor: "#231f20"
-  },
-  tabTitle: {
-    color:'#fff',
-    textAlign:'center',
-    fontSize: 20,
-    textTransform: "uppercase",
-    fontFamily: 'abel',
-  },
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    flex: 1,
   },
   backgroundImage: {
+    flex: 1,
     width: screenWidth,
     height: screenHeight,
-    resizeMode: 'stretch',
-    justifyContent: 'center',
   },
   loginContainer: {
     display: "flex",
-    flex: .5,
     flexDirection: 'column',
-    width: screenWidth * .9,
+    flex: 1,
+    margin: 20,
+    // width: screenWidth * .9,
     justifyContent: 'center',
-    alignSelf: 'center',
+    // alignSelf: 'center',
   },
   logo: {
     marginBottom: 10
   },
   form: {
-    flex: 2,
-    paddingHorizontal: 10,
-    justifyContent: 'flex-end'
+    // paddingHorizontal: 10,
   },
   submitContainer: {
-    flex: 2,
-    marginTop: 5,
-    paddingHorizontal: 10,
+    marginTop: 10,
   },
   loginScreenButton: {
     padding: 8,
@@ -76,4 +58,16 @@ export default {
     color: '#231f20',
     marginVertical: 10
  },
+ setUpAccountBtn: {
+   display: "flex",
+   paddingBottom: 30,
+   // alignSelf: "flex-end",
+ },
+ setUpText: {
+   color:'#fff',
+   textAlign:'center',
+   textTransform: "uppercase",
+   fontFamily: 'abel',
+   fontSize: 15
+ }
 }

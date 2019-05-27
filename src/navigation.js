@@ -8,6 +8,7 @@ import AccountContainer from "./containers/Business/AccountContainer/AccountCont
 import BarInventory from "./containers/Business/BarInventory/BarInventory";
 import PastOrders from "./containers/Business/PastOrders/PastOrders";
 import LoginScreen from './containers/LoginScreen/LoginScreen';
+import SetUpScreen from './containers/LoginScreen/SetUpScreen';
 import SideMenu from './containers/Business/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 
@@ -132,6 +133,7 @@ const DistributorDrawer = createDrawerNavigator({
 export const AppConatiner = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
+    SetUpScreen: SetUpScreen,
     MainApp: Drawer,
     Distributor: DistributorDrawer
   },
