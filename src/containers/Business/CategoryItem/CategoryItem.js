@@ -55,15 +55,12 @@ export class CategoryItem extends Component {
         <View style={styles.item_action}>
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id, -1)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
-              <Icon raised name='minus' color='#ffffff' size={14} />
+              <Icon raised name='minus' color='#ffffff' size={18} />
             </TouchableOpacity>
             <Text style={styles.quantity}>{currentCount}</Text>
             <TouchableOpacity onPress={() => this.addProduct(id, 1)} style={styles.btnPlus}>
-              <Icon raised name='plus' color='#ffffff' size={14} />
+              <Icon raised name='plus' color='#ffffff' size={18} />
             </TouchableOpacity>
-          </View>
-          <View>
-            <Text style={styles.quantityText}>Current Quantity</Text>
           </View>
         </View>
       </View>

@@ -50,7 +50,7 @@ export default {
   },
   quantity: {
     fontWeight: '400',
-    fontSize: 25,
+    fontSize: 30,
     marginLeft: 15,
     marginRight: 15,
     color: "#11212a",

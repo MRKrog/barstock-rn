@@ -13,59 +13,12 @@ class LoginScreen extends Component {
     };
   }
 
-  checkLoginType = async () => {
-    const { email, password } = this.state
-    const url = "https://barstock-backend.herokuapp.com/api/v1/login";
-
-    // const busCredentials = {
-    //   credential: "michaelryankrog@gmail.com",
-    //   password: "password",
-    // }
-    // const distCredentials = {
-    //   credential: "RNDC",
-    //   password: "password",
-    // }
-
-    const loginCredentials = {
-        credential: email,
-        password: password,
-    }
-
-    const options = fetchOptions("POST", loginCredentials)
-
-    try {
-      const response = await fetch(url, options)
-      const data = await response.json()
-      console.log(data);
-      return data
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-
   login = async () => {
-    // const loginInfo = await this.checkLoginType()
-    // let loginType = loginInfo.type
-    // let loginAPI = loginInfo.api_key
-    //
-    // console.log(loginType);
-    // console.log(loginAPI);
-
-    // if(loginType === "Business"){
-    //   this.props.navigation.navigate('MainApp');
-    // } else if (loginType === "Distributor") {
-    //   this.props.navigation.navigate('Distributor');
-    // }
     this.props.navigation.navigate('MainApp');
   }
 
   setUpNewAccount = () => {
-    this.props.navigation.navigate('SetUpScreen');
-  }
-
-  componentDidMount() {
-    StatusBar.setHidden(true);
+    this.props.navigation.navigate('MainApp');
   }
 
   render() {
@@ -99,18 +52,9 @@ class LoginScreen extends Component {
                 style={styles.loginScreenButton}
                 onPress={this.login}
                 underlayColor='#fff'>
-                <Text style={styles.loginText}>Login</Text>
+                <Text style={styles.loginText}>Create New Account</Text>
               </TouchableOpacity>
             </View>
-          </View>
-
-          <View>
-            <TouchableOpacity
-              style={styles.setUpAccountBtn}
-              onPress={this.setUpNewAccount}
-              underlayColor='#fff'>
-              <Text style={styles.setUpText}>Setup New Account</Text>
-            </TouchableOpacity>
           </View>
 
         </ImageBackground>

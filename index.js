@@ -4,12 +4,15 @@ import { StatusBar } from 'react-native';
 import App from './src/App';
 
 import { rootReducer } from './src/redux/reducers';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 const store = createStore(
-  rootReducer
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
 )
 
 import {name as appName} from './app.json';
