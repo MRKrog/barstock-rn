@@ -11,6 +11,9 @@ import LoginScreen from './containers/LoginScreen/LoginScreen';
 import SideMenu from './containers/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 
+import Inventory from "./containers/Distributor/Inventory/Inventory"
+import DistSideMenu from "./containers/Distributor/DistSideMenu/DistSideMenu"
+
 const header = ({ navigation }) => {
   return {
     headerLeft: (
@@ -75,16 +78,70 @@ const Drawer = createDrawerNavigator({
   drawerWidth: 200,
 });
 
+
+const headerDistributor = ({ navigation }) => {
+  return {
+    headerLeft: (
+      <Icon.Button
+        onPress={navigation.toggleDrawer}
+        name="bars"
+        size={25}
+        backgroundColor="#232121"
+        padding={0}
+        marginLeft={15}
+        color="#fff"
+      />
+    ),
+    headerTitle: ( <LogoTitle /> ),
+    headerStyle: {
+      borderBottomWidth: 0,
+      marginRight: 15,
+      backgroundColor: '#232121',
+      height: 50,
+      shadowColor: '#231f20',
+      shadowRadius: 3,
+      shadowOpacity: 0.1,
+      shadowOffset: {
+        height: 1,
+        width: 0,
+      },
+    },
+    headerTintColor: '#231f20',
+    gesturesEnabled: false,
+  };
+}
+
+
+const DistributorApp = createStackNavigator({
+    Inventory: { screen: Inventory },
+  },
+  {
+    initialRouteName: 'Inventory',
+    defaultNavigationOptions: headerDistributor
+  }
+);
+
+const DistributorDrawer = createDrawerNavigator({
+  DistributorApp: { screen: DistributorApp },
+},
+{
+  contentComponent: DistSideMenu,
+  drawerWidth: 200,
+});
+
+
+
+
 const AppConatiner = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
     MainApp: Drawer,
+    Distributor: DistributorDrawer
   },
   {
     initialRouteName: 'Login',
   })
 );
-
 
 export default class App extends Component {
   render() {

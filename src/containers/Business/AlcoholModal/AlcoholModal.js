@@ -5,7 +5,7 @@ import styles from "./AlcoholModal.style";
 import * as actions from "../../../redux/actions";
 import { fetchOptions } from "../../../utility/fetchOptions"
 
-export class AlcoholModal extends Component{
+export class AlcoholModal extends Component {
   constructor(){
     super();
     this.state = {
@@ -18,7 +18,6 @@ export class AlcoholModal extends Component{
 
   componentDidMount(){
     const { id, attributes } = this.props.alcoholInfo
-    console.log("hello im in the modal" ,attributes.quantity)
     if(id){
       this.setState({
         id,
@@ -45,7 +44,6 @@ export class AlcoholModal extends Component{
     try {
       const response = await fetch(url, options)
       const data = await response.json()
-      console.log('data', data);
       this.props.updateBusinessItems(data.data)
     } catch (error) {
       console.log(error);

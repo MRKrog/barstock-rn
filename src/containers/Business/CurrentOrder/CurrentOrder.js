@@ -69,7 +69,6 @@ export class CurrentOrder extends Component {
   };
 
   getRowColor = (num) => {
-    console.log(num);
     let color;
     if(num >= 80) {
       color = styles.marginGreen
