@@ -68,3 +68,8 @@ export const categorySelected = cat => ({
   type: "TOGGLE_CATEGORY",
   cat
 })
+
+export const reOrder = order => ({
+  type: "RE_ORDER",
+  order
+})

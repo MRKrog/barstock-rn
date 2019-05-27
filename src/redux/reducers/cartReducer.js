@@ -1,3 +1,4 @@
+
 export const cartReducer = (state = [], action) => {
   switch(action.type){
     case "ADD_ALCOHOL":
@@ -23,6 +24,8 @@ export const cartReducer = (state = [], action) => {
     case "RESET_CART":
       let resetCart = []
       return resetCart
+    case "RE_ORDER":
+      return action.order
     default:
       return state;
   }

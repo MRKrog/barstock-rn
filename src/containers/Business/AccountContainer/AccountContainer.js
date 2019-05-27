@@ -12,7 +12,7 @@ export default class AccountContainer extends Component{
         <Swiper index={0} loop={false}>
           <AccountInfo />
           <BarInventory />
-          <PastOrders />
+          <PastOrders navigation={this.props.navigation} />
         </Swiper>
       </ImageBackground>
     )
