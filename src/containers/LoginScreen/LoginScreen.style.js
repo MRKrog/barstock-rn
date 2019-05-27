@@ -36,6 +36,9 @@ export default {
     justifyContent: 'center',
     alignSelf: 'center',
   },
+  logo: {
+    marginBottom: 10
+  },
   form: {
     flex: 2,
     paddingHorizontal: 10,

@@ -72,7 +72,7 @@ class LoginScreen extends Component {
           <View style={styles.loginContainer}>
 
             <View style={styles.form}>
-              <Image source={require('../../images/BarStock_Logo.png')} />
+              <Image resizeMode="contain" source={require('../../images/BarStock_Logo.png')} style={[styles.logo, {width: 230, height: 50}]} />
               <TextInput
                   onChangeText={(text) => { this.setState({ email: text })}}
                   value={`${this.state.email}`}

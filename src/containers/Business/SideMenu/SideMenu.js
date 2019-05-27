@@ -42,14 +42,14 @@ class SideMenu extends Component {
         <View>
           <Text style={styles.sectionHeadingStyle}></Text>
           <View style={styles.navSectionStyle}>
-            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Order')}>
-              <Icon name='shopping-cart' color='#ffffff' size={20} style={styles.iconStyle} />
-              <Text style={styles.navItemStyle}>Inventory</Text>
-            </TouchableOpacity>
-
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Account')}>
               <Icon name='user-circle' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Account Info</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Order')}>
+              <Icon name='shopping-cart' color='#ffffff' size={20} style={styles.iconStyle} />
+              <Text style={styles.navItemStyle}>Inventory</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('BarInventory')}>

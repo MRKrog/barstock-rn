@@ -8,7 +8,7 @@ import AccountContainer from "./containers/Business/AccountContainer/AccountCont
 import BarInventory from "./containers/Business/BarInventory/BarInventory";
 import PastOrders from "./containers/Business/PastOrders/PastOrders";
 import LoginScreen from './containers/LoginScreen/LoginScreen';
-import SideMenu from './containers/SideMenu/SideMenu';
+import SideMenu from './containers/Business/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 
 import Inventory from "./containers/Distributor/Inventory/Inventory"
