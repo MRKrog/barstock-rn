@@ -11,11 +11,12 @@ import * as actions from '../../redux/actions';
 
 class HomeScreen extends Component {
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.navigation.setParams({ openMenu: this._openMenu });
     this.props.setLoading(true)
-    this.getData()
-    this.getBusinessData()
+    await this.getData()
+    await this.getBusinessData()
+    this.props.setLoading(false)
   }
 
   logout = () => {
@@ -29,7 +30,6 @@ class HomeScreen extends Component {
       const allData = await response.json()
       console.log("Allalcohol", allData);
       this.props.setAlcohol(allData.data)
-      this.props.setLoading(false)
     } catch (error) {
       console.log(error);
     }
@@ -44,6 +44,11 @@ class HomeScreen extends Component {
   }
 
   render() {
+
+    if (this.props.loading) {
+      return <Loading />;
+    }
+
     return (
       <View style={styles.MainDisplay}>
         <ImageBackground source={require('../../../assets/bg.png')} style={styles.backgroundImage}>

@@ -1,54 +1,141 @@
 import React, { Component } from 'react';
-// import { TabNavigator, DrawerNavigator } from "react-navigation";
 import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import LogoTitle from './components/LogoTitle/LogoTitle';
+import { Avatar } from 'react-native-elements';
+import HomeScreen from './containers/HomeScreen/HomeScreen';
+import AccountContainer from "./containers/Business/AccountContainer/AccountContainer";
+import BarInventory from "./containers/Business/BarInventory/BarInventory";
+import PastOrders from "./containers/Business/PastOrders/PastOrders";
+import LoginScreen from './containers/LoginScreen/LoginScreen';
+import SideMenu from './containers/SideMenu/SideMenu';
+import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 
-import DetailsScreen from './Details/Details';
-import HomeScreen from './HomeScreen2';
-import LoginScreen from './LoginScreen2';
-import NotificationScreen from './NotificationScreen2';
+import Inventory from "./containers/Distributor/Inventory/Inventory"
+import DistSideMenu from "./containers/Distributor/DistSideMenu/DistSideMenu"
 
-import DrawerContent from "./SideBar/SideBar"
+const header = ({ navigation }) => {
+  return {
+    headerLeft: (
+      <Icon.Button
+        onPress={navigation.toggleDrawer}
+        name="bars"
+        size={25}
+        backgroundColor="#232121"
+        padding={0}
+        marginLeft={15}
+        color="#fff"
+      />
+    ),
+    headerTitle: ( <LogoTitle /> ),
+    headerRight: (
+      <Avatar rounded
+              marginRight={15}
+              size={30}
+              source={{
+              uri:
+                'https://pbs.twimg.com/profile_images/1092886547068706816/xQNEOI5f_200x200.jpg',
+              }}
+              onPress={() => { navigation.navigate('Account') } }
+      />
+    ),
+    headerStyle: {
+      borderBottomWidth: 0,
+      marginRight: 15,
+      backgroundColor: '#232121',
+      height: 50,
+      shadowColor: '#231f20',
+      shadowRadius: 3,
+      shadowOpacity: 0.1,
+      shadowOffset: {
+        height: 1,
+        width: 0,
+      },
+    },
+    headerTintColor: '#231f20',
+    gesturesEnabled: false,
+  };
+}
 
-import First from './First.js';
-// import Second from '../views/Second';
-//
-import Home from './Home';
-import Four from './Four.js';
-// import Five from '../views/Five';
-
-export const Drawer = DrawerNavigator({
-  Home: {
-    screen: Home,
-  },
-  Four: {
-    screen: Four,
+const MainApp = createStackNavigator({
+    Order: { screen: HomeScreen },
+    SubmitOrder: { screen: SubmitOrder },
+    Account: { screen: AccountContainer },
+    BarInventory: {screen: BarInventory},
+    PastOrders: {screen: PastOrders},
+  },{
+    initialRouteName: 'Order',
+    defaultNavigationOptions: header
   }
-}, {
-  contentComponent: DrawerContent,
-  drawerWidth: 250,
-  drawerPosition: 'left',
-  drawerOpenRoute: 'DrawerOpen',
-  drawerCloseRoute: 'DrawerClose',
-  drawerToggleRoute: 'DrawerToggle',
+);
+
+const Drawer = createDrawerNavigator({
+  MainApp: { screen: MainApp },
+},
+{
+  contentComponent: SideMenu,
+  drawerWidth: 200,
 });
 
-export const Tab = TabNavigator({
-  Home: {
-    screen: Drawer,
+
+const headerDistributor = ({ navigation }) => {
+  return {
+    headerLeft: (
+      <Icon.Button
+        onPress={navigation.toggleDrawer}
+        name="bars"
+        size={25}
+        backgroundColor="#232121"
+        padding={0}
+        marginLeft={15}
+        color="#fff"
+      />
+    ),
+    headerTitle: ( <LogoTitle /> ),
+    headerStyle: {
+      borderBottomWidth: 0,
+      marginRight: 15,
+      backgroundColor: '#232121',
+      height: 50,
+      shadowColor: '#231f20',
+      shadowRadius: 3,
+      shadowOpacity: 0.1,
+      shadowOffset: {
+        height: 1,
+        width: 0,
+      },
+    },
+    headerTintColor: '#231f20',
+    gesturesEnabled: false,
+  };
+}
+
+
+const DistributorApp = createStackNavigator({
+    Inventory: { screen: Inventory },
   },
-  First: {
-    screen: First,
+  {
+    initialRouteName: 'Inventory',
+    defaultNavigationOptions: headerDistributor
   }
-}, {
-  tabBarPosition: 'bottom',
-  swipeEnabled: true,
-  tabBarOptions: {
-    activeTintColor: '#f2f2f2',
-    activeBackgroundColor: "#2EC4B6",
-    inactiveTintColor: '#666',
-    labelStyle: {
-      fontSize: 22,
-      padding: 12
-    }
-  }
+);
+
+const DistributorDrawer = createDrawerNavigator({
+  DistributorApp: { screen: DistributorApp },
+},
+{
+  contentComponent: DistSideMenu,
+  drawerWidth: 200,
 });
+
+
+export const AppConatiner = createAppContainer(
+  createSwitchNavigator({
+    Login: LoginScreen,
+    MainApp: Drawer,
+    Distributor: DistributorDrawer
+  },
+  {
+    initialRouteName: 'Login',
+  })
+);
