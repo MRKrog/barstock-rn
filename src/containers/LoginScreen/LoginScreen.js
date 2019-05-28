@@ -57,7 +57,7 @@ class LoginScreen extends Component {
     // } else if (loginType === "Distributor") {
     //   this.props.navigation.navigate('Distributor');
     // }
-    this.props.navigation.navigate('Distributor');
+    this.props.navigation.navigate('MainApp');
   }
 
   setUpNewAccount = () => {

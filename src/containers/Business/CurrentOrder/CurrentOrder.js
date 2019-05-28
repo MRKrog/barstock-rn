@@ -34,8 +34,7 @@ export class CurrentOrder extends Component {
   getTotalReturn = () => {
     const { businessItems, cart } = this.props;
     let totalReturn = cart.reduce((acc, distItem) => {
-      let busItem = businessItems.find(item => item.id === distItem.id)
-      console.log("this is the inisede of the find", busItem)
+      let busItem = businessItems.find(item => item.id == distItem.id)
       let distProdServSize = distItem.ounces;
       let menuProdServSize = busItem.attributes.serving_size;
       let menuPrice = busItem.attributes.price_sold;
@@ -48,7 +47,7 @@ export class CurrentOrder extends Component {
 
   getSingleReturn = (distItem) => {
     const { businessItems } = this.props;
-    let busItem = businessItems.find(item => item.id === distItem.id)
+    let busItem = businessItems.find(item => item.id == distItem.id)
     let distProdServSize = distItem.ounces * distItem.count;
     let menuProdServSize = busItem.attributes.serving_size;
     let menuPrice = busItem.attributes.price_sold;
@@ -59,7 +58,7 @@ export class CurrentOrder extends Component {
 
   getSingleMargin = (distItem) => {
     const { businessItems, cart, alcohol } = this.props;
-    let busItem = businessItems.find(item => item.id === distItem.id)
+    let busItem = businessItems.find(item => item.id == distItem.id)
     let distProdServSize = distItem.ounces;
     let menuProdServSize = busItem.attributes.serving_size;
     let menuPrice = busItem.attributes.price_sold;
@@ -107,29 +106,38 @@ export class CurrentOrder extends Component {
     let totalReturn = this.getTotalReturn()
 
     cartDisplay = this.props.cart.map(item => {
-      let itemType = this.findType(item.alc_type, item)
-      let itemProfit = this.getSingleReturn(item)
-      let itemMargin = this.getSingleMargin(item)
+
+      const info = this.props.businessItems.find(busItem => {
+        return busItem.id === item.id
+      })
+      const alcoholInfo = info.attributes
+      console.log(alcoholInfo)
+      console.log(item)
+      
+      console.log("this is what the cart see", alcoholInfo)
+      let itemType = this.findType(alcoholInfo.alc_type, alcoholInfo)
+      let itemProfit = this.getSingleReturn(alcoholInfo)
+      let itemMargin = this.getSingleMargin(alcoholInfo)
       let marginColor = this.getRowColor(itemMargin)
       let swipeoutBtns = [{
           text: (<Icon name='edit' color='#B2BCC8' size={20} />),
           backgroundColor: "#2C4969",
           underlayColor: "#2c4969",
-          onPress: () => { this.toggleModal(item.id) }
+          onPress: () => { this.toggleModal(alcoholInfo.id) }
         }, {
           text: (<Icon name='trash' color='#F1BFBD' size={20} />),
           backgroundColor: '#DB504A',
           underlayColor: "#DB504A",
-          onPress: () => { this.removeFromCart(item.id) }
+          onPress: () => { this.removeFromCart(alcoholInfo.id) }
         }
       ]
       return(
-        <Swipeout key={item.name} right={swipeoutBtns} autoClose={true} buttonWidth={50} sensitivity={60}>
-          <View style={[styles.item_info, marginColor, styles.listItem]} id={item.id}>
-            <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
-            <Text style={styles.item_unit}>{item.count} x {itemType}</Text>
+        <Swipeout key={alcoholInfo.name} right={swipeoutBtns} autoClose={true} buttonWidth={50} sensitivity={60}>
+          <View style={[styles.item_info, marginColor, styles.listItem]} id={alcoholInfo.id}>
+            <Text style={styles.item_name} numberOfLines={1}>{alcoholInfo.item_name}</Text>
+            <Text style={styles.item_unit}>{alcoholInfo.quantity} x {itemType}</Text>
             <Text style={styles.item_profit}>${itemProfit.toFixed(2)}</Text>
-            <Text style={styles.item_cost}>${(item.price * item.count).toFixed(2)}</Text>
+            <Text style={styles.item_cost}>${(alcoholInfo.price * alcoholInfo.quantity).toFixed(2)}</Text>
           </View>
         </Swipeout>
       )

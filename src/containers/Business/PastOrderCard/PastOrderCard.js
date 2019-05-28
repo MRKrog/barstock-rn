@@ -26,12 +26,10 @@ export class PastOrderCard extends Component{
   }
 
   render(){
-    console.log("this is the alcohol info",this.props.alcohol)
     let orderItems = this.props.order.attributes.items.map(item => {
       let itemInfo = this.props.alcohol.find(alcohol => {
         return alcohol.id == item.id
       })
-      console.log(itemInfo)
       return(
         <View style={styles.order_item}>
           <Text style={styles.order_name}>

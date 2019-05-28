@@ -2,20 +2,20 @@
 export const cartReducer = (state = [], action) => {
   switch(action.type){
     case "ADD_ALCOHOL":
-      let newCartItem = {...action.alcohol, count: 1}
+      let newCartItem = {id: action.id, quantity: 1}
       return [...state, newCartItem];
     case "UPDATE_ALCOHOL":
       let updatedState = state.map(item => {
-        if(item.id === action.id && action.number === 1) {
-          item.count++
-        } else if (item.id === action.id && action.number === -1) {
-          item.count--
+        if(item.id === action.id) {
+          item.quantity += action.number
+        } else if (item.id === action.id) {
+          item.quantity += action.number
         }
         return item
       })
       return updatedState
     case "REMOVE_ALCOHOL":
-      const itemIndex = state.indexOf(action.alcohol)
+      const itemIndex = state.indexOf(action.id)
       state.splice(itemIndex, 1)
       return [...state];
     case "REMOVE_ALCOHOL_GROUP":
