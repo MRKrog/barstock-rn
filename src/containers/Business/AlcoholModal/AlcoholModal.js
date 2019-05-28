@@ -61,7 +61,7 @@ export class AlcoholModal extends Component {
     const { id, attributes } = this.props.alcoholInfo
 
     let distItem = alcohol.find(item => {
-      return item.id === id
+      return item.id == id
     })
 
     let itemMarkUp = getMarkUp({...this.state}, distItem)

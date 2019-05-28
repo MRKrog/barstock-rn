@@ -6,7 +6,7 @@ export const businessItemsReducer = (state = [], action) => {
       return [...state, action.businessItems];
     case "UPDATE_BUSINESS_ITEM":
       const updatedBusinessItems = state.map(item => {
-        if(item.id === action.businessItems.id) {
+        if(item.id == action.businessItems.id) {
           item.attributes.price_sold = action.businessItems.attributes.price_sold
           item.attributes.quantity = action.businessItems.attributes.quantity
           item.attributes.serving_size = action.businessItems.attributes.serving_size

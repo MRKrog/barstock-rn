@@ -6,9 +6,9 @@ export const cartReducer = (state = [], action) => {
       return [...state, newCartItem];
     case "UPDATE_ALCOHOL":
       let updatedState = state.map(item => {
-        if(item.id === action.id) {
+        if(item.id == action.id) {
           item.quantity += action.number
-        } else if (item.id === action.id) {
+        } else if (item.id == action.id) {
           item.quantity += action.number
         }
         return item

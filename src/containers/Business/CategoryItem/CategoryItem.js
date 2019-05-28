@@ -9,7 +9,7 @@ export class CategoryItem extends Component {
 
   minusProduct = (id) => {
     const { removeFromCart, alcohol, cart, updateCart } = this.props;
-    let cartItem = cart.find(item => item.id === id)
+    let cartItem = cart.find(item => item.id == id)
     if(cartItem.quantity > 1) {
       updateCart(id, -1)
     } else {
@@ -20,7 +20,7 @@ export class CategoryItem extends Component {
   addProduct = (id) => {
     const { addToCart, alcohol, cart, updateCart } = this.props;
     let itemExists = false;
-    cart.forEach(item => item.id === id ? itemExists = true : null);
+    cart.forEach(item => item.id == id ? itemExists = true : null);
     itemExists ? updateCart(id, 1) : addToCart(alcohol.id);
   };
 
@@ -33,7 +33,7 @@ export class CategoryItem extends Component {
     let btnStatus = styles.textinvalid
 
     this.props.cart.forEach(item => {
-      if(item.id === id) {
+      if(item.id == id) {
         currentCount = item.quantity
         quantityStatus = false;
         btnStatus = styles.textvalid

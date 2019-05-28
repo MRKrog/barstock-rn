@@ -14,34 +14,30 @@ export class SubmitOrder extends Component{
     this.props.navigation.navigate("Order")
   }
 
-  submitOrder = async () => {
+  submitOrder = async (cost) => {
 
     // Create Order fetch end point
     const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
-    //
+    let submitPrice = this.props.cart.map(item => {
+      let alcoholInfo = this.props.alcohol.find(alcohol => {
+        console.log(alcoholInfo)
+        return item.id === alcohol.id
+      })
+      return {...item, price: alcoholInfo.attributes.price}
+    })
     const orderToSend = {
         api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-        total_cost: "234234",
-        total_revenue: "2341",
-        items: [
-          {
-            id: "1",
-            quantity: "2",
-            price: "543"
-          },
-          {
-            id: "2",
-            quantity: "4",
-            price: "54"
-          }
-        ]
+        total_cost: cost.toFixed(2),
+        items: this.props.cart
     }
-
+    console.log("a;lkdfjalksjdfl;akdjflkasjdf;lj ",orderToSend)
     const options = fetchOptions("POST", orderToSend)
 
     try {
       const response = await fetch(url, options)
       const data = await response.json()
+      console.log(data)
+      console.log("im in the fetch")
       await this.resetOrder()
     } catch (error) {
       console.log(error);
@@ -61,21 +57,22 @@ export class SubmitOrder extends Component{
   }
 
   render(){
-    const { cart } = this.props;
+    const { cart, alcohol } = this.props;
+    console.log("hello world im the cart in the submit",cart)
     let cartDisplay;
 
-    let totalCost = generateCost(cart)
+    let totalCost = generateCost(cart, alcohol)
+
     cartDisplay = cart.map(item => {
-      let marginColor = styles.marginGreen
+      const alcoholInfo = this.props.alcohol.find(alcohol => item.id == alcohol.id)
       return(
         <View key={item.name} style={styles.item_info} id={item.id}>
-          <Text style={styles.item_name} numberOfLines={1}>{item.name}</Text>
-          <Text style={styles.item_unit}>x{item.count}</Text>
-          <Text style={styles.item_cost}>${(item.price * item.count).toFixed(2)}</Text>
+          <Text style={styles.item_name} numberOfLines={1}>{alcoholInfo.attributes.name}</Text>
+          <Text style={styles.item_unit}>x{item.quantity}</Text>
+          <Text style={styles.item_cost}>${(alcoholInfo.attributes.price * item.quantity).toFixed(2)}</Text>
         </View>
       )
     })
-
     return(
       <ImageBackground source={require('../../../../assets/bg.png')} style={styles.backgroundImage}>
         <View style={styles.container}>
@@ -104,7 +101,7 @@ export class SubmitOrder extends Component{
               <TouchableOpacity style={styles.cart_backButton} onPress={this.goBack}>
                 <Text style={styles.cart_checkoutText}>Back</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => this.submitOrder()}>
+              <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => this.submitOrder(totalCost)}>
                 <Text style={styles.cart_checkoutText}>Submit Order</Text>
               </TouchableOpacity>
             </View>
@@ -118,6 +115,7 @@ export class SubmitOrder extends Component{
 
 export const mapStateToProps = (state) => ({
   cart: state.cart,
+  alcohol: state.alcohol,
   order: state.order
 })
 
