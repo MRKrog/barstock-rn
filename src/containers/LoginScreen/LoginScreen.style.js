@@ -61,7 +61,16 @@ export default {
  setUpAccountBtn: {
    display: "flex",
    paddingBottom: 30,
+   color: "#ffffff"
    // alignSelf: "flex-end",
+ },
+ goBackBtn: {
+   color: "#ffffff",
+   paddingBottom: 30,
+ },
+ goBackText: {
+  color: "#ffffff",
+
  },
  setUpText: {
    color:'#fff',

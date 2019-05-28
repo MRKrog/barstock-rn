@@ -37,12 +37,25 @@
     "@babel/core": "7.4.4",
     "@babel/runtime": "^7.4.4",
     "babel-jest": "24.8.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
+    "enzyme-to-json": "^3.3.5",
     "jest": "24.8.0",
     "metro-react-native-babel-preset": "^0.54.1",
+    "react-dom": "^16.8.6",
     "react-devtools": "^3.6.1",
     "react-test-renderer": "16.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js}"
+    ]
   }
 }

@@ -51,7 +51,7 @@ class LoginScreen extends Component {
     //
     // console.log(loginType);
     // console.log(loginAPI);
-
+    //
     // if(loginType === "Business"){
     //   this.props.navigation.navigate('MainApp');
     // } else if (loginType === "Distributor") {
