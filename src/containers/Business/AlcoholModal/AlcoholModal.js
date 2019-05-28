@@ -3,7 +3,9 @@ import { connect } from "react-redux"
 import { Modal, View, Text, TouchableOpacity, KeyboardAvoidingView, TextInput, Image} from "react-native";
 import styles from "./AlcoholModal.style";
 import * as actions from "../../../redux/actions";
-import { fetchOptions } from "../../../utility/fetchOptions"
+import { fetchOptions } from "../../../utility/fetchOptions";
+import { getMarkUp, getMargin } from "../../../utility/generateMargin"
+
 
 export class AlcoholModal extends Component {
   constructor(){
@@ -55,50 +57,88 @@ export class AlcoholModal extends Component {
   // this is the regex for money /^[0-9]+(\.[0-9]{1,2})?$/gm
 
   render(){
-    console.log(" im the state in the modal", this.state)
+    const { alcohol } = this.props;
+    const { id, attributes } = this.props.alcoholInfo
+
+    let distItem = alcohol.find(item => {
+      return item.id === id
+    })
+
+    let itemMarkUp = getMarkUp({...this.state}, distItem)
+    let itemMargin = getMargin({...this.state}, distItem)
+    if(itemMargin == -Infinity || isNaN(itemMargin)){
+      itemMargin = 0
+    }
+    if(itemMarkUp == -100 || isNaN(itemMarkUp)){
+      itemMarkUp = 0
+    }
+
     return(
       <Modal visible={this.props.modalDisplay}
       transparent={true}>
           <View style={styles.modal_background}>
             <KeyboardAvoidingView behavior="padding" enabled>
               <View style={styles.modal_container}>
-                <View style={styles.modal_alcInfo}>
+
+                <View style={styles.modal_alcInfoContainer}>
                   <Image resizeMode="contain" style={{height: 80, width: 80}}source={{uri: this.props.alcoholInfo.attributes.thumbnail}}></Image>
-                  <View>
-                    <Text>{this.props.alcoholInfo.attributes.item_name}</Text>
-                  </View>
-                  <View>
-                    <View style={styles.modal_textInputDisplay}>
-                      <Text>Price for Drink $</Text>
-                      <TextInput value={`${this.state.price}`}
-                                 onChangeText={(text) => { this.setState({ price: text })}}
-                                 keyboardType="numeric"
-                                 style={styles.modal_textInput}>
-                      </TextInput>
-                    </View>
-                    <View style={styles.modal_textInputDisplay}>
-                      <Text>Size Per Drink</Text>
-                      <TextInput value={`${this.state.servingSize}`}
-                                 onChangeText={(text) => { this.setState({ servingSize: text })}}
-                                 keyboardType="numeric"
-                                 style={styles.modal_textInput}>
-                      </TextInput>
-                      <Text>oz</Text>
-                    </View>
-                    {/* this is the stock */}
-                    <View style={styles.modal_textInputDisplay}>
-                      <Text>In Stock</Text>
-                      <TextInput value={`${this.state.inStock}`}
-                                 onChangeText={(text) => { this.setState({ inStock: text })}}
-                                 keyboardType="numeric"
-                                 style={styles.modal_textInput}>
-                      </TextInput>
-                    </View>
+                  <View style={styles.modal_alcInfo}>
+                    <Text style={styles.alcInfo_Name}>{distItem.attributes.name}</Text>
+                    <Text style={styles.alcInfo_Price}>${distItem.attributes.price}</Text>
+                    <Text style={styles.alcInfo_Size}>{distItem.attributes.ounces} oz</Text>
                   </View>
                 </View>
+
+                <View style={styles.inputContainer}>
+
+                  <View style={styles.modal_textInputDisplay}>
+                    <TextInput value={`${this.state.price}`}
+                               onChangeText={(text) => { this.setState({ price: text })}}
+                               keyboardType="numeric"
+                               style={styles.modal_textInput}>
+                    </TextInput>
+                    <Text style={styles.modal_label}>Price for Drink</Text>
+                  </View>
+
+                  <View style={styles.modal_textInputDisplay}>
+                    <TextInput value={`${this.state.servingSize}`}
+                               onChangeText={(text) => { this.setState({ servingSize: text })}}
+                               keyboardType="numeric"
+                               style={styles.modal_textInput}>
+                    </TextInput>
+                    <Text style={styles.modal_label}>Size Per Drink</Text>
+                  </View>
+
+                  <View style={styles.modal_textInputDisplay}>
+                    <TextInput value={`${this.state.inStock}`}
+                               onChangeText={(text) => { this.setState({ inStock: text })}}
+                               keyboardType="numeric"
+                               style={styles.modal_textInput}>
+                    </TextInput>
+                    <Text style={styles.modal_label}>In Stock</Text>
+                  </View>
+
+                </View>
+
+                <View style={styles.numberContainer}>
+                  <View style={styles.itemNumber}>
+                    <Text style={styles.alcInfo_Margin}>{itemMargin.toFixed(0)}%</Text>
+                    <Text style={styles.alcInfo_MarginLabel}>Profit Margin</Text>
+                  </View>
+
+                  <View style={styles.itemNumber}>
+                    <Text style={styles.alcInfo_Margin}>{itemMarkUp.toFixed(0)}%</Text>
+                    <Text style={styles.alcInfo_MarginLabel}>Item Markup</Text>
+                  </View>
+                </View>
+
+
                 <TouchableOpacity onPress={this.updateItem} style={styles.modal_button}>
                   <Text style={styles.modal_buttonText}>Save</Text>
                 </TouchableOpacity>
+
+
+
               </View>
             </KeyboardAvoidingView>
           </View>
@@ -110,7 +150,7 @@ export class AlcoholModal extends Component {
 export const mapStateToProps = (state) => ({
   modalDisplay: state.modalDisplay,
   alcoholInfo: state.alcoholInfo,
-
+  alcohol: state.alcohol
 })
 
 export const mapDispatchToProps = (dispatch) => ({

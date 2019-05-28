@@ -92,8 +92,6 @@ export class CurrentOrder extends Component {
   }
 
   render() {
-    console.log("this is the cart", this.props.cart)
-    console.log("this is buss", this.props.businessItems)
     let cartDisplay;
     let disabledStatus;
     let disabledStyles;
