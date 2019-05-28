@@ -4,10 +4,6 @@ const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
 
 export default {
-
-  container: {
-    backgroundColor: "#0000"
-  },
   MainDisplay: {
     flex: 1,
     width: screenWidth,

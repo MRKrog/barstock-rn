@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Image
 import styles from "./Inventory.style";
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions';
+import DistributorInventory from "../DistributorInventory/DistributorInventory"
 
 class Inventory extends Component {
   constructor() {
@@ -34,7 +35,7 @@ class Inventory extends Component {
     return (
       <View style={styles.MainDisplay}>
         <ImageBackground source={require('../../../../assets/bg.png')} style={styles.backgroundImage}>
-          <Text>Distributor Side</Text>
+          <DistributorInventory />
         </ImageBackground>
       </View>
     )
