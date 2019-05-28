@@ -7,6 +7,7 @@ import { businessItemsReducer } from "./businessItemsReducer";
 import { modalReducer } from "./modalReducer";
 import { alcoholInfoReducer } from "./alcoholInfoReducer"
 import { categorySelectedReducer } from "./categorySelectedReducer";
+import { pastOrderReducer } from "./pastOrderReducer"
 
 export const rootReducer = combineReducers({
   loading: loadingReducer,
@@ -16,5 +17,6 @@ export const rootReducer = combineReducers({
   order: orderReducer,
   modalDisplay: modalReducer,
   alcoholInfo: alcoholInfoReducer,
-  selectedCategory: categorySelectedReducer
+  selectedCategory: categorySelectedReducer,
+  pastOrder: pastOrderReducer
 })

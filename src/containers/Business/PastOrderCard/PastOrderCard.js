@@ -26,17 +26,22 @@ export class PastOrderCard extends Component{
   }
 
   render(){
+    console.log("this is the alcohol info",this.props.alcohol)
     let orderItems = this.props.order.attributes.items.map(item => {
+      let itemInfo = this.props.alcohol.find(alcohol => {
+        return alcohol.id == item.id
+      })
+      console.log(itemInfo)
       return(
         <View style={styles.order_item}>
           <Text style={styles.order_name}>
-            {item.name}
+            {itemInfo.attributes.name}
           </Text>
           <Text style={styles.order_quantity}>
             {item.quantity}
           </Text>
           <Text style={styles.order_price}>
-            {item.price}
+            ${itemInfo.attributes.price * item.quantity} 
           </Text>
         </View>
       )
@@ -70,4 +75,8 @@ export const mapDispatchToProps = (dispatch) => ({
   reOrder: order => dispatch(actions.reOrder(order))
 })
 
-export default connect(null, mapDispatchToProps)(PastOrderCard)
+export const mapStateToProps = (state) => ({
+  alcohol: state.alcohol
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PastOrderCard)
