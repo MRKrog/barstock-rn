@@ -2,82 +2,20 @@ import React, { Component } from "react";
 import { View, Text, ScrollView } from "react-native";
 import styles from "./PastOrders.style";
 import Footer from "../../../components/Footer/Footer";
-import PastOrderCard from "../PastOrderCard/PastOrderCard"
-
+import PastOrderCard from "../PastOrderCard/PastOrderCard";
+import { connect } from "react-redux"
+import * as actions from "../../../redux/actions";
 
 class PastOrders extends Component{
-  constructor(){
-    super();
-    this.state = {
-      pastOrders:  [{
-        "id": "1",
-        "type": "order",
-        "attributes": {
-          "id": 1,
-          "total_cost": 200,
-          "total_revenue": 380,
-          "items": [
-            {
-              "id": "1",
-              "distributor_id": 1,
-              "name": "Fireball",
-              "alc_type": "liquor",
-              "alc_category": "whiskey",
-              "price": 18.78,
-              "ounces": 33.8,
-              "unit": "handle",
-              "thumbnail": "https://products2.imgix.drizly.com/ci-fireball-cinnamon-whisky-355ddd0b8b3a2c55.png?auto=format%2Ccompress&fm=jpeg&q=20",
-              "quantity": 100,
-              "created_at": {},
-              "updated_at": {}
-            },
-            {
-              "id": "2",
-              "distributor_id": 1,
-              "name": "Jim Bean",
-              "alc_type": "liquor",
-              "alc_category": "whiskey",
-              "price": 16.99,
-              "ounces": 25.3,
-              "unit": "handle",
-              "thumbnail": "https://products2.imgix.drizly.com/ci-fireball-cinnamon-whisky-355ddd0b8b3a2c55.png?auto=format%2Ccompress&fm=jpeg&q=20",
-              "quantity": 100,
-              "created_at": {},
-              "updated_at": {}
-            }
-          ]
-        }
-      },
-      {
-        "id": "1",
-        "type": "order",
-        "attributes": {
-          "id": 90,
-          "total_cost": 200,
-          "total_revenue": 380,
-          "items": [
-            {
-              "id": "1",
-              "distributor_id": 1,
-              "name": "Fireball",
-              "alc_type": "liquor",
-              "alc_category": "whiskey",
-              "price": 18.78,
-              "ounces": 33.8,
-              "unit": "handle",
-              "thumbnail": "https://products2.imgix.drizly.com/ci-fireball-cinnamon-whisky-355ddd0b8b3a2c55.png?auto=format%2Ccompress&fm=jpeg&q=20",
-              "quantity": 100,
-              "created_at": {},
-              "updated_at": {}
-            }
-          ]
-        }
-      }]
-    }
+  async componentDidMount(){
+    let response = await fetch("https://barstock-backend.herokuapp.com/api/v1/orders?api_key=0yWwUm5CZ8CGR8MhT7FL9w")
+    let data = await response.json()
+    this.props.getPastOrder(data.data)
   }
 
   render(){
-    let pastOrder = this.state.pastOrders.map(order => {
+    console.log("yo yo", this.props.pastOrder)
+    let pastOrder = this.props.pastOrder.map(order => {
       return(
         <PastOrderCard order={order} navigation={this.props.navigation} />
       )
@@ -100,4 +38,12 @@ class PastOrders extends Component{
   }
 }
 
-export default PastOrders
+export const mapStateToProps = (state) => ({
+  pastOrder: state.pastOrder
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  getPastOrder: order => dispatch(actions.getPastOrder(order))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PastOrders)

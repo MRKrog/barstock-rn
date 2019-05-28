@@ -69,6 +69,11 @@ export const categorySelected = cat => ({
   cat
 })
 
+export const getPastOrder = order => ({
+  type: "SET_PAST_ORDER", 
+  order
+})
+
 export const reOrder = order => ({
   type: "RE_ORDER",
   order
