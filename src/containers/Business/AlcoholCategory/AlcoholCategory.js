@@ -50,8 +50,6 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
-  removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol)),
   categorySelected: cat => dispatch(actions.categorySelected(cat))
 })
 

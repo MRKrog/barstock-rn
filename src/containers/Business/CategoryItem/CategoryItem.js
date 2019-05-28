@@ -1,27 +1,27 @@
 import React, { Component } from "react";
 import styles from './CategoryItem.style';
-import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation, Image } from "react-native";
+import { TouchableOpacity, Text, View, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class CategoryItem extends Component {
 
-  minusProduct = (id, number) => {
+  minusProduct = (id) => {
     const { removeFromCart, alcohol, cart, updateCart } = this.props;
-    let cartItem = cart.find(item => item.id === id)
-    if(cartItem.count > 1) {
-      updateCart(id, number)
+    let cartItem = cart.find(item => item.id == id)
+    if(cartItem.quantity > 1) {
+      updateCart(id, -1)
     } else {
-      removeFromCart(alcohol)
+      removeFromCart(alcohol.id)
     }
   };
 
-  addProduct = (id, number) => {
+  addProduct = (id) => {
     const { addToCart, alcohol, cart, updateCart } = this.props;
     let itemExists = false;
-    cart.forEach(item => item.id === id ? itemExists = true : null);
-    itemExists ? updateCart(id, number) : addToCart(alcohol);
+    cart.forEach(item => item.id == id ? itemExists = true : null);
+    itemExists ? updateCart(id, 1) : addToCart(alcohol.id);
   };
 
   render() {
@@ -33,8 +33,8 @@ export class CategoryItem extends Component {
     let btnStatus = styles.textinvalid
 
     this.props.cart.forEach(item => {
-      if(item.id === id) {
-        currentCount = item.count
+      if(item.id == id) {
+        currentCount = item.quantity
         quantityStatus = false;
         btnStatus = styles.textvalid
       }
@@ -54,11 +54,11 @@ export class CategoryItem extends Component {
 
         <View style={styles.item_action}>
           <View style={styles.quantityContainer}>
-            <TouchableOpacity onPress={() => this.minusProduct(id, -1)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
+            <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
               <Icon raised name='minus' color='#ffffff' size={18} />
             </TouchableOpacity>
             <Text style={styles.quantity}>{currentCount}</Text>
-            <TouchableOpacity onPress={() => this.addProduct(id, 1)} style={styles.btnPlus}>
+            <TouchableOpacity onPress={() => this.addProduct(id)} style={styles.btnPlus}>
               <Icon raised name='plus' color='#ffffff' size={18} />
             </TouchableOpacity>
           </View>
@@ -69,13 +69,13 @@ export class CategoryItem extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
+  addToCart: id => dispatch(actions.addToCart(id)),
   updateCart: (id, number) => dispatch(actions.updateCart(id, number)),
-  removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol))
+  removeFromCart: id => dispatch(actions.removeFromCart(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem)

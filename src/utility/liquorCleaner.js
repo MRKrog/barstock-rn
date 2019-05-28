@@ -1,3 +1,4 @@
+
 const createOrderDisplay = () => {
   let quantityAmount = this.combineQuantities();
   let combinedOrder = this.createOrder(quantityAmount);
@@ -13,9 +14,10 @@ const combineQuantities = () => {
   return quantityAmount;
 }
 
-export const generateCost = (cart) => {
-  let totalCost = cart.reduce((acc, item) => {
-    acc += (item.price * item.count)
+export const generateCost = (cart, alcohol) => {
+  const totalCost = cart.reduce((acc, item) => {
+    const alcoholInfo = alcohol.find(alcohol => item.id == alcohol.id)
+    acc += (alcoholInfo.attributes.price * item.quantity)
     return acc
   }, 0)
   return totalCost

@@ -13,7 +13,6 @@ class SideMenu extends Component {
       routeName: route
     });
     let { routeName } = this.props.navigation.state;
-    console.log(this.props.navigation.state.routes);
 
     this.props.navigation.dispatch(navigateAction);
   }

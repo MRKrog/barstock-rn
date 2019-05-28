@@ -8,14 +8,14 @@ export const setAlcohol = alcohol => ({
   alcohol
 })
 
-export const addToCart = alcohol => ({
+export const addToCart = id => ({
   type: "ADD_ALCOHOL",
-  alcohol
+  id
 })
 
-export const removeFromCart = alcohol => ({
+export const removeFromCart = id => ({
   type: "REMOVE_ALCOHOL",
-  alcohol
+  id
 })
 
 export const setBusinessItems = businessItems => ({
