@@ -29,14 +29,13 @@ export class CategoryItem extends Component {
     let distItem = alcohol.find(item => {
       return item.id == id
     })
-    // console.log('distItem', distItem);
     this.props.setAlcoholInfo(distItem)
     this.props.toggleModalDisplay(true)
   };
 
   render() {
     const { category_item, btnMinus } = styles;
-    const { name, unit, price, thumbnail, id } = this.props.info;
+    const { name, unit, price, thumbnail, id, ounces } = this.props.info;
 
     let currentCount = 0;
     let quantityStatus = true;
@@ -49,6 +48,7 @@ export class CategoryItem extends Component {
         btnStatus = styles.textvalid
       }
     })
+
     console.log('bizIt' ,this.props.businessItems);
     return(
       <View style={category_item}>
@@ -58,7 +58,9 @@ export class CategoryItem extends Component {
           </View>
           <View style={styles.item_details}>
             <Text style={styles.item_name} numberOfLines={1}>{name}</Text>
-            <Text style={styles.item_price}>{unit} / ${price}</Text>
+            <Text style={styles.item_price}>
+              {ounces !== 288 ? ounces : 24} {unit} / ${price}
+            </Text>
           </View>
         </View>
 
@@ -66,12 +68,12 @@ export class CategoryItem extends Component {
         {
           !this.props.businessItems.find(item => id == item.id) ?
 
-          <TouchableOpacity onPress={() => this.toggleModal(id)}>
-            <Text>hello</Text>
+          <TouchableOpacity onPress={() => this.toggleModal(id)} style={styles.editBtn}>
+            <Icon raised name='edit' color='#ffffff' size={18} />
           </TouchableOpacity> :
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
-              <Icon raised name='minus' color='#ffffff' size={18} />
+              <Icon raised name='minus' color='#ffffff' size={18}/>
             </TouchableOpacity>
             <Text style={styles.quantity}>{currentCount}</Text>
             <TouchableOpacity onPress={() => this.addProduct(id)} style={styles.btnPlus}>

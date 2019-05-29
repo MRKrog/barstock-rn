@@ -15,21 +15,19 @@ export class AccountInfo extends Component{
           </View>
           <View style={styles.info_TextContainer}>
             <View style={styles.info_section}>
-            <Text style={styles.info_title}>
-                  Personal
-                </Text>
-                <Text style={styles.info_text}>
-                  Name: {info.name}
-                </Text>
-                <Text style={styles.info_text}>
-                  Address: {info.address}
-                </Text>
-                <Text style={styles.info_text}>
-                  Email: {info.email}
-                </Text>
-                <Text style={styles.info_text}>
-                  Phone: {info.phone_number}
-                </Text>
+              <Text style={styles.info_title}>Personal</Text>
+              <Text style={styles.info_text}>
+                Name: {info.name}
+              </Text>
+              <Text style={styles.info_text}>
+                Address: {info.address}
+              </Text>
+              <Text style={styles.info_text}>
+                Email: {info.email}
+              </Text>
+              <Text style={styles.info_text}>
+                Phone: {info.phone_number}
+              </Text>
             </View>
             <View style={styles.info_section}>
               <Text style={styles.info_title}>

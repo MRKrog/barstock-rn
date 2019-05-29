@@ -11,6 +11,7 @@ import LoginScreen from './containers/LoginScreen/LoginScreen';
 import SetUpScreen from './containers/LoginScreen/SetUpScreen';
 import SideMenu from './containers/Business/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
+import ThankYou from "./containers/Business/ThankYou/ThankYou"
 
 import Inventory from "./containers/Distributor/Inventory/Inventory"
 import DistSideMenu from "./containers/Distributor/DistSideMenu/DistSideMenu"
@@ -63,7 +64,7 @@ const MainApp = createStackNavigator({
   SubmitOrder: { screen: SubmitOrder },
   Account: { screen: AccountContainer },
   BarInventory: {screen: AccountContainer},
-  PastOrders: {screen: AccountContainer},
+  PastOrders: {screen: AccountContainer}
   },{
     initialRouteName: 'Order',
     defaultNavigationOptions: header
@@ -129,13 +130,21 @@ const DistributorDrawer = createDrawerNavigator({
   drawerWidth: 200,
 });
 
+// const ThankYouApp = createStackNavigator({
+//     ThankYou: { screen: ThankYou },
+//   },
+//   {
+//     initialRouteName: 'ThankYou'
+//   }
+// );
 
 export const AppConatiner = createAppContainer(
   createSwitchNavigator({
     Login: LoginScreen,
     SetUpScreen: SetUpScreen,
     MainApp: Drawer,
-    Distributor: DistributorDrawer
+    Distributor: DistributorDrawer,
+    Finish: ThankYou
   },
   {
     initialRouteName: 'Login',

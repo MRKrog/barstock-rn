@@ -5,7 +5,7 @@ import styles from "./AlcoholModal.style";
 import * as actions from "../../../redux/actions";
 import { fetchOptions } from "../../../utility/fetchOptions";
 import { getMarkUp, getMargin, getProfit } from "../../../utility/generateMargin"
-
+import Loading from '../../../components/Loading/Loading';
 
 export class AlcoholModal extends Component {
   constructor(){
@@ -44,7 +44,8 @@ export class AlcoholModal extends Component {
   updateItem = async () => {
     const { id } = this.props.alcoholInfo
     console.log('INFO YO', this.props.alcoholInfo);
-    const { price, servingSize, inStock} = this.state
+    const { price, servingSize, inStock} = this.state;
+    this.props.setLoading(true)
     if(this.state.create) {
       const url = `https://barstock-backend.herokuapp.com/api/v1/business_items`;
       const itemNew = {
@@ -85,6 +86,7 @@ export class AlcoholModal extends Component {
       } catch (error) {
         console.log(error);
       }
+      this.props.setLoading(false)
       this.props.toggleModalDisplay(false)
 
     }
@@ -118,6 +120,10 @@ export class AlcoholModal extends Component {
     return (
       <Modal visible={this.props.modalDisplay}
       transparent={true}>
+        {
+          this.props.loading &&
+           <Loading />
+        }
           <View style={styles.modal_background}>
             <KeyboardAvoidingView behavior="padding" enabled>
               <View style={styles.modal_container}>
@@ -204,12 +210,14 @@ export const mapStateToProps = (state) => ({
   modalDisplay: state.modalDisplay,
   alcoholInfo: state.alcoholInfo,
   alcohol: state.alcohol,
-  businessItems: state.businessItems
+  businessItems: state.businessItems,
+  loading: state.loading,
 })
 
 export const mapDispatchToProps = (dispatch) => ({
   toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
-  updateBusinessItems: item => dispatch(actions.updateBusinessItems(item))
+  updateBusinessItems: item => dispatch(actions.updateBusinessItems(item)),
+  setLoading: status => dispatch(actions.setLoading(status)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlcoholModal)
