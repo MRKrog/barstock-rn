@@ -15,51 +15,47 @@ export class SubmitOrder extends Component{
   }
 
   submitOrder = async (cost) => {
-    // const items = this.props.cart.map(item => {
-    //   let alcoholInfo = this.props.alcohol.find(alcohol => {
-    //     console.log("inside", alcohol)
-    //     console.log("inside", item)
-    //     return alcohol.id == item.id
-    //   })
-    //   console.log("finish find", alcoholInfo)
-    //   return {...item, price: alcoholInfo.attributes.price }
-    // })
-    // const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
-    // const orderToSend = {
-    //     api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-    //     total_cost: cost.toFixed(2),
-    //     items
-    // }
-    // const options = fetchOptions("POST", orderToSend)
-    //
-    // try {
-    //   const response = await fetch(url, options)
-    //   const data = await response.json()
-    //   await this.resetOrder()
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    const items = this.props.cart.map(item => {
+      let alcoholInfo = this.props.alcohol.find(alcohol => {
+        return alcohol.id == item.id
+      })
+      return {...item, price: alcoholInfo.attributes.price }
+    })
+    const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
+    const orderToSend = {
+        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+        total_cost: cost.toFixed(2),
+        items
+    }
+    const options = fetchOptions("POST", orderToSend)
+    
+    try {
+      const response = await fetch(url, options)
+      const data = await response.json()
+      await this.resetOrder()
+      const updatedData = {type: "order", id: data.data.attributes.id, attributes: {items: items, created_at: data.data.attributes.created_at, id: data.data.attributes.id} }
+      console.log("hello wordl how are you",updatedData)
+      this.props.updatePastOrder(updatedData)
+    } catch (error) {
+      console.log(error);
+    }
 
-      //
-      // const navigateAction = NavigationActions.navigate({
-      //   routeName: route
-      // });
-      // let { routeName } = this.props.navigation.state;
-      // this.props.navigation.closeDrawer();
-      // this.props.navigation.dispatch(navigateAction);
-      //
-      //
-      //
+      
+      const navigateAction = NavigationActions.navigate({
+        routeName: route
+      });
+      let { routeName } = this.props.navigation.state;
+      this.props.navigation.closeDrawer();
+      this.props.navigation.dispatch(navigateAction);
+      
+      
+      
     this.props.navigation.navigate("Finish")
   }
 
   resetOrder = () => {
-    let resetAction = StackActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({ routeName: 'Order' })],
-    });
     this.props.emptyCart()
-    this.props.navigation.dispatch(resetAction);
+    this.props.navigation.navigate('Order');
   }
 
   render(){
@@ -128,6 +124,7 @@ export const mapDispatchToProps = (dispatch) => ({
   addToCart: alcohol => dispatch(actions.addToCart(alcohol)),
   removeFromCart: alcohol => dispatch(actions.removeFromCart(alcohol)),
   emptyCart: data => dispatch(actions.emptyCart(data)),
+  updatePastOrder: order => dispatch(actions.updatePastOrder(order))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitOrder)
