@@ -10,115 +10,171 @@ export default {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.7)",
+
   },
   modal_container: {
     backgroundColor: "#ffffff",
-    height: screenHeight * 0.45,
-    width: screenWidth * 0.8,
-    borderRadius: 5,
-    // padding: 15,
+    width: screenWidth * 0.85,
+    borderRadius: 8,
     display: "flex",
-    justifyContent: "space-between"
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowColor: '#fffff',
+    shadowOffset: { height: 4, width: 0 },
   },
-
   modal_alcInfoContainer: {
-    // flex: 1,
     display: "flex",
     flexDirection: "row",
-    // justifyContent: "space-between"
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderBottomColor: '#ececec',
+    borderBottomWidth: 1,
   },
-
   modal_alcInfo: {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginLeft: 10
   },
-
-  alcInfo_Name: {
-    fontFamily: "Lato",
-    fontSize: 20,
-    textAlign: "left",
+  info_title: {
+    color: "#8e8e8e",
+    fontFamily: "Lato-Light",
     paddingBottom: 3,
+    fontSize: 10,
+    textTransform: "uppercase",
+    fontStyle: "italic"
   },
-  alcInfo_Price: {
+  info_name: {
+    color: "#8e8e8e",
     fontFamily: "Lato-Light",
-    fontSize: 15,
-    textAlign: "left",
-    paddingBottom: 2,
+    fontSize: 25,
+    paddingBottom: 3
   },
-  alcInfo_Size: {
-    fontFamily: "Lato-Light",
-    fontSize: 15,
-    textAlign: "left",
-    paddingBottom: 2,
-  },
-
-  numberContainer: {
+  info_section: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center"
   },
-  itemNumber: {
-    display: "flex"
+  info_cont: {
+    display: "flex",
+    flexDirection: "column",
+    marginRight: 15
   },
-  alcInfo_Margin: {
-    fontFamily: "abel",
-    fontSize: 30,
+  info_label: {
+    color: "#8e8e8e",
+    fontFamily: "Lato-Light",
+    fontSize: 10,
+    textAlign: "left"
+  },
+  info_text: {
+    fontFamily: "Lato-Light",
+    color: "#8e8e8e",
+    fontSize: 18,
+    letterSpacing: .1
+  },
+  info_busTitle: {
+    color: "#8e8e8e",
+    fontFamily: "Lato-Light",
+    paddingBottom: 3,
+    fontSize: 10,
+    textTransform: "uppercase",
+    fontStyle: "italic",
     textAlign: "center",
-    paddingBottom: 2,
+    paddingTop: 10,
   },
-  alcInfo_MarginLabel: {
-    fontFamily: "abel",
-    textAlign: "center",
-    textTransform: "uppercase"
+
+  business_content: {
+    paddingHorizontal: 15,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    borderBottomColor: '#ececec',
+    borderBottomWidth: 1,
   },
 
   inputContainer: {
     display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "center",
-    backgroundColor: "#2c4969",
-    paddingVertical: 10
+    flexDirection: "column",
+    padding: 10,
+    borderRightColor: '#ececec',
+    borderRightWidth: 1,
+    alignItems: "center",
+    alignSelf: "center",
+    flex: 1
   },
   modal_textInputDisplay: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    // marginHorizontal: 20,
-    marginTop: 10
+    paddingVertical: 5
   },
   modal_textInput: {
-    fontSize: 20,
-    fontFamily: "Lato-Light",
+    fontSize: 25,
+    fontFamily: "Lato",
     padding: 5,
-    borderRadius: 3,
-    borderColor: "#C4C4C4",
-    color: "#ffffff",
-    borderWidth: 1,
-
-    // height: 50,
+    borderRadius: 10,
+    color: "#0098de",
+    color: "#8e8e8e",
+    backgroundColor: "#ffffff",
     width: screenWidth * 0.2,
-    // width: 1,
-    textAlign: "center"
+    textAlign: "center",
+    shadowOpacity: 0.2,
+    borderColor: "#EEAD0C",
+    borderWidth: .4,
+    shadowRadius: 3,
+    height: 50,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 2, width: 0 },
   },
   modal_label: {
-    paddingTop: 5,
-    fontSize: 12,
-    color: "#ffffff",
+    marginTop: 5,
+    fontSize: 13,
+    color: "#8e8e8e",
     fontFamily: "Lato-Light",
     textAlign: "center"
   },
 
+
+  numberContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: 'space-between',
+    flex: 1
+  },
+  itemNumber: {
+    display: "flex",
+    marginVertical: 10,
+    // padding: 5,
+    flex: 1,
+  },
+  alcInfo_Margin: {
+    fontFamily: "Lato-Light",
+    color: "#8e8e8e",
+    fontSize: 31,
+    textAlign: "center",
+    // height: 50,
+  },
+  alcInfo_MarginLabel: {
+    fontFamily: "Lato-Light",
+    textAlign: "center",
+    color: "#8e8e8e",
+    fontSize: 13,
+  },
+
+
   modal_button: {
+    marginVertical: 15,
+    marginHorizontal: 15,
     padding: 10,
     borderRadius: 5,
-    backgroundColor: "#EEAD0C"
+    backgroundColor: "#EEAD0C",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowColor: '#fffff',
+    shadowOffset: { height: 2, width: 0 },
   },
   modal_buttonText: {
     fontSize: 22,
@@ -127,6 +183,7 @@ export default {
     textAlign: "center",
     fontFamily: 'abel'
   },
+
 
 
 }

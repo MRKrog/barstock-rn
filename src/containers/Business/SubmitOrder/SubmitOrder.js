@@ -66,7 +66,7 @@ export class SubmitOrder extends Component{
     cartDisplay = cart.map(item => {
       const alcoholInfo = this.props.alcohol.find(alcohol => item.id == alcohol.id)
       return(
-        <View key={item.name} style={styles.item_info} id={item.id}>
+        <View key={item.id} style={styles.item_info} id={item.id}>
           <Text style={styles.item_name} numberOfLines={1}>{alcoholInfo.attributes.name}</Text>
           <Text style={styles.item_unit}>x{item.quantity}</Text>
           <Text style={styles.item_cost}>${(alcoholInfo.attributes.price * item.quantity).toFixed(2)}</Text>
