@@ -15,33 +15,42 @@ export class SubmitOrder extends Component{
   }
 
   submitOrder = async (cost) => {
-    const items = this.props.cart.map(item => {
-      let alcoholInfo = this.props.alcohol.find(alcohol => {
-        console.log("inside", alcohol)
-        console.log("inside", item)
-        return alcohol.id == item.id
-      })
-      console.log("finish find", alcoholInfo)
-      return {...item, price: alcoholInfo.attributes.price }
-    })
-    const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
-    const orderToSend = {
-        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-        total_cost: cost.toFixed(2),
-        items
-    }
-    const options = fetchOptions("POST", orderToSend)
+    // const items = this.props.cart.map(item => {
+    //   let alcoholInfo = this.props.alcohol.find(alcohol => {
+    //     console.log("inside", alcohol)
+    //     console.log("inside", item)
+    //     return alcohol.id == item.id
+    //   })
+    //   console.log("finish find", alcoholInfo)
+    //   return {...item, price: alcoholInfo.attributes.price }
+    // })
+    // const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
+    // const orderToSend = {
+    //     api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+    //     total_cost: cost.toFixed(2),
+    //     items
+    // }
+    // const options = fetchOptions("POST", orderToSend)
+    //
+    // try {
+    //   const response = await fetch(url, options)
+    //   const data = await response.json()
+    //   await this.resetOrder()
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
-    try {
-      const response = await fetch(url, options)
-      const data = await response.json()
-      await this.resetOrder()
-    } catch (error) {
-      console.log(error);
-    }
-
-
-
+      //
+      // const navigateAction = NavigationActions.navigate({
+      //   routeName: route
+      // });
+      // let { routeName } = this.props.navigation.state;
+      // this.props.navigation.closeDrawer();
+      // this.props.navigation.dispatch(navigateAction);
+      //
+      //
+      //
+    this.props.navigation.navigate("Finish")
   }
 
   resetOrder = () => {

@@ -80,12 +80,12 @@ export const mapStateToProps = (state) => ({
   businessItems: state.businessItems,
   modalDisplay: state.modalDisplay,
   cart: state.cart,
-  alcohol: state.alcohol
+  alcohol: state.alcohol,
 })
 
 export const mapDispatchToProps = (dispatch) => ({
   toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
-  setAlcoholInfo: info => dispatch(actions.setAlcoholInfo(info))
+  setAlcoholInfo: info => dispatch(actions.setAlcoholInfo(info)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarInventory)

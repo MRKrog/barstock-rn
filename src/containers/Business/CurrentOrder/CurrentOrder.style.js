@@ -22,7 +22,7 @@ export default {
     padding: 10,
   },
   cart_items: {
-    height: screenHeight * 0.6,
+    height: screenHeight * 0.57,
     backgroundColor: "#ffffff",
   },
   cart_header: {
@@ -130,7 +130,7 @@ export default {
     shadowRadius: 3,
     shadowColor: '#231f20',
     shadowOffset: { height: 3, width: 0 },
-    zIndex: 9
+    zIndex: 9,
   },
   cart_potential: {
     flex: 1,

@@ -36,7 +36,7 @@ export default {
   },
   item_price: {
     color: "#adadad",
-    fontFamily: "Raleway-Light",
+    fontFamily: "Lato-Light",
     fontSize: 15
   },
   item_action: {
@@ -68,6 +68,12 @@ export default {
     backgroundColor: "#0098de",
     borderRadius: 2,
     padding: 5
+  },
+  editBtn: {
+    backgroundColor: "#0098de",
+    borderRadius: 5,
+    padding: 5,
+    paddingRight:2
   },
   quantityText: {
     color: "#adadad",

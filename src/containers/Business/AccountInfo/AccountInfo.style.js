@@ -33,28 +33,26 @@ export default {
     shadowOpacity: 0.3,
     shadowRadius: 3,
     shadowColor: '#231f20',
-    shadowOffset: { height: 4, width: 0 },
+    // shadowOffset: { height: 4, width: 0 },
   },
   info_section: {
     display: "flex",
     flexDirection: "column",
-    margin: 10,
-    borderBottomColor: "#464646",
-    borderBottomWidth: 1
   },
   info_text: {
-    margin: 5,
-    fontSize: 20,
+    fontSize: 17,
     fontFamily: "Lato-Light",
     color: "#464646",
-    paddingBottom: 5
+    paddingBottom: 10,
+    marginLeft: 10
   },
   info_title: {
-    margin: 5,
-    fontSize: 20,
+    paddingVertical: 5,
+    paddingLeft: 10,
+    marginBottom: 5,
+    fontSize: 18,
     fontFamily: "Lato-Regular",
-    color: "#464646",
-    paddingBottom: 5,
-    textDecorationLine: "underline"
+    color: "#8e8e8e",
+    backgroundColor: "#E8E8E8"
   }
 }
