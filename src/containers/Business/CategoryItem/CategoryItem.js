@@ -53,6 +53,7 @@ export class CategoryItem extends Component {
         </View>
 
         <View style={styles.item_action}>
+        {  !this.props.businessItems.find(item => id == item.id)? <TouchableOpacity><Text>hello</Text></TouchableOpacity> : 
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
               <Icon raised name='minus' color='#ffffff' size={18} />
@@ -62,6 +63,7 @@ export class CategoryItem extends Component {
               <Icon raised name='plus' color='#ffffff' size={18} />
             </TouchableOpacity>
           </View>
+          }
         </View>
       </View>
     )
@@ -70,6 +72,7 @@ export class CategoryItem extends Component {
 
 export const mapStateToProps = (state) => ({
   cart: state.cart,
+  businessItems: state.businessItems
 })
 
 export const mapDispatchToProps = (dispatch) => ({

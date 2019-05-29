@@ -17,7 +17,7 @@ class OrderContainer extends Component{
 
   render(){
     return(
-      <Swiper index={0} loop={false}>
+      <Swiper index={this.props.swiperIndex} loop={false}>
         <DistributorInventory />
         <CurrentOrder navigation={this.props.navigation} />
       </Swiper>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
 export const mapStateToProps = (state) => ({
   alcohol: state.alcohol,
   loading: state.loading,
+  swiperIndex: state.swiperIndex
 })
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -22,6 +22,7 @@ export class PastOrderCard extends Component{
   addToCart = () => {
     const { items } = this.props.order.attributes
     this.props.reOrder(items)
+    this.props.swiperIndex(1)
     this.props.navigation.navigate("Order")
   }
 
@@ -45,7 +46,7 @@ export class PastOrderCard extends Component{
       )
     })
     return(
-      <View>
+      <View style={styles.order_cardContainer}>
         <TouchableOpacity onPress={this.toggle} style={styles.order_btn}>
           <Text style={styles.order_title}>hello</Text>
         </TouchableOpacity>
@@ -70,7 +71,8 @@ export class PastOrderCard extends Component{
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  reOrder: order => dispatch(actions.reOrder(order))
+  reOrder: order => dispatch(actions.reOrder(order)),
+  swiperIndex: index => dispatch(actions.swiperIndex(index))
 })
 
 export const mapStateToProps = (state) => ({

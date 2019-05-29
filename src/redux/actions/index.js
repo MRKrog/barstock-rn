@@ -78,3 +78,13 @@ export const reOrder = order => ({
   type: "RE_ORDER",
   order
 })
+
+export const setBusinessInfo = info => ({
+  type: "SET_BUSINESS_INFO",
+  info
+})
+
+export const swiperIndex = index => ({
+  type: "CHANGE_INDEX",
+  index
+})

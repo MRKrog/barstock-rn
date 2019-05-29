@@ -1,7 +1,8 @@
 import * as actions from '../actions/index';
 import { fetchData } from '../../utility/fetchData';
-import { fetchBusinessItems } from "./fetchBusinessItems"
-import { fetchPastOrders } from "./fetchPastOrders"
+import { fetchBusinessItems } from "./fetchBusinessItems";
+import { fetchPastOrders } from "./fetchPastOrders";
+import { fetchBusinessInfo } from "./fetchBusinessInfo";
 
 export const fetchAllItems = () => {
   return async (dispatch) => {
@@ -11,6 +12,7 @@ export const fetchAllItems = () => {
       dispatch(actions.setAlcohol(response.data));
       await dispatch(fetchBusinessItems())
       await dispatch(fetchPastOrders())
+      await dispatch(fetchBusinessInfo())
     } catch (error) {
       console.log(error.message);
     }

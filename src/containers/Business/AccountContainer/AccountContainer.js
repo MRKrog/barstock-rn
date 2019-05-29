@@ -2,14 +2,15 @@ import React, { Component } from "react"
 import Swiper from "react-native-swiper"
 import AccountInfo from "../AccountInfo/AccountInfo"
 import BarInventory from "../BarInventory/BarInventory"
-import { View, Text, ImageBackground, Dimensions, StyleSheet } from "react-native"
+import { View, Text, ImageBackground, Dimensions, StyleSheet, LayoutAnimation } from "react-native"
 import PastOrders from "../PastOrders/PastOrders";
+import { connect } from "react-redux"
 
-export default class AccountContainer extends Component{
+export class AccountContainer extends Component{
   render(){
     return(
       <ImageBackground source={require('../../../../assets/bg.png')} style={styles.backgroundImage}>
-        <Swiper index={0} loop={false}>
+        <Swiper index={this.props.swiperIndex} loop={false}>
           <AccountInfo />
           <BarInventory />
           <PastOrders navigation={this.props.navigation} />
@@ -40,3 +41,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
+
+export const mapStateToProps = (state) => ({
+  swiperIndex: state.swiperIndex
+})
+
+export default connect(mapStateToProps)(AccountContainer)

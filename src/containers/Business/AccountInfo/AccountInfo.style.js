@@ -36,15 +36,25 @@ export default {
     shadowOffset: { height: 4, width: 0 },
   },
   info_section: {
+    display: "flex",
+    flexDirection: "column",
     margin: 10,
     borderBottomColor: "#464646",
     borderBottomWidth: 1
   },
   info_text: {
-    textAlign: "left",
+    margin: 5,
     fontSize: 20,
     fontFamily: "Lato-Light",
     color: "#464646",
     paddingBottom: 5
+  },
+  info_title: {
+    margin: 5,
+    fontSize: 20,
+    fontFamily: "Lato-Regular",
+    color: "#464646",
+    paddingBottom: 5,
+    textDecorationLine: "underline"
   }
 }

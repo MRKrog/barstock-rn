@@ -5,16 +5,19 @@ import call from 'react-native-phone-call';
 import email from 'react-native-email';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
+import { connect } from "react-redux"
+import * as actions from "../../../redux/actions"
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 class SideMenu extends Component {
-  navigateToScreen = (route) => () => {
+  navigateToScreen = (route ,index) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route
     });
     let { routeName } = this.props.navigation.state;
-
+    this.props.navigation.closeDrawer();
     this.props.navigation.dispatch(navigateAction);
+    this.props.swiperIndex(index);
   }
 
   makeCall = (number) => {
@@ -41,27 +44,27 @@ class SideMenu extends Component {
         <View>
           <Text style={styles.sectionHeadingStyle}></Text>
           <View style={styles.navSectionStyle}>
-            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Account')}>
+            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Account', 0)}>
               <Icon name='user-circle' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Account Info</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Order')}>
+            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Order', 0)}>
               <Icon name='shopping-cart' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Inventory</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('BarInventory')}>
+            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('BarInventory', 1)}>
               <Icon name='edit' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Bar Items</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('PastOrders')}>
+            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('PastOrders', 2)}>
               <Icon name='history' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Past Orders</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Login')}>
+            <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Login', 0)}>
               <Icon name='sign-out' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Logout</Text>
             </TouchableOpacity>
@@ -86,4 +89,8 @@ SideMenu.propTypes = {
   navigation: PropTypes.object
 };
 
-export default SideMenu;
+export const mapDispatchToProps = (dispatch) => ({
+  swiperIndex: index => dispatch(actions.swiperIndex(index))
+})
+
+export default connect(null, mapDispatchToProps)(SideMenu);

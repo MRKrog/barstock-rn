@@ -7,7 +7,9 @@ import { businessItemsReducer } from "./businessItemsReducer";
 import { modalReducer } from "./modalReducer";
 import { alcoholInfoReducer } from "./alcoholInfoReducer"
 import { categorySelectedReducer } from "./categorySelectedReducer";
-import { pastOrderReducer } from "./pastOrderReducer"
+import { pastOrderReducer } from "./pastOrderReducer";
+import { businessInfoReducer } from "./businessInfoReducer";
+import { swiperReducer } from "./swiperReducer";
 
 export const rootReducer = combineReducers({
   loading: loadingReducer,
@@ -18,5 +20,7 @@ export const rootReducer = combineReducers({
   modalDisplay: modalReducer,
   alcoholInfo: alcoholInfoReducer,
   selectedCategory: categorySelectedReducer,
-  pastOrder: pastOrderReducer
+  pastOrder: pastOrderReducer,
+  businessInfo: businessInfoReducer,
+  swiperIndex: swiperReducer
 })

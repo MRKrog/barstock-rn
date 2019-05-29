@@ -59,11 +59,11 @@ const header = ({ navigation }) => {
 }
 
 const MainApp = createStackNavigator({
-    Order: { screen: HomeScreen },
-    SubmitOrder: { screen: SubmitOrder },
-    Account: { screen: AccountContainer },
-    BarInventory: {screen: BarInventory},
-    PastOrders: {screen: PastOrders},
+  Order: { screen: HomeScreen },
+  SubmitOrder: { screen: SubmitOrder },
+  Account: { screen: AccountContainer },
+  BarInventory: {screen: AccountContainer},
+  PastOrders: {screen: AccountContainer},
   },{
     initialRouteName: 'Order',
     defaultNavigationOptions: header
