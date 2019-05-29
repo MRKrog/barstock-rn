@@ -10,7 +10,7 @@ class PastOrders extends Component{
     console.log("hello im the past order", this.props.pastOrder)
     let pastOrder = this.props.pastOrder.map(order => {
       return(
-        <PastOrderCard order={order} navigation={this.props.navigation} />
+        <PastOrderCard order={order} navigation={this.props.navigation} key={order.id} />
       )
     })
     return(

@@ -106,7 +106,7 @@ export class CurrentOrder extends Component {
     let totalReturn = this.getTotalReturn()
 
     cartDisplay = this.props.cart.map(item => {
-      
+
       const alcoholInfo = this.props.alcohol.find(alcohol => {
         return alcohol.id == item.id
       })
@@ -128,7 +128,7 @@ export class CurrentOrder extends Component {
         }
       ]
       return(
-        <Swipeout key={alcoholInfo.name} right={swipeoutBtns} autoClose={true} buttonWidth={50} sensitivity={60}>
+        <Swipeout key={alcoholInfo.id} right={swipeoutBtns} autoClose={true} buttonWidth={50} sensitivity={60}>
           <View style={[styles.item_info, marginColor, styles.listItem]} id={alcoholInfo.id}>
             <Text style={styles.item_name} numberOfLines={1}>{alcoholInfo.attributes.name}</Text>
             <Text style={styles.item_unit}>{item.quantity} x {itemType}</Text>
