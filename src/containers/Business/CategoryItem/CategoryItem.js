@@ -69,7 +69,6 @@ export class CategoryItem extends Component {
           <TouchableOpacity onPress={() => this.toggleModal(id)}>
             <Text>hello</Text>
           </TouchableOpacity> :
-
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
               <Icon raised name='minus' color='#ffffff' size={18} />

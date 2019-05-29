@@ -32,7 +32,7 @@ export class PastOrderCard extends Component{
         return alcohol.id == item.id
       })
       return(
-        <View style={styles.order_item} key={item.id}>
+        <View key={item.id} style={styles.order_item}>
           <Text style={styles.order_name}>
             {itemInfo.attributes.name}
           </Text>
@@ -45,10 +45,12 @@ export class PastOrderCard extends Component{
         </View>
       )
     })
+    let date = new Date(this.props.order.attributes.created_at)
+    
     return(
       <View style={styles.order_cardContainer}>
         <TouchableOpacity onPress={this.toggle} style={styles.order_btn}>
-          <Text style={styles.order_title}>hello</Text>
+          <Text style={styles.order_title}>{date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()}</Text>
         </TouchableOpacity>
         <View style={[{ height: this.state.open ? null : 0, overflow: 'hidden' }]}>
           <View style={styles.order_header}>
@@ -56,7 +58,7 @@ export class PastOrderCard extends Component{
             <Text style={styles.order_rowTwo}>Quantity</Text>
             <Text style={styles.order_rowThree}>Price</Text>
           </View>
-          <ScrollView>
+          <ScrollView style={styles.order_itemsContainer}>
               {
                 orderItems
               }
