@@ -99,5 +99,9 @@ export default {
     fontSize: 13,
     fontFamily: 'Lato-Light',
     color: "#000000"
+  },
+  order_cardContainer: {
+    marginLeft: 10,
+    marginRight: 10,
   }
 };

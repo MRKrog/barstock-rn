@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ImageBackground, ScrollView, TouchableOpacity } from "react-native";
 import { StackActions, NavigationActions } from 'react-navigation';
 import Footer from "../../../components/Footer/Footer";
 import * as actions from "../../../redux/actions";
@@ -15,29 +15,26 @@ export class SubmitOrder extends Component{
   }
 
   submitOrder = async (cost) => {
-
-    // Create Order fetch end point
-    const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
-    let submitPrice = this.props.cart.map(item => {
+    const items = this.props.cart.map(item => {
       let alcoholInfo = this.props.alcohol.find(alcohol => {
-        console.log(alcoholInfo)
-        return item.id === alcohol.id
+        console.log("inside", alcohol)
+        console.log("inside", item)
+        return alcohol.id == item.id
       })
-      return {...item, price: alcoholInfo.attributes.price}
+      console.log("finish find", alcoholInfo)
+      return {...item, price: alcoholInfo.attributes.price }
     })
+    const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
     const orderToSend = {
         api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
         total_cost: cost.toFixed(2),
-        items: this.props.cart
+        items
     }
-    console.log("a;lkdfjalksjdfl;akdjflkasjdf;lj ",orderToSend)
     const options = fetchOptions("POST", orderToSend)
 
     try {
       const response = await fetch(url, options)
       const data = await response.json()
-      console.log(data)
-      console.log("im in the fetch")
       await this.resetOrder()
     } catch (error) {
       console.log(error);
@@ -58,7 +55,6 @@ export class SubmitOrder extends Component{
 
   render(){
     const { cart, alcohol } = this.props;
-    console.log("hello world im the cart in the submit",cart)
     let cartDisplay;
 
     let totalCost = generateCost(cart, alcohol)
@@ -101,7 +97,7 @@ export class SubmitOrder extends Component{
               <TouchableOpacity style={styles.cart_backButton} onPress={this.goBack}>
                 <Text style={styles.cart_checkoutText}>Back</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => this.submitOrder(totalCost)}>
+              <TouchableOpacity style={styles.cart_checkoutButton} onPress={() => {this.submitOrder(totalCost)}}>
                 <Text style={styles.cart_checkoutText}>Submit Order</Text>
               </TouchableOpacity>
             </View>

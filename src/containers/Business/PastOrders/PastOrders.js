@@ -7,7 +7,6 @@ import { connect } from "react-redux"
 
 class PastOrders extends Component{
   render(){
-    console.log("hello im the past order", this.props.pastOrder)
     let pastOrder = this.props.pastOrder.map(order => {
       return(
         <PastOrderCard order={order} navigation={this.props.navigation} />
