@@ -13,8 +13,10 @@ class ThankYou extends Component {
     return (
       <View style={styles.MainDisplay}>
         <ImageBackground source={require('../../../../assets/order_bg.jpg')} style={styles.backgroundImage}>
-          <Text>Your Order Has Been Placed!</Text>
-          <TouchableOpacity onPress={this.goHome}><Text>Home</Text></TouchableOpacity>
+          <Text style={styles.textTitle}>Your Order Has Been Placed!</Text>
+          <TouchableOpacity onPress={this.goHome} style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Home</Text>
+          </TouchableOpacity>
         </ImageBackground>
       </View>
     );
@@ -41,6 +43,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  textTitle: {
+    color: "#ffffff",
+    fontSize: 30,
+    fontFamily: "Lato"
+  },
+  buttonContainer: {
+    backgroundColor: "#EEAD0C",
+
+    borderRadius: 5,
+    marginVertical: 20,
+    marginRight: 15,
+    marginLeft: 15,
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowColor: '#231f20',
+    shadowOffset: { height: 1, width: 0 }
+  },
+  buttonText: {
+    fontSize: 22,
+    textTransform: "uppercase",
+    color: "#ffffff",
+    fontFamily: 'abel',
+    paddingVertical: 10,
+  }
 })
 
 export default ThankYou
