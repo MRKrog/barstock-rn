@@ -21,8 +21,7 @@ export class AlcoholModal extends Component {
 
   componentDidMount(){
     const { id, attributes } = this.props.alcoholInfo
-    let itemExists = this.props.businessItems.find(item => item.id == id)
-    console.log('itemExists', itemExists);
+    let itemExists = this.props.businessItems.find(item => item.attributes.item_id == id)
     if(id && itemExists){
       this.setState({
         id,
@@ -43,9 +42,8 @@ export class AlcoholModal extends Component {
 
   updateItem = async () => {
     const { id } = this.props.alcoholInfo
-    console.log('INFO YO', this.props.alcoholInfo);
     const { price, servingSize, inStock} = this.state;
-    this.props.setLoading(true)
+    // this.props.setLoading(true)
     if(this.state.create) {
       const url = `https://barstock-backend.herokuapp.com/api/v1/business_items`;
       const itemNew = {
@@ -61,7 +59,7 @@ export class AlcoholModal extends Component {
       try {
         const response = await fetch(url, options)
         const data = await response.json()
-        this.props.updateBusinessItems(data.data)
+        this.props.addBusinessItems(data.data)
       } catch (error) {
         console.log(error);
       }
@@ -86,7 +84,7 @@ export class AlcoholModal extends Component {
       } catch (error) {
         console.log(error);
       }
-      this.props.setLoading(false)
+      // this.props.setLoading(false)
       this.props.toggleModalDisplay(false)
 
     }
@@ -120,10 +118,6 @@ export class AlcoholModal extends Component {
     return (
       <Modal visible={this.props.modalDisplay}
       transparent={true}>
-        {
-          this.props.loading &&
-           <Loading />
-        }
           <View style={styles.modal_background}>
             <KeyboardAvoidingView behavior="padding" enabled>
               <View style={styles.modal_container}>
@@ -217,6 +211,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
   updateBusinessItems: item => dispatch(actions.updateBusinessItems(item)),
+  addBusinessItems: bussItem => dispatch(actions.addBusinessItems(bussItem)),
   setLoading: status => dispatch(actions.setLoading(status)),
 })
 

@@ -189,7 +189,6 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   removeCartGroup: id => dispatch(actions.removeCartGroup(id)),
-  updateOrder: data => dispatch(actions.updateOrder(data)),
   toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
   setAlcoholInfo: info => dispatch(actions.setAlcoholInfo(info))
 })

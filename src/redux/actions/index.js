@@ -28,8 +28,8 @@ export const removeCartGroup = id => ({
   id
 })
 
-export const updateOrder = order => ({
-  type: "UPDATE_ORDER",
+export const setOrder = order => ({
+  type: "SET_ORDER",
   order
 })
 
@@ -87,4 +87,9 @@ export const setBusinessInfo = info => ({
 export const swiperIndex = index => ({
   type: "CHANGE_INDEX",
   index
+})
+
+export const updatePastOrder = order => ({
+  type: "UPDATE_PAST_ORDER",
+  order
 })
