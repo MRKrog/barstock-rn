@@ -3,7 +3,10 @@ export const businessItemsReducer = (state = [], action) => {
     case "SET_BUSINESS_ITEMS":
       return action.businessItems;
     case "ADD_BUSINESS_ITEM":
-      return [...state, action.businessItems];
+      console.log("hello world", action.businessItems)
+      let updateBusinessItems = [...state, action.businessItems];
+      console.log(updateBusinessItems)
+      return updateBusinessItems
     case "UPDATE_BUSINESS_ITEM":
       const updatedBusinessItems = state.map(item => {
         if(item.id == action.businessItems.id) {

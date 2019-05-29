@@ -49,7 +49,7 @@ export class CategoryItem extends Component {
       }
     })
 
-    console.log('bizIt' ,this.props.businessItems);
+    const checkAlcohol = this.props.businessItems.find(item => id == item.attributes.item_id)
     return(
       <View style={category_item}>
         <View style={styles.item_info}>
@@ -66,7 +66,7 @@ export class CategoryItem extends Component {
 
         <View style={styles.item_action}>
         {
-          !this.props.businessItems.find(item => id == item.id) ?
+          !checkAlcohol ?
 
           <TouchableOpacity onPress={() => this.toggleModal(id)} style={styles.editBtn}>
             <Icon raised name='edit' color='#ffffff' size={18} />
