@@ -32,7 +32,7 @@ export class PastOrderCard extends Component{
         return alcohol.id == item.id
       })
       return(
-        <View style={styles.order_item}>
+        <View style={styles.order_item} key={item.id}>
           <Text style={styles.order_name}>
             {itemInfo.attributes.name}
           </Text>
@@ -40,7 +40,7 @@ export class PastOrderCard extends Component{
             {item.quantity}
           </Text>
           <Text style={styles.order_price}>
-            ${itemInfo.attributes.price * item.quantity} 
+            ${itemInfo.attributes.price * item.quantity}
           </Text>
         </View>
       )

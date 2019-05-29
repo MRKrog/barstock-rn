@@ -111,7 +111,7 @@ export class CurrentOrder extends Component {
         return alcohol.id == item.id
       })
 
-      let itemType = this.findType(alcoholInfo.attributes.alc_type, alcoholInfo)
+      let itemType = this.findType(alcoholInfo.attributes.alc_type, item.quantity)
       let itemProfit = this.getSingleReturn(alcoholInfo, item)
       let itemMargin = this.getSingleMargin(alcoholInfo)
       let marginColor = this.getRowColor(itemMargin)

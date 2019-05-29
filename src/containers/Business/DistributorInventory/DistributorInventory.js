@@ -70,9 +70,9 @@ export class DistributorInventory extends Component{
                             changeType={this.changeAlcoholType}
             />
           </View>
-          <View style={styles.alc_catSection}>
+          <ScrollView style={styles.alc_catSection}>
             { category }
-          </View>
+          </ScrollView>
         </View>
         <Footer />
       </View>
