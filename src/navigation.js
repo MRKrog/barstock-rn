@@ -112,7 +112,6 @@ const headerDistributor = ({ navigation }) => {
   };
 }
 
-
 const DistributorApp = createStackNavigator({
     Inventory: { screen: Inventory },
   },
@@ -129,14 +128,6 @@ const DistributorDrawer = createDrawerNavigator({
   contentComponent: DistSideMenu,
   drawerWidth: 200,
 });
-
-// const ThankYouApp = createStackNavigator({
-//     ThankYou: { screen: ThankYou },
-//   },
-//   {
-//     initialRouteName: 'ThankYou'
-//   }
-// );
 
 export const AppConatiner = createAppContainer(
   createSwitchNavigator({

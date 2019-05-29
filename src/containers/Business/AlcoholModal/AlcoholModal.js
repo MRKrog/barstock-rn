@@ -45,7 +45,7 @@ export class AlcoholModal extends Component {
     const { id } = this.props.alcoholInfo
     console.log('INFO YO', this.props.alcoholInfo);
     const { price, servingSize, inStock} = this.state;
-    this.props.setLoading(true)
+    
     if(this.state.create) {
       const url = `https://barstock-backend.herokuapp.com/api/v1/business_items`;
       const itemNew = {
@@ -86,7 +86,7 @@ export class AlcoholModal extends Component {
       } catch (error) {
         console.log(error);
       }
-      this.props.setLoading(false)
+
       this.props.toggleModalDisplay(false)
 
     }
@@ -120,10 +120,6 @@ export class AlcoholModal extends Component {
     return (
       <Modal visible={this.props.modalDisplay}
       transparent={true}>
-        {
-          this.props.loading &&
-           <Loading />
-        }
           <View style={styles.modal_background}>
             <KeyboardAvoidingView behavior="padding" enabled>
               <View style={styles.modal_container}>
