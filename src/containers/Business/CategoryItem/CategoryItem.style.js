@@ -78,5 +78,15 @@ export default {
   },
   textinvalid: {
     opacity: .5
+  },
+  item_addBtn: {
+    backgroundColor: "#0098de",
+    borderRadius: 2,
+    padding: 10
+  },
+  item_addText: {
+    fontSize: 20,
+    color: "#ffffff",
+    fontFamily: "raleway",
   }
 };

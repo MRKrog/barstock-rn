@@ -53,7 +53,7 @@ export class CategoryItem extends Component {
         </View>
 
         <View style={styles.item_action}>
-        {  !this.props.businessItems.find(item => id == item.id)? <TouchableOpacity><Text>hello</Text></TouchableOpacity> : 
+        {  !this.props.businessItems.find(item => id == item.id)? <TouchableOpacity style={styles.item_addBtn}><Text style={styles.item_addText}>Add</Text></TouchableOpacity> : 
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
               <Icon raised name='minus' color='#ffffff' size={18} />
