@@ -12,7 +12,8 @@ export default {
     padding: 10,
     borderBottomColor: '#ececec',
     borderBottomWidth: 1,
-    height: 60
+    height: 60,
+    flex: 1,
   },
   item_info: {
     display: 'flex',
@@ -30,7 +31,8 @@ export default {
     color: "#11212a",
     fontFamily: "Lato-Light",
     fontSize: 16,
-    paddingBottom: 3
+    paddingBottom: 3,
+    width: 150
   },
   item_price: {
     color: "#adadad",

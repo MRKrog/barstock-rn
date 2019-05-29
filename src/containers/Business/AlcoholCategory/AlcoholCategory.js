@@ -25,7 +25,7 @@ export class AlcoholCategory extends Component{
   render(){
     const alcohol = this.props.info.map(alcohol => {
       return (
-        <CategoryItem alcohol={alcohol} key={alcohol.name}/>
+        <CategoryItem info={alcohol} key={alcohol.name}/>
       )
     })
 

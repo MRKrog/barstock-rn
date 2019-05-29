@@ -15,43 +15,81 @@ export class AlcoholModal extends Component {
         price: 0,
         servingSize: 0,
         inStock: 0,
+        create: false
     }
   }
 
   componentDidMount(){
     const { id, attributes } = this.props.alcoholInfo
-    if(id){
+    let itemExists = this.props.businessItems.find(item => item.id == id)
+    console.log('itemExists', itemExists);
+    if(id && itemExists){
       this.setState({
         id,
         price: attributes.price_sold,
         servingSize: attributes.serving_size,
         inStock: attributes.quantity
       })
+    } else {
+      this.setState({
+        id,
+        price: 0,
+        servingSize: 0,
+        inStock: 0,
+        create: true
+      })
     }
   }
 
   updateItem = async () => {
     const { id } = this.props.alcoholInfo
+    console.log('INFO YO', this.props.alcoholInfo);
     const { price, servingSize, inStock} = this.state
-    const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${id}`
-    const itemNew = {
-      api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-      price_sold: price,
-      quantity: inStock,
-      serving_size: servingSize
-    }
+    if(this.state.create) {
+      const url = `https://barstock-backend.herokuapp.com/api/v1/business_items`;
+      const itemNew = {
+        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+        price_sold: price,
+        quantity: inStock,
+        serving_size: servingSize,
+        item_id: id
+      }
 
-    const options = fetchOptions("PATCH", itemNew)
+      const options = fetchOptions("POST", itemNew)
 
-    try {
-      const response = await fetch(url, options)
-      const data = await response.json()
-      this.props.updateBusinessItems(data.data)
-    } catch (error) {
-      console.log(error);
+      try {
+        const response = await fetch(url, options)
+        const data = await response.json()
+        this.props.updateBusinessItems(data.data)
+      } catch (error) {
+        console.log(error);
+      }
+
+      this.props.toggleModalDisplay(false)
+
+    } else {
+      const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${id}`
+      const itemNew = {
+        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+        price_sold: price,
+        quantity: inStock,
+        serving_size: servingSize
+      }
+
+      const options = fetchOptions("PATCH", itemNew)
+
+      try {
+        const response = await fetch(url, options)
+        const data = await response.json()
+        this.props.updateBusinessItems(data.data)
+      } catch (error) {
+        console.log(error);
+      }
+      this.props.toggleModalDisplay(false)
+
     }
-    this.props.toggleModalDisplay(false)
   }
+
 
   render(){
     const { alcohol } = this.props;
@@ -72,6 +110,9 @@ export class AlcoholModal extends Component {
     }
     if(itemMarkUp == -100 || isNaN(itemMarkUp)){
       itemMarkUp = 0
+    }
+    if(itemProfit == -100 || isNaN(itemProfit)){
+      itemProfit = 0
     }
 
     return (
@@ -162,7 +203,8 @@ export class AlcoholModal extends Component {
 export const mapStateToProps = (state) => ({
   modalDisplay: state.modalDisplay,
   alcoholInfo: state.alcoholInfo,
-  alcohol: state.alcohol
+  alcohol: state.alcohol,
+  businessItems: state.businessItems
 })
 
 export const mapDispatchToProps = (dispatch) => ({
