@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions';
 import DistributorInventory from "../DistributorInventory/DistributorInventory"
 
-class Inventory extends Component {
+export class Inventory extends Component {
   constructor() {
     super()
     this.state = {
