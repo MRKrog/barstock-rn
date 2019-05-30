@@ -38,6 +38,7 @@ export default {
     justifyContent: "center",
     marginLeft: 10
   },
+  
   info_title: {
     color: "#8e8e8e",
     fontFamily: "Lato-Light",
@@ -135,8 +136,6 @@ export default {
     fontFamily: "Lato-Light",
     textAlign: "center"
   },
-
-
   numberContainer: {
     display: "flex",
     flexDirection: "column",
@@ -163,8 +162,6 @@ export default {
     color: "#8e8e8e",
     fontSize: 13,
   },
-
-
   modal_button: {
     marginVertical: 15,
     marginHorizontal: 15,

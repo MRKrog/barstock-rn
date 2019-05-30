@@ -136,10 +136,10 @@ export default {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#A8A8A8",
+    backgroundColor: "#2c4969",
   },
   cart_potentialText: {
-    color: "#696969",
+    color: "#ffffff",
     fontFamily: 'Lato-Light',
     fontSize: 18
   },

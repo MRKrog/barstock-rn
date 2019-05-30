@@ -106,7 +106,7 @@ export class AlcoholModal extends Component {
     if(itemMargin == -Infinity || isNaN(itemMargin)){
       itemMargin = 0
     }
-    if(itemMarkUp == -100 || isNaN(itemMarkUp)){
+    if(itemMarkUp == -100 || isNaN(itemMarkUp) || -Infinity){
       itemMarkUp = 0
     }
     if(itemProfit == -100 || isNaN(itemProfit)){

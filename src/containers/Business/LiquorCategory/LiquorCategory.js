@@ -3,7 +3,7 @@ import styles from './LiquorCategory.style';
 import { TouchableOpacity, ScrollView, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import { Icon } from 'native-base';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 export class LiquorCategory extends Component{
   constructor(){
@@ -27,17 +27,20 @@ export class LiquorCategory extends Component{
       return (
         <TouchableOpacity onPress={() => this.changeTypeLayout(type)} key={type} style={styles.alc_typeContainer}>
           <Text style={styles.alc_types}>
-          <Icon name='beer' color='#ffffff' size={20} style={styles.iconStyle} />
-          {type.toUpperCase()}
+            {type.toUpperCase()}
           </Text>
         </TouchableOpacity>
       )
     })
 
     let expandedStyles;
+    let iconDisplay;
+
     if(this.state.expanded === true){
+      iconDisplay = <Icon name='minus' color='#ffffff' size={20} style={styles.iconStyle}/>
       expandedStyles = styles.expandedTrue
     } else {
+      iconDisplay = <Icon name='plus' color='#ffffff' size={20} style={styles.iconStyle} />
       expandedStyles = styles.expandedFalse
     }
 
@@ -47,6 +50,7 @@ export class LiquorCategory extends Component{
           <Text style={styles.alc_typeTitle}>
             {this.props.currentType}
           </Text>
+            { iconDisplay }
         </TouchableOpacity>
         <ScrollView style={styles.alc_typeContainer}>
           <View style={[expandedStyles, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}>

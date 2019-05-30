@@ -8,8 +8,17 @@ export default {
     backgroundColor: "#11212A",
     padding: 10,
     borderRadius: 5,
-    marginTop: 10
+    marginTop: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
+  iconContainer: {
+    position: "absolute",
+    right: 15
+  },
+
   alc_catContainer: {
     shadowOpacity: 0.3,
     shadowRadius: 3,
@@ -24,7 +33,7 @@ export default {
     fontFamily: 'abel',
     textAlign: "center",
     color: "#ffffff",
-    letterSpacing: 1
+    letterSpacing: 1,
   },
   alc_catInventory: {
     backgroundColor: "#fff"
