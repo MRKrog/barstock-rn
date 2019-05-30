@@ -12,11 +12,11 @@ BarStock utilizes React Native, Redux, Jest, and Enzyme, and communicates with t
 <!-- #### [**_Utilizes BarStock Back-End in Production_**](https://barstock-backend.herokuapp.com) -->
 
 ## Schema
-![Alt text](./public/images/schema.png?raw=true "Database Schema")
+![Alt text](https://github.com/MRKrog/barstock_backend/raw/master/public/images/schema.png?raw=true "Database Schema")
 
 ## Available Endpoints
 All available endpoints have been documented on [Swagger](https://app.swaggerhub.com/apis-docs/BarStock/BarStockBackEnd/1.0.0).
-![Alt text](./public/images/swagger_endpoints.png?raw=true "Endpoint Documentation")
+![Alt text](https://github.com/MRKrog/barstock_backend/raw/master/public/images/swagger_endpoints.png?raw=true)
 
 
 ## Representative Notifications of Order
@@ -24,10 +24,10 @@ All available endpoints have been documented on [Swagger](https://app.swaggerhub
 Upon creation of an order, both an email and an email and a text message are sent to the distributor's representative.
 
 ### Order Email
-![Alt text](./public/images/email_sample.png?raw=true "Order Email")
+![Alt text](https://github.com/MRKrog/barstock_backend/raw/master/public/images/email_sample.png?raw=true "Order Email")
 
 ### Order Text Message
-![Alt text](./public/images/text_message.jpg?raw=true "Order Text Message")
+![Alt text](https://github.com/MRKrog/barstock_backend/raw/master/public/images/text_message.jpg?raw=true "Order Text Message")
 
 <!-- ## Getting Started
 
