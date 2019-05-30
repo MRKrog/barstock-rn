@@ -10,11 +10,8 @@ export const updateBusinessItem = (id, price, inStock, servingSize) => {
   }
   const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${id}`;
   const options = fetchOptions("PATCH", itemNew);
-  console.log("hello world im working", options)
-  console.log("im the url", url)
   return async (dispatch) => {
     try {
-      console.log("what up")
       const response = await fetch(url, options)
       if(!response.ok) Error(response.message)
       const data = await response.json()

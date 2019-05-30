@@ -17,15 +17,6 @@ class LoginScreen extends Component {
     const { email, password } = this.state
     const url = "https://barstock-backend.herokuapp.com/api/v1/login";
 
-    // const busCredentials = {
-    //   credential: "michaelryankrog@gmail.com",
-    //   password: "password",
-    // }
-    // const distCredentials = {
-    //   credential: "RNDC",
-    //   password: "password",
-    // }
-
     const loginCredentials = {
         credential: email,
         password: password,
@@ -36,7 +27,6 @@ class LoginScreen extends Component {
     try {
       const response = await fetch(url, options)
       const data = await response.json()
-      console.log(data);
       return data
     } catch (error) {
       console.log(error);
@@ -45,19 +35,15 @@ class LoginScreen extends Component {
 
 
   login = async () => {
-    // const loginInfo = await this.checkLoginType()
-    // let loginType = loginInfo.type
-    // let loginAPI = loginInfo.api_key
-    //
-    // console.log(loginType);
-    // console.log(loginAPI);
-    //
-    // if(loginType === "Business"){
-    //   this.props.navigation.navigate('MainApp');
-    // } else if (loginType === "Distributor") {
-    //   this.props.navigation.navigate('Distributor');
-    // }
-    this.props.navigation.navigate('MainApp');
+    const loginInfo = await this.checkLoginType()
+    let loginType = loginInfo.type
+    let loginAPI = loginInfo.api_key
+
+    if(loginType === "Business"){
+      this.props.navigation.navigate('MainApp');
+    } else if (loginType === "Distributor") {
+      this.props.navigation.navigate('Distributor');
+    }
   }
 
   setUpNewAccount = () => {

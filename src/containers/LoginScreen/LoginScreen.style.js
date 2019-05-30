@@ -18,9 +18,7 @@ export default {
     flexDirection: 'column',
     flex: 1,
     margin: 20,
-    // width: screenWidth * .9,
     justifyContent: 'center',
-    // alignSelf: 'center',
   },
   logo: {
     marginBottom: 10
