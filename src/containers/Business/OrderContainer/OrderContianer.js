@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import * as actions from "../../../redux/actions";
 import Loading from '../../../components/Loading/Loading';
 
-class OrderContainer extends Component{
+export class OrderContainer extends Component{
   constructor() {
     super();
     this.state = {

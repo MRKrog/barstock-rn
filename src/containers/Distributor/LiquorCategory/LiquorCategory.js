@@ -27,7 +27,6 @@ export class LiquorCategory extends Component{
       return (
         <TouchableOpacity onPress={() => this.changeTypeLayout(type)} key={type} style={styles.alc_typeContainer}>
           <Text style={styles.alc_types}>
-          <Icon name='beer' color='#ffffff' size={20} style={styles.iconStyle} />
           {type.toUpperCase()}
           </Text>
         </TouchableOpacity>

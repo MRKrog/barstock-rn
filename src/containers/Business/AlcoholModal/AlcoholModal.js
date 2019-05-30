@@ -102,11 +102,12 @@ export class AlcoholModal extends Component {
     let itemMarkUp = getMarkUp({...this.state}, distItem)
     let itemMargin = getMargin({...this.state}, distItem)
 
+    console.log('itemMarkUp', itemMarkUp);
 
     if(itemMargin == -Infinity || isNaN(itemMargin)){
       itemMargin = 0
     }
-    if(itemMarkUp == -100 || isNaN(itemMarkUp) || -Infinity){
+    if(itemMarkUp == -100 || isNaN(itemMarkUp)){
       itemMarkUp = 0
     }
     if(itemProfit == -100 || isNaN(itemProfit)){

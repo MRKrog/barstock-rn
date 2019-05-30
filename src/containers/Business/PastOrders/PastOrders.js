@@ -5,7 +5,7 @@ import Footer from "../../../components/Footer/Footer";
 import PastOrderCard from "../PastOrderCard/PastOrderCard";
 import { connect } from "react-redux"
 
-class PastOrders extends Component{
+export class PastOrders extends Component{
   render(){
     let pastOrder = this.props.pastOrder.map(order => {
       return(

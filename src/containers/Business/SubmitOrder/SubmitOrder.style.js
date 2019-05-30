@@ -120,7 +120,7 @@ export default {
   },
   cart_priceText: {
     color: "#ffffff",
-    fontFamily: 'abel',
+    fontFamily: 'Lato-Light',
     fontSize: 20,
     padding: 10,
   },

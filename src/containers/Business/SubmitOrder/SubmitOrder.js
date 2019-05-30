@@ -15,41 +15,38 @@ export class SubmitOrder extends Component{
   }
 
   submitOrder = async (cost) => {
-    // const items = this.props.cart.map(item => {
-    //   let alcoholInfo = this.props.alcohol.find(alcohol => {
-    //     return alcohol.id == item.id
-    //   })
-    //   return {...item, price: alcoholInfo.attributes.price }
-    // })
-    // const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
-    // const orderToSend = {
-    //     api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-    //     total_cost: cost.toFixed(2),
-    //     items
-    // }
-    // const options = fetchOptions("POST", orderToSend)
-    //
-    // try {
-    //   const response = await fetch(url, options)
-    //   const data = await response.json()
-    //   await this.props.emptyCart()
-    //   const updatedData = {
-    //     type: "order",
-    //     id: data.data.attributes.id,
-    //     attributes: { items: items,
-    //       created_at: data.data.attributes.created_at,
-    //       id: data.data.attributes.id
-    //     }
-    //   }
-    //   this.props.updatePastOrder(updatedData)
-    //
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    const items = this.props.cart.map(item => {
+      let alcoholInfo = this.props.alcohol.find(alcohol => {
+        return alcohol.id == item.id
+      })
+      return {...item, price: alcoholInfo.attributes.price }
+    })
+    const url = "https://barstock-backend.herokuapp.com/api/v1/orders";
+    const orderToSend = {
+        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
+        total_cost: cost.toFixed(2),
+        items
+    }
+    const options = fetchOptions("POST", orderToSend)
 
-    this.props.navigation.navigate("Finish")
+    try {
+      const response = await fetch(url, options)
+      const data = await response.json()
+      await this.props.emptyCart()
+      const updatedData = {
+        type: "order",
+        id: data.data.attributes.id,
+        attributes: { items: items,
+          created_at: data.data.attributes.created_at,
+          id: data.data.attributes.id
+        }
+      }
+      this.props.updatePastOrder(updatedData)
+      this.props.navigation.navigate("Finish")
+    } catch (error) {
+      console.log(error);
+    }
   }
-
 
   render(){
     const { cart, alcohol } = this.props;
