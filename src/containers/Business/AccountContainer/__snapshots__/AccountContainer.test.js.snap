@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountContainer should match snapshot 1`] = `
+<ImageBackground
+  source={
+    Object {
+      "testUri": "../../../assets/bg.png",
+    }
+  }
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "height": 1334,
+      "justifyContent": "center",
+      "resizeMode": "contain",
+      "width": 750,
+    }
+  }
+>
+  <_default
+    automaticallyAdjustContentInsets={false}
+    autoplay={false}
+    autoplayDirection={true}
+    autoplayTimeout={2.5}
+    bounces={false}
+    disableNextButton={false}
+    horizontal={true}
+    index={0}
+    loadMinimal={false}
+    loadMinimalSize={1}
+    loop={false}
+    onIndexChanged={[Function]}
+    pagingEnabled={true}
+    removeClippedSubviews={true}
+    scrollsToTop={false}
+    showsButtons={false}
+    showsHorizontalScrollIndicator={false}
+    showsPagination={true}
+    showsVerticalScrollIndicator={false}
+  >
+    <Connect(AccountInfo) />
+    <Connect(BarInventory) />
+    <Connect(PastOrders) />
+  </_default>
+</ImageBackground>
+`;

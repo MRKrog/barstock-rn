@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/25</span>
+        <span class='fraction'>5/25</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">10% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>1/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">22.73% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/22</span>
+        <span class='fraction'>5/22</span>
       </div>
     </div>
     <p class="quiet">
@@ -136,8 +136,7 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,26 +146,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -215,14 +213,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,13 +236,13 @@ import * as actions from "../../../redux/actions"
 &nbsp;
 export class BarInventory extends Component{
 &nbsp;
-  toggleModal = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>lcohol) =&gt; {</span>
+  toggleModal = <span class="fstat-no" title="function not covered" >(a</span>lcohol) =&gt; {
 <span class="cstat-no" title="statement not covered" >    this.props.setAlcoholInfo(alcohol)</span>
 <span class="cstat-no" title="statement not covered" >    this.props.toggleModalDisplay(true)</span>
   }
 &nbsp;
-  getSingleMargin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
-    const { businessItems, cart, alcohol } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+  getSingleMargin = <span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {
+    const { alcohol } = <span class="cstat-no" title="statement not covered" >this.props;</span>
     let busItem = <span class="cstat-no" title="statement not covered" >item.attributes</span>
     let distItem = <span class="cstat-no" title="statement not covered" >alcohol.find(<span class="fstat-no" title="function not covered" >al</span>coholItem =&gt; <span class="cstat-no" title="statement not covered" >alcoholItem.id == busItem.id)</span></span>
     let distProdServSize = <span class="cstat-no" title="statement not covered" >distItem.attributes.ounces;</span>
@@ -255,9 +253,8 @@ export class BarInventory extends Component{
 <span class="cstat-no" title="statement not covered" >    return singleMargin</span>
   };
 &nbsp;
-&nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder(){
-    let barItems = <span class="cstat-no" title="statement not covered" >this.props.businessItems.map(<span class="fstat-no" title="function not covered" >it</span>em =&gt; {</span>
+  render(){
+    let barItems = this.props.businessItems.map(<span class="fstat-no" title="function not covered" >it</span>em =&gt; {
       let itemMargin = <span class="cstat-no" title="statement not covered" >this.getSingleMargin(item)</span>
 <span class="cstat-no" title="statement not covered" >      return(</span>
         &lt;TouchableOpacity onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >this.toggleModal(item)}</span>} style={styles.item_card} key={item.id}&gt;
@@ -306,14 +303,14 @@ export class BarInventory extends Component{
   }
 }
 &nbsp;
-export const mapStateToProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+export const mapStateToProps = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   businessItems: state.businessItems,
   modalDisplay: state.modalDisplay,
   cart: state.cart,
   alcohol: state.alcohol,
 })
 &nbsp;
-export const mapDispatchToProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+export const mapDispatchToProps = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   toggleModalDisplay: <span class="fstat-no" title="function not covered" >bo</span>ol =&gt; <span class="cstat-no" title="statement not covered" >dispatch(actions.toggleModalDisplay(bool)),</span>
   setAlcoholInfo: <span class="fstat-no" title="function not covered" >in</span>fo =&gt; <span class="cstat-no" title="statement not covered" >dispatch(actions.setAlcoholInfo(info)),</span>
 })
@@ -325,7 +322,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(BarInventory)
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 15:51:09 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 20:08:56 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
