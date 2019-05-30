@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">16% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/25</span>
+        <span class='fraction'>4/25</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">18.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/22</span>
+        <span class='fraction'>4/22</span>
       </div>
     </div>
     <p class="quiet">
@@ -144,22 +144,13 @@
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -168,8 +159,17 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -241,13 +241,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
-const createOrderDisplay = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+const createOrderDisplay = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
   let quantityAmount = <span class="cstat-no" title="statement not covered" >this.combineQuantities();</span>
   let combinedOrder = <span class="cstat-no" title="statement not covered" >this.createOrder(quantityAmount);</span>
 <span class="cstat-no" title="statement not covered" >  return combinedOrder</span>
 }
 &nbsp;
-const combineQuantities = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+const combineQuantities = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
   let quantityAmount = <span class="cstat-no" title="statement not covered" >this.props.cart.reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, el) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (!acc[el.name]) <span class="cstat-no" title="statement not covered" >acc[el.name] = 0</span></span>
 <span class="cstat-no" title="statement not covered" >    acc[el.name]++;</span>
@@ -256,7 +256,7 @@ const combineQuantities = <span class="cstat-no" title="statement not covered" >
 <span class="cstat-no" title="statement not covered" >  return quantityAmount;</span>
 }
 &nbsp;
-export const generateCost = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(c</span>art, alcohol) =&gt; {</span>
+export const generateCost = <span class="fstat-no" title="function not covered" >(c</span>art, alcohol) =&gt; {
   const totalCost = <span class="cstat-no" title="statement not covered" >cart.reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, item) =&gt; {</span>
     const alcoholInfo = <span class="cstat-no" title="statement not covered" >alcohol.find(<span class="fstat-no" title="function not covered" >al</span>cohol =&gt; <span class="cstat-no" title="statement not covered" >item.id == alcohol.id)</span></span>
 <span class="cstat-no" title="statement not covered" >    acc += (alcoholInfo.attributes.price * item.quantity)</span>
@@ -266,7 +266,7 @@ export const generateCost = <span class="cstat-no" title="statement not covered"
 }
 &nbsp;
 &nbsp;
-export const createOrder = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(q</span>uantityAmount) =&gt; {</span>
+export const createOrder = <span class="fstat-no" title="function not covered" >(q</span>uantityAmount) =&gt; {
   let combinedCart = <span class="cstat-no" title="statement not covered" >Object.keys(quantityAmount).map(<span class="fstat-no" title="function not covered" >(i</span>tem, index) =&gt; {</span>
     let itemInfo = <span class="cstat-no" title="statement not covered" >this.props.cart.find(<span class="fstat-no" title="function not covered" >ca</span>rtItem =&gt; <span class="cstat-no" title="statement not covered" >cartItem.name === item)</span>;</span>
     let type = <span class="cstat-no" title="statement not covered" >this.findType(itemInfo.alc_type, quantityAmount[item])</span>
@@ -343,7 +343,7 @@ export const createOrder = <span class="cstat-no" title="statement not covered" 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 15:51:09 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 20:08:56 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

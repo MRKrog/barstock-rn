@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/21</span>
+        <span class='fraction'>0/23</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/19</span>
+        <span class='fraction'>0/21</span>
       </div>
     </div>
     <p class="quiet">
@@ -116,7 +116,11 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,13 +157,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,10 +196,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from "react";
 import styles from './LiquorCategory.style';
-import { TouchableOpacity, ScrollView, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
+import { TouchableOpacity, ScrollView, Text, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import { Icon } from 'native-base';
+import Icon from 'react-native-vector-icons/AntDesign';
 &nbsp;
 export class LiquorCategory extends Component{
 <span class="fstat-no" title="function not covered" >  co</span>nstructor(){
@@ -215,17 +223,20 @@ export class LiquorCategory extends Component{
 <span class="cstat-no" title="statement not covered" >      return (</span>
         &lt;TouchableOpacity onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.changeTypeLayout(type)}</span> key={type} style={styles.alc_typeContainer}&gt;
           &lt;Text style={styles.alc_types}&gt;
-          &lt;Icon name='beer' color='#ffffff' size={20} style={styles.iconStyle} /&gt;
-          {type.toUpperCase()}
+            {type.toUpperCase()}
           &lt;/Text&gt;
         &lt;/TouchableOpacity&gt;
       )
     })
 &nbsp;
     let expandedStyles;
+    let iconDisplay;
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if(this.state.expanded === true){</span>
+<span class="cstat-no" title="statement not covered" >      iconDisplay = &lt;Icon name='minus' color='#ffffff' size={20} style={styles.iconStyle}/&gt;</span>
 <span class="cstat-no" title="statement not covered" >      expandedStyles = styles.expandedTrue</span>
     } else {
+<span class="cstat-no" title="statement not covered" >      iconDisplay = &lt;Icon name='plus' color='#ffffff' size={20} style={styles.iconStyle} /&gt;</span>
 <span class="cstat-no" title="statement not covered" >      expandedStyles = styles.expandedFalse</span>
     }
 &nbsp;
@@ -235,6 +246,7 @@ export class LiquorCategory extends Component{
           &lt;Text style={styles.alc_typeTitle}&gt;
             {this.props.currentType}
           &lt;/Text&gt;
+            { iconDisplay }
         &lt;/TouchableOpacity&gt;
         &lt;ScrollView style={styles.alc_typeContainer}&gt;
           &lt;View style={[expandedStyles, { height: this.state.expanded ? null : 0, overflow: 'hidden' }]}&gt;
@@ -262,7 +274,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(LiquorCategory)
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 15:51:09 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 20:08:56 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
