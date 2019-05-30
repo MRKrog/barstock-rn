@@ -7,7 +7,8 @@ export default {
     textTransform: "uppercase",
     color: "#ffffff",
     textAlign: "center",
-    fontFamily: 'abel'
+    fontFamily: 'abel',
+    display: "flex"
   },
   expandedFalse: {
     marginTop: 0
@@ -17,12 +18,8 @@ export default {
     borderRadius: 5,
   },
   alc_typeContainer: {
-    // display: "flex",
-    // flex: 1,
-    // flexDirection: "row",
-  },
-  iconStyle: {
-    marginRight: 10
+    backgroundColor: "#11212A",
+    borderRadius: 5
   },
   alc_types: {
     fontSize: 20,
@@ -31,6 +28,11 @@ export default {
     color: "#ffffff",
     textAlign: "center",
     fontFamily: 'abel',
-    backgroundColor: "#11212A",
+  },
+  iconStyle: {
+    position: "absolute",
+    right: 0,
+    fontSize: 25,
+    color: "#ffffff"
   }
 }

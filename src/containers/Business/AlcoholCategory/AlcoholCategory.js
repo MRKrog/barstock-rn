@@ -4,6 +4,7 @@ import CategoryItem from '../CategoryItem/CategoryItem';
 import { TouchableOpacity, ScrollView, Text, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
+import Icon from 'react-native-vector-icons/AntDesign';
 
 // Enable LayoutAnimation under Android
 // if (Platform.OS === 'android') {
@@ -23,16 +24,27 @@ export class AlcoholCategory extends Component{
   }
 
   render(){
+    let iconDisplay;
+
     const alcohol = this.props.info.map(alcohol => {
       return (
         <CategoryItem info={alcohol} key={alcohol.name}/>
       )
     })
 
+    if(this.props.selectedCategory === this.props.title){
+      iconDisplay = <Icon name='minus' color='#ffffff' size={20} />
+    } else {
+      iconDisplay = <Icon name='plus' color='#ffffff' size={20} />
+    }
+
     return (
       <View >
         <TouchableOpacity onPress={this.changeLayout} style={styles.alc_catBtn}>
           <Text style={styles.alc_catTitle}>{this.props.title}</Text>
+          <Text style={styles.iconContainer}>
+            { iconDisplay }
+          </Text>
         </TouchableOpacity>
         <ScrollView style={styles.alc_catContainer}>
           <View style={[styles.alc_catInventory, { height: this.props.selectedCategory === this.props.title ? null : 0, overflow: 'hidden' }]}>

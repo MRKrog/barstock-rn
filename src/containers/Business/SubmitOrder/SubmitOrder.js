@@ -38,24 +38,9 @@ export class SubmitOrder extends Component{
     } catch (error) {
       console.log(error);
     }
-
-      
-      const navigateAction = NavigationActions.navigate({
-        routeName: route
-      });
-      let { routeName } = this.props.navigation.state;
-      this.props.navigation.closeDrawer();
-      this.props.navigation.dispatch(navigateAction);
-      
-      
-      
     this.props.navigation.navigate("Finish")
   }
 
-  resetOrder = () => {
-    this.props.emptyCart()
-    this.props.navigation.navigate('Order');
-  }
 
   render(){
     const { cart, alcohol } = this.props;
