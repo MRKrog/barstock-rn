@@ -34,7 +34,6 @@ export class SubmitOrder extends Component{
       const data = await response.json()
       await this.resetOrder()
       const updatedData = {type: "order", id: data.data.attributes.id, attributes: {items: items, created_at: data.data.attributes.created_at, id: data.data.attributes.id} }
-      console.log("hello wordl how are you",updatedData)
       this.props.updatePastOrder(updatedData)
     } catch (error) {
       console.log(error);

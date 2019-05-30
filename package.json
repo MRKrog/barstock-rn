@@ -42,8 +42,8 @@
     "enzyme-to-json": "^3.3.5",
     "jest": "24.8.0",
     "metro-react-native-babel-preset": "^0.54.1",
-    "react-dom": "^16.8.6",
     "react-devtools": "^3.6.1",
+    "react-dom": "^16.8.6",
     "react-test-renderer": "16.8.3"
   },
   "jest": {
@@ -55,7 +55,7 @@
       "<rootDir>/jest/setup.js"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{js}"
+      "src/**"
     ]
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Image, View, Text } from 'react-native';
+import { Image } from 'react-native';
 
 class LogoTitle extends Component {
   render() {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { View, Image, Button, Text, StyleSheet, ImageBackground, Dimensions } from "react-native";
+import { View, ImageBackground } from "react-native";
 import { Avatar } from 'react-native-elements';
-import Footer from '../../components/Footer/Footer';
 import Loading from '../../components/Loading/Loading';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import OrderContainer from "../Business/OrderContainer/OrderContianer";
@@ -9,6 +8,7 @@ import { fetchAllItems } from "../../redux/thunks/fetchAllItems";
 import { fetchBusinessItems } from "../../redux/thunks/fetchBusinessItems"
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
+import styles from "./HomeScreen.style";
 
 class HomeScreen extends Component {
 
@@ -36,28 +36,6 @@ class HomeScreen extends Component {
     );
   }
 }
-
-const screenWidth = Dimensions.get("window").width
-const screenHeight = Dimensions.get("window").height
-
-const styles = StyleSheet.create({
-  MainDisplay: {
-    flex: 1,
-    width: screenWidth,
-    height: screenHeight,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  backgroundImage: {
-    flex: 1,
-    width: screenWidth,
-    height: screenHeight,
-    resizeMode: 'contain',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
 
 export const mapStateToProps = (state) => ({
   alcohol: state.alcohol,

@@ -34,7 +34,7 @@ export class CurrentOrder extends Component {
     const { businessItems, cart, alcohol } = this.props;
     let totalReturn = cart.reduce((acc, cart) => {
       const distItem = alcohol.find(item => item.id == cart.id)
-      const busItem = businessItems.find(item => item.id == distItem.id)
+      const busItem = businessItems.find(item => item.attributes.item_id == distItem.id)
       let distProdServSize = distItem.attributes.ounces;
       let menuProdServSize = busItem.attributes.serving_size;
       let menuPrice = busItem.attributes.price_sold;
@@ -47,7 +47,7 @@ export class CurrentOrder extends Component {
 
   getSingleReturn = (distItem, cart) => {
     const { businessItems } = this.props;
-    let busItem = businessItems.find(item => item.id == distItem.id )
+    let busItem = businessItems.find(item => item.attributes.item_id == distItem.id )
     let distProdServSize = distItem.attributes.ounces * cart.quantity;
     let menuProdServSize = busItem.attributes.serving_size;
     let menuPrice = busItem.attributes.price_sold;
@@ -58,7 +58,7 @@ export class CurrentOrder extends Component {
 
   getSingleMargin = (distItem) => {
     const { businessItems } = this.props;
-    let busItem = businessItems.find(item => item.id == distItem.id)
+    let busItem = businessItems.find(item => item.attributes.item_id == distItem.id)
     let distProdServSize = distItem.attributes.ounces;
     let menuProdServSize = busItem.attributes.serving_size;
     let menuPrice = busItem.attributes.price_sold;
@@ -85,7 +85,7 @@ export class CurrentOrder extends Component {
 
   toggleModal = (itemId) => {
     const { businessItems } = this.props;
-    let busItem = businessItems.find(item => item.id == itemId)
+    let busItem = businessItems.find(item => item.attributes.item_id == itemId)
     this.props.setAlcoholInfo(busItem)
     this.props.toggleModalDisplay(true)
   }

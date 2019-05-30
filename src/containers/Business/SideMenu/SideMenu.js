@@ -4,7 +4,7 @@ import styles from './SideMenu.style';
 import call from 'react-native-phone-call';
 import email from 'react-native-email';
 import { NavigationActions } from 'react-navigation';
-import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { connect } from "react-redux"
 import * as actions from "../../../redux/actions"
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -20,9 +20,9 @@ class SideMenu extends Component {
     this.props.swiperIndex(index);
   }
 
-  makeCall = (number) => {
+  makeCall = () => {
    const args = {
-     number: "6307154311",
+     number: `${this.props.businessInfo.business.data.attributes.phone_number}`,
      prompt: true
    }
     call(args).catch(console.error)
@@ -89,8 +89,12 @@ SideMenu.propTypes = {
   navigation: PropTypes.object
 };
 
+export const mapStateToProps = (state) => ({
+  businessInfo: state.businessInfo
+})
+
 export const mapDispatchToProps = (dispatch) => ({
   swiperIndex: index => dispatch(actions.swiperIndex(index))
 })
 
-export default connect(null, mapDispatchToProps)(SideMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

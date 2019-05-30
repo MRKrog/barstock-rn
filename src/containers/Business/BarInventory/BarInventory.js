@@ -14,7 +14,7 @@ export class BarInventory extends Component{
   }
 
   getSingleMargin = (item) => {
-    const { businessItems, cart, alcohol } = this.props;
+    const { alcohol } = this.props;
     let busItem = item.attributes
     let distItem = alcohol.find(alcoholItem => alcoholItem.id == busItem.id)
     let distProdServSize = distItem.attributes.ounces;
@@ -24,7 +24,6 @@ export class BarInventory extends Component{
     let singleMargin = (100 - ((distCost / ((distProdServSize / menuProdServSize) * menuPrice)) * 100))
     return singleMargin
   };
-
 
   render(){
     let barItems = this.props.businessItems.map(item => {
