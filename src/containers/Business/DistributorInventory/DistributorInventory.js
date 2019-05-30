@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from "react-native"
+import { View, ScrollView} from "react-native"
 import AlcoholCategory from "../AlcoholCategory/AlcoholCategory";
 import LiquorCategory from "../LiquorCategory/LiquorCategory";
 import styles from './DistributorInventory.style';
@@ -16,7 +16,6 @@ export class DistributorInventory extends Component{
   }
 
   changeAlcoholType = (type) => {
-    const { currentType } = this.state;
     this.setState({ currentType: type  })
   }
 
@@ -86,7 +85,6 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  setAlcohol: alcohol => dispatch(actions.setAlcohol(alcohol)),
   setLoading: status => dispatch(actions.setLoading(status)),
 })
 

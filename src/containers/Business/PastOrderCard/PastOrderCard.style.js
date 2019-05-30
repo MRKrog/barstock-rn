@@ -1,5 +1,3 @@
-import { Dimensions } from "react-native";
-
 export default {
   order_btn: {
     backgroundColor: "#11212A",

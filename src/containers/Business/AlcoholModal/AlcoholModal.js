@@ -5,6 +5,8 @@ import styles from "./AlcoholModal.style";
 import * as actions from "../../../redux/actions";
 import { fetchOptions } from "../../../utility/fetchOptions";
 import { getMarkUp, getMargin, getProfit } from "../../../utility/generateMargin"
+import { updateBusinessItem } from "../../../redux/thunks/updateBusinessItem"
+import { addBusinessItem } from "../../../redux/thunks/addBusinessItem"
 import Loading from '../../../components/Loading/Loading';
 
 export class AlcoholModal extends Component {
@@ -44,55 +46,19 @@ export class AlcoholModal extends Component {
     const { id } = this.props.alcoholInfo
     const { price, servingSize, inStock} = this.state;
     if(this.state.create) {
-      const url = `https://barstock-backend.herokuapp.com/api/v1/business_items`;
-      const itemNew = {
-        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-        price_sold: price,
-        quantity: inStock,
-        serving_size: servingSize,
-        item_id: id
-      }
-
-      const options = fetchOptions("POST", itemNew)
-
-      try {
-        const response = await fetch(url, options)
-        const data = await response.json()
-        this.props.addBusinessItems(data.data)
-      } catch (error) {
-        console.log(error);
-      }
-
+      this.props.addBusinessItem(id, price, inStock, servingSize)
       this.props.toggleModalDisplay(false)
 
     } else {
-      const url = `https://barstock-backend.herokuapp.com/api/v1/business_items/${id}`
-      const itemNew = {
-        api_key: "0yWwUm5CZ8CGR8MhT7FL9w",
-        price_sold: price,
-        quantity: inStock,
-        serving_size: servingSize
-      }
-
-      const options = fetchOptions("PATCH", itemNew)
-
-      try {
-        const response = await fetch(url, options)
-        const data = await response.json()
-        this.props.updateBusinessItems(data.data)
-      } catch (error) {
-        console.log(error);
-      }
+      this.props.updateBusinessItem(id, price, inStock, servingSize)
       this.props.toggleModalDisplay(false)
-
     }
   }
 
 
   render(){
     const { alcohol } = this.props;
-    const { id, attributes } = this.props.alcoholInfo
-    const { price, servingSize } = this.state
+    const { id } = this.props.alcoholInfo
 
     let distItem = alcohol.find(item => {
       return item.id == id
@@ -101,7 +67,6 @@ export class AlcoholModal extends Component {
     let itemProfit = getProfit({...this.state}, distItem)
     let itemMarkUp = getMarkUp({...this.state}, distItem)
     let itemMargin = getMargin({...this.state}, distItem)
-
 
     if(itemMargin == -Infinity || isNaN(itemMargin)){
       itemMargin = 0
@@ -208,8 +173,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   toggleModalDisplay: bool => dispatch(actions.toggleModalDisplay(bool)),
-  updateBusinessItems: item => dispatch(actions.updateBusinessItems(item)),
-  addBusinessItems: bussItem => dispatch(actions.addBusinessItems(bussItem)),
+  updateBusinessItem: (id, price, inStock, servingSize) => dispatch(updateBusinessItem(id, price, inStock, servingSize)),
+  addBusinessItem: (id, price, inStock, servingSize) => dispatch(addBusinessItem(id, price, inStock, servingSize)),
   setLoading: status => dispatch(actions.setLoading(status)),
 })
 
