@@ -67,7 +67,6 @@ export class CategoryItem extends Component {
         <View style={styles.item_action}>
         {
           !checkAlcohol ?
-
           <TouchableOpacity onPress={() => this.toggleModal(id)} style={styles.editBtn}>
             <Icon raised name='edit' color='#ffffff' size={18} />
           </TouchableOpacity> :
