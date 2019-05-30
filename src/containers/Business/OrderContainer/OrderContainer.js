@@ -4,7 +4,7 @@ import  CurrentOrder from "../CurrentOrder/CurrentOrder";
 import  DistributorInventory from "../DistributorInventory/DistributorInventory";
 import { connect } from 'react-redux';
 
-class OrderContainer extends Component{
+export class OrderContainer extends Component{
   render(){
     return(
       <Swiper index={this.props.swiperIndex} loop={false}>

@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">90.48% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/21</span>
+        <span class='fraction'>19/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/12</span>
+        <span class='fraction'>9/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/20</span>
+        <span class='fraction'>18/20</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -77,66 +77,66 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const cartReducer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate = <span class="branch-0 cbranch-no" title="branch not covered" >[],</span> action) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  switch(action.type){</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const cartReducer = (state = [], action) =&gt; {
+  switch(action.type){
     case "ADD_ALCOHOL":
-      let newCartItem = <span class="cstat-no" title="statement not covered" >{id: action.id, quantity: 1}</span>
-<span class="cstat-no" title="statement not covered" >      return [...state, newCartItem];</span>
+      let newCartItem = {id: action.id, quantity: 1}
+      return [...state, newCartItem];
     case "UPDATE_ALCOHOL":
-      let updatedState = <span class="cstat-no" title="statement not covered" >state.map(<span class="fstat-no" title="function not covered" >it</span>em =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if(item.id == action.id) {</span>
-<span class="cstat-no" title="statement not covered" >          item.quantity += action.number</span>
+      let updatedState = state.map(item =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(item.id == action.id) {
+          item.quantity += action.number
         } else <span class="cstat-no" title="statement not covered" >if (item.id == action.id) {</span>
 <span class="cstat-no" title="statement not covered" >          item.quantity += action.number</span>
         }
-<span class="cstat-no" title="statement not covered" >        return item</span>
+        return item
       })
-<span class="cstat-no" title="statement not covered" >      return updatedState</span>
+      return updatedState
     case "REMOVE_ALCOHOL":
-      const itemIndex = <span class="cstat-no" title="statement not covered" >state.indexOf(action.id)</span>
-<span class="cstat-no" title="statement not covered" >      state.splice(itemIndex, 1)</span>
-<span class="cstat-no" title="statement not covered" >      return [...state];</span>
+      const itemIndex = state.indexOf(action.id)
+      state.splice(itemIndex, 1)
+      return [...state];
     case "REMOVE_ALCOHOL_GROUP":
-      let newItem = <span class="cstat-no" title="statement not covered" >state.filter(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >action.id != item.id)</span></span>
-<span class="cstat-no" title="statement not covered" >      return newItem</span>
+      let newItem = state.filter(item =&gt; action.id != item.id)
+      return newItem
     case "RESET_CART":
-      let resetCart = <span class="cstat-no" title="statement not covered" >[]</span>
-<span class="cstat-no" title="statement not covered" >      return resetCart</span>
+      let resetCart = []
+      return resetCart
     case "RE_ORDER":
-<span class="cstat-no" title="statement not covered" >      return action.order</span>
+      return action.order
     default:
-<span class="cstat-no" title="statement not covered" >      return state;</span>
+      return state;
   }
 }
 &nbsp;</pre></td></tr>
@@ -145,7 +145,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 20:08:56 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 30 2019 08:06:30 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

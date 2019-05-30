@@ -1,4 +1,3 @@
-
 export const businessInfoReducer = (state = {} , action) => {
   switch(action.type){
     case "SET_BUSINESS_INFO":

@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideMenu should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#231f20",
+      "display": "flex",
+      "flex": 1,
+      "justifyContent": "space-between",
+      "paddingTop": 20,
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        Object {
+          "paddingHorizontal": 5,
+          "paddingVertical": 10,
+        }
+      }
+    />
+    <View
+      style={Object {}}
+    >
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#ffffff"
+          name="user-circle"
+          size={20}
+          style={
+            Object {
+              "marginRight": 15,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "abel",
+              "fontSize": 18,
+              "letterSpacing": 1,
+              "textAlign": "left",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          Account Info
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#ffffff"
+          name="shopping-cart"
+          size={20}
+          style={
+            Object {
+              "marginRight": 15,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "abel",
+              "fontSize": 18,
+              "letterSpacing": 1,
+              "textAlign": "left",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          Inventory
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#ffffff"
+          name="edit"
+          size={20}
+          style={
+            Object {
+              "marginRight": 15,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "abel",
+              "fontSize": 18,
+              "letterSpacing": 1,
+              "textAlign": "left",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          Bar Items
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#ffffff"
+          name="history"
+          size={20}
+          style={
+            Object {
+              "marginRight": 15,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "abel",
+              "fontSize": 18,
+              "letterSpacing": 1,
+              "textAlign": "left",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          Past Orders
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#ffffff"
+          name="sign-out"
+          size={20}
+          style={
+            Object {
+              "marginRight": 15,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "abel",
+              "fontSize": 18,
+              "letterSpacing": 1,
+              "textAlign": "left",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          Logout
+        </Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#161515",
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-evenly",
+        "paddingVertical": 20,
+        "shadowColor": "#161515",
+        "shadowOffset": Object {
+          "height": -3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.3,
+        "shadowRadius": 3,
+        "zIndex": 9,
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#332D2F"
+        name="phone"
+        size={30}
+      />
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#332D2F"
+        name="envelope-o"
+        size={30}
+      />
+    </TouchableOpacity>
+  </View>
+</View>
+`;

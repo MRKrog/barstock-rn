@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DistSideMenu should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#231f20",
+      "display": "flex",
+      "flex": 1,
+      "justifyContent": "space-between",
+      "paddingTop": 20,
+    }
+  }
+>
+  <View>
+    <Text />
+    <View>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#ffffff"
+          name="sign-out"
+          size={20}
+          style={
+            Object {
+              "marginRight": 15,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "abel",
+              "fontSize": 18,
+              "letterSpacing": 1,
+              "textAlign": "left",
+              "textTransform": "uppercase",
+            }
+          }
+        >
+          Logout
+        </Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</View>
+`;

@@ -9,7 +9,7 @@ import { connect } from "react-redux"
 import * as actions from "../../../redux/actions"
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-class SideMenu extends Component {
+export class SideMenu extends Component {
   navigateToScreen = (route ,index) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route
