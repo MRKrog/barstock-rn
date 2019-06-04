@@ -8,8 +8,8 @@ export default {
   order_reOrderBtn: {
     backgroundColor: "#EEAD0C",
     padding: 10,
-    borderRadius: 5,
-    marginTop: 10
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5
   },
   order_title: {
     fontSize: 20,

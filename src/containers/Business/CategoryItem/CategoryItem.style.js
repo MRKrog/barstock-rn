@@ -4,71 +4,73 @@ export default {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: "center",
-    padding: 10,
     borderBottomColor: '#ececec',
     borderBottomWidth: 1,
     height: 60,
     flex: 1,
+    paddingRight: 10,
+    position: "relative"
   },
   item_info: {
     display: 'flex',
     flexDirection: 'row',
+    flex: .65
   },
   item_image: {
-    marginRight: 10,
     resizeMode: 'contain'
   },
   item_details: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "space-evenly"
   },
   item_name: {
     color: "#11212a",
-    fontFamily: "Lato-Light",
-    fontSize: 16,
-    paddingBottom: 3,
-    width: 150
+    fontFamily: "Lato",
+    fontSize: 17,
   },
   item_price: {
-    color: "#adadad",
+    color: "#11212a",
     fontFamily: "Lato-Light",
     fontSize: 15
   },
   item_action: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'row',
+    backgroundColor: "#ececec",
+    height: 40
   },
   quantityContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
     alignItems: "center",
-    paddingBottom: 2
   },
   quantity: {
-    fontWeight: '400',
-    fontSize: 30,
-    marginLeft: 15,
-    marginRight: 15,
+    fontFamily: "abel",
+    fontSize: 25,
+    marginRight: 10,
+    marginLeft: 10,
     color: "#11212a",
-    width: 20,
-    textAlign: "center"
+    width: 25,
+    textAlign: "center",
   },
   btnMinus: {
     backgroundColor: "#0098de",
     borderRadius: 2,
-    padding: 5
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
   btnPlus: {
     backgroundColor: "#0098de",
     borderRadius: 2,
-    padding: 5
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
   editBtn: {
     backgroundColor: "#0098de",
     borderRadius: 5,
-    padding: 5,
-    paddingRight:2
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
   quantityText: {
     color: "#adadad",
@@ -80,7 +82,7 @@ export default {
     opacity: 1
   },
   textinvalid: {
-    opacity: .5
+    opacity: .3
   },
   item_addBtn: {
     backgroundColor: "#0098de",

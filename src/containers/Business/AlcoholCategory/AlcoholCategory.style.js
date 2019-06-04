@@ -4,8 +4,8 @@ export default {
   },
   alc_catBtn: {
     backgroundColor: "#11212A",
-    padding: 10,
-    borderRadius: 5,
+    padding: 13,
+    borderRadius: 4,
     marginTop: 10,
     display: "flex",
     flexDirection: "row",
@@ -14,9 +14,8 @@ export default {
   },
   iconContainer: {
     position: "absolute",
-    right: 15
+    right: 20
   },
-
   alc_catContainer: {
     shadowOpacity: 0.3,
     shadowRadius: 3,
@@ -26,7 +25,7 @@ export default {
     overflow:"scroll"
   },
   alc_catTitle: {
-    fontSize: 20,
+    fontSize: 21,
     textTransform: "uppercase",
     fontFamily: 'abel',
     textAlign: "center",
@@ -37,14 +36,6 @@ export default {
     backgroundColor: "#fff"
   },
   category_item: {
-    padding: 10
+    // padding: 10
   },
-  font: {
-    fontSize: 20,
-    textTransform: "uppercase",
-    fontFamily: 'abel',
-    textAlign: "center",
-    color: "#ffffff",
-    letterSpacing: 1
-  }
 };

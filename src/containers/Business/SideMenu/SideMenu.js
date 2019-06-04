@@ -21,18 +21,19 @@ export class SideMenu extends Component {
   }
 
   makeCall = () => {
+   const { attributes } = this.props.business.data;
    const args = {
-     number: `${this.props.businessInfo.business.data.attributes.phone_number}`,
+     number: `${attributes.phone_number}`,
      prompt: true
    }
     call(args).catch(console.error)
   }
 
   handleEmail = () => {
-    const to = ['tiaan@email.com']
+    const { attributes } = this.props.business.data;
+    const to = [`${attributes.representative.rep_email}`]
     email(to, {
-      cc: ['bazzy@moo.com', 'doooo@daaa.com'],
-      subject: 'Bar Email',
+      subject: `${attributes.name}`,
       body: 'Body'
     }).catch(console.error)
   }
@@ -73,10 +74,10 @@ export class SideMenu extends Component {
 
         <View style={styles.footerContainer}>
           <TouchableOpacity onPress={()=> this.makeCall()}>
-            <Icon name="phone" size={30} color="#332D2F" />
+            <Icon name="phone" size={30} color="#ececec" />
           </TouchableOpacity>
           <TouchableOpacity onPress={()=> this.handleEmail()}>
-            <Icon name="envelope-o" size={30} color="#332D2F" />
+            <Icon name="envelope-o" size={30} color="#ececec" />
           </TouchableOpacity>
         </View>
 
