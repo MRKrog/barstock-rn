@@ -15,7 +15,6 @@ export const updateBusinessItem = (id, price, inStock, servingSize) => {
       const response = await fetch(url, options)
       if(!response.ok) Error(response.message)
       const data = await response.json()
-      console.log("asl;dkf waht",data.data)
       dispatch(actions.updateBusinessItems(data.data));
     } catch (error) {
       console.log(error.message);
