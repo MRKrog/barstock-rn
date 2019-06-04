@@ -3,7 +3,7 @@ export default {
     display: "flex",
   },
   alc_typeTitle: {
-    fontSize: 22,
+    fontSize: 23,
     textTransform: "uppercase",
     color: "#ffffff",
     textAlign: "center",
@@ -14,11 +14,11 @@ export default {
     marginTop: 0
   },
   expandedTrue: {
-    marginTop: 5,
+    marginTop: 10,
+    backgroundColor: "#11212A",
     borderRadius: 5,
   },
   alc_typeContainer: {
-    backgroundColor: "#11212A",
     borderRadius: 5
   },
   alc_types: {
@@ -31,7 +31,7 @@ export default {
   },
   iconStyle: {
     position: "absolute",
-    right: 0,
+    right: 2,
     fontSize: 25,
     color: "#ffffff"
   }

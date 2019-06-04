@@ -3,8 +3,7 @@ import styles from './CategoryItem.style';
 import { TouchableOpacity, Text, View, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Icon from 'react-native-vector-icons/AntDesign';
 export class CategoryItem extends Component {
 
   minusProduct = (id) => {
@@ -54,7 +53,7 @@ export class CategoryItem extends Component {
       <View style={category_item}>
         <View style={styles.item_info}>
           <View style={styles.item_image}>
-            <Image resizeMode="contain" style={{width: 40, height: 40}} source={{ uri: thumbnail }} />
+            <Image resizeMode="contain" style={{width: 45, height: 45}} source={{ uri: thumbnail }} />
           </View>
           <View style={styles.item_details}>
             <Text style={styles.item_name} numberOfLines={1}>{name}</Text>

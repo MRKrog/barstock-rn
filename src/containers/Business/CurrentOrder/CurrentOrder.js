@@ -116,13 +116,13 @@ export class CurrentOrder extends Component {
       let itemMargin = this.getSingleMargin(alcoholInfo)
       let marginColor = this.getRowColor(itemMargin)
       let swipeoutBtns = [{
-          text: (<Icon name='edit' color='#ffffff' size={20} />),
-          backgroundColor: "#0098de",
+          text: (<Icon name='edit' color='#A2CADD' size={20} />),
+          backgroundColor: "#006FA2",
           underlayColor: "#2c4969",
           onPress: () => { this.toggleModal(alcoholInfo.id) }
         }, {
-          text: (<Icon name='trash' color='#ffffff' size={20} />),
-          backgroundColor: '#DB504A',
+          text: (<Icon name='trash' color='#F9B7BC' size={20} />),
+          backgroundColor: '#F03A47',
           underlayColor: "#DB504A",
           onPress: () => { this.removeFromCart(alcoholInfo.id) }
         }

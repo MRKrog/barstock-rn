@@ -33,17 +33,18 @@ class LoginScreen extends Component {
     }
   }
 
-
   login = async () => {
-    const loginInfo = await this.checkLoginType()
-    let loginType = loginInfo.type
-    let loginAPI = loginInfo.api_key
+    // const loginInfo = await this.checkLoginType()
+    // let loginType = loginInfo.type
+    // let loginAPI = loginInfo.api_key
+    //
+    // if(loginType === "Business"){
+    //   this.props.navigation.navigate('MainApp');
+    // } else if (loginType === "Distributor") {
+    //   this.props.navigation.navigate('Distributor');
+    // }
 
-    if(loginType === "Business"){
-      this.props.navigation.navigate('MainApp');
-    } else if (loginType === "Distributor") {
-      this.props.navigation.navigate('Distributor');
-    }
+    this.props.navigation.navigate('MainApp');
   }
 
   setUpNewAccount = () => {
