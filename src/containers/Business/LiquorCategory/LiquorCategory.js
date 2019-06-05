@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from './LiquorCategory.style';
 import { TouchableOpacity, ScrollView, Text, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
+import SvgUri from "react-native-svg-uri"
 import * as actions from "../../../redux/actions";
 
 export class LiquorCategory extends Component{
@@ -36,10 +37,10 @@ export class LiquorCategory extends Component{
     let iconDisplay;
 
     if(this.state.expanded === true){
-      iconDisplay = <Text color='#ffffff'>-</Text>
+      iconDisplay = <Text style={styles.alc_toggle}>-</Text>
       expandedStyles = styles.expandedTrue
     } else {
-      iconDisplay = <Text color='#ffffff'>+</Text>
+      iconDisplay = <Text style={styles.alc_toggle}>+</Text>
       expandedStyles = styles.expandedFalse
     }
 
