@@ -11,15 +11,17 @@ import SetUpScreen from './containers/LoginScreen/SetUpScreen';
 import SideMenu from './containers/Business/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 import ThankYou from "./containers/Business/ThankYou/ThankYou"
-import { Text, Button } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import Inventory from "./containers/Distributor/Inventory/Inventory"
 import DistSideMenu from "./containers/Distributor/DistSideMenu/DistSideMenu";
-import { Icon } from 'react-native-elements';
+import SvgUri from 'react-native-svg-uri';
 
 const header = ({ navigation }) => {
   return {
     headerLeft: (
-      <Text></Text>
+      <TouchableOpacity onPress={navigation.toggleDrawer} style={{ marginLeft: 10 }}>
+        <SvgUri width="25" height="25" fill="#fff" source={require('../assets/bars.svg')} />
+      </TouchableOpacity>
     ),
     headerTitle: ( <LogoTitle /> ),
     headerRight: (
