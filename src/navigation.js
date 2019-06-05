@@ -70,14 +70,16 @@ const Drawer = createDrawerNavigator({
 },
 {
   contentComponent: SideMenu,
-  drawerWidth: 200,
+  drawerWidth: 230,
 });
 
 
 const headerDistributor = ({ navigation }) => {
   return {
     headerLeft: (
-      <Text>=</Text>
+      <TouchableOpacity onPress={navigation.toggleDrawer} style={{ marginLeft: 10 }}>
+        <SvgUri width="25" height="25" fill="#fff" source={require('../assets/bars.svg')} />
+      </TouchableOpacity>
     ),
     headerTitle: ( <LogoTitle /> ),
     headerStyle: {
