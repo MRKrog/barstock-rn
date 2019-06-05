@@ -71,6 +71,7 @@ export default {
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 10,
+
   },
   quantityText: {
     color: "#adadad",
@@ -93,5 +94,10 @@ export default {
     fontSize: 20,
     color: "#ffffff",
     fontFamily: "raleway",
+  },
+  alc_toggle: {
+    color: "#ffffff",
+    fontSize: 30,
+    lineHeight: 27
   }
 };
