@@ -4,7 +4,7 @@ import CategoryItem from '../CategoryItem/CategoryItem';
 import { TouchableOpacity, ScrollView, Text, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import Icon from 'react-native-vector-icons/AntDesign';
+
 
 // Enable LayoutAnimation under Android
 // if (Platform.OS === 'android') {
@@ -33,9 +33,9 @@ export class AlcoholCategory extends Component{
     })
 
     if(this.props.selectedCategory === this.props.title){
-      iconDisplay = <Icon name='minus' color='#ffffff' size={20} />
+      iconDisplay = <Text color='#ffffff'>-</Text>
     } else {
-      iconDisplay = <Icon name='plus' color='#ffffff' size={20} />
+      iconDisplay = <Text color='#ffffff'>+</Text>
     }
 
     return (

@@ -58,7 +58,8 @@ export class AlcoholModal extends Component {
 
   render(){
     const { alcohol } = this.props;
-    const { id } = this.props.alcoholInfo
+    const { id } = this.props.alcoholInfo;
+    let marginColor;
 
     let distItem = alcohol.find(item => {
       return item.id == id
@@ -67,6 +68,14 @@ export class AlcoholModal extends Component {
     let itemProfit = getProfit({...this.state}, distItem)
     let itemMarkUp = getMarkUp({...this.state}, distItem)
     let itemMargin = getMargin({...this.state}, distItem)
+
+    if(itemMargin >= 80){
+      marginColor = styles.greenText
+    } else if (itemMargin >= 70) {
+      marginColor = styles.yellowText
+    } else {
+      marginColor = styles.redText
+    }
 
     if(itemMargin == -Infinity || isNaN(itemMargin)){
       itemMargin = 0
@@ -137,13 +146,13 @@ export class AlcoholModal extends Component {
 
                   </View>
                   <View style={styles.numberContainer}>
-                  <Text style={styles.info_busTitle}>Item Projections</Text>
+                    <Text style={styles.info_busTitle}>Item Projections</Text>
                     <View style={styles.itemNumber}>
                       <Text style={styles.alcInfo_Margin}>${itemProfit.toFixed(0)}</Text>
                       <Text style={styles.alcInfo_MarginLabel}>Profit Per Item</Text>
                     </View>
                     <View style={styles.itemNumber}>
-                      <Text style={styles.alcInfo_Margin}>{itemMargin.toFixed(0)}%</Text>
+                      <Text style={[styles.alcInfo_Margin]}>{itemMargin.toFixed(0)}%</Text>
                       <Text style={styles.alcInfo_MarginLabel}>Profit Margin</Text>
                     </View>
                     <View style={styles.itemNumber}>

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styles from './DistSideMenu.style';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 class DistSideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -23,7 +23,6 @@ class DistSideMenu extends Component {
           <Text style={styles.sectionHeadingStyle}></Text>
           <View style={styles.navSectionStyle}>
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Login')}>
-              <Icon name='sign-out' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Logout</Text>
             </TouchableOpacity>
           </View>

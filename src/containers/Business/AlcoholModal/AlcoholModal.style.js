@@ -36,7 +36,6 @@ export default {
     justifyContent: "center",
     marginLeft: 10
   },
-  
   info_title: {
     color: "#8e8e8e",
     fontFamily: "Lato-Light",
@@ -60,17 +59,17 @@ export default {
     flexDirection: "column",
     marginRight: 15
   },
-  info_label: {
-    color: "#8e8e8e",
-    fontFamily: "Lato-Light",
-    fontSize: 10,
-    textAlign: "left"
-  },
   info_text: {
     fontFamily: "Lato-Light",
     color: "#8e8e8e",
-    fontSize: 18,
+    fontSize: 20,
     letterSpacing: .1
+  },
+  info_label: {
+    color: "#8e8e8e",
+    fontFamily: "Lato-Light",
+    fontSize: 12,
+    textAlign: "left"
   },
   info_busTitle: {
     color: "#8e8e8e",
@@ -82,7 +81,6 @@ export default {
     textAlign: "center",
     paddingTop: 10,
   },
-
   business_content: {
     paddingHorizontal: 15,
     display: "flex",
@@ -92,7 +90,6 @@ export default {
     borderBottomColor: '#ececec',
     borderBottomWidth: 1,
   },
-
   inputContainer: {
     display: "flex",
     flexDirection: "column",
@@ -139,12 +136,12 @@ export default {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: 'space-between',
-    flex: 1
+    flex: 1,
   },
   itemNumber: {
     display: "flex",
     marginVertical: 10,
-    // padding: 5,
+    paddingBottom: 20,
     flex: 1,
   },
   alcInfo_Margin: {
@@ -152,7 +149,6 @@ export default {
     color: "#8e8e8e",
     fontSize: 31,
     textAlign: "center",
-    // height: 50,
   },
   alcInfo_MarginLabel: {
     fontFamily: "Lato-Light",
@@ -178,7 +174,13 @@ export default {
     textAlign: "center",
     fontFamily: 'abel'
   },
-
-
-
+  greenText: {
+    color: "#B9D7B5"
+  },
+  yellowText: {
+    color: "#FFEB9D"
+  },
+  redText: {
+    color: "#EC6F78"
+  }
 }

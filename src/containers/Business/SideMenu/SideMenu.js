@@ -7,7 +7,6 @@ import { NavigationActions } from 'react-navigation';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { connect } from "react-redux"
 import * as actions from "../../../redux/actions"
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class SideMenu extends Component {
   navigateToScreen = (route ,index) => () => {
@@ -46,27 +45,22 @@ export class SideMenu extends Component {
           <Text style={styles.sectionHeadingStyle}></Text>
           <View style={styles.navSectionStyle}>
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Account', 0)}>
-              <Icon name='user-circle' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Account Info</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Order', 0)}>
-              <Icon name='shopping-cart' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Inventory</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('BarInventory', 1)}>
-              <Icon name='edit' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Bar Items</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('PastOrders', 2)}>
-              <Icon name='history' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Past Orders</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.navItemContainer} onPress={this.navigateToScreen('Login', 0)}>
-              <Icon name='sign-out' color='#ffffff' size={20} style={styles.iconStyle} />
               <Text style={styles.navItemStyle}>Logout</Text>
             </TouchableOpacity>
           </View>
@@ -74,10 +68,10 @@ export class SideMenu extends Component {
 
         <View style={styles.footerContainer}>
           <TouchableOpacity onPress={()=> this.makeCall()}>
-            <Icon name="phone" size={30} color="#ececec" />
+
           </TouchableOpacity>
           <TouchableOpacity onPress={()=> this.handleEmail()}>
-            <Icon name="envelope-o" size={30} color="#ececec" />
+
           </TouchableOpacity>
         </View>
 

@@ -3,7 +3,6 @@ import styles from './CategoryItem.style';
 import { TouchableOpacity, Text, StyleSheet, Dimensions, View, LayoutAnimation, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import AlcoholModal from "../AlcoholModal/AlcoholModal";
 
 export class CategoryItem extends Component {
@@ -35,7 +34,6 @@ export class CategoryItem extends Component {
         <View style={styles.item_action}>
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.editProduct(id)} style={styles.btnEdit}>
-              <Icon raised name='edit' color='#ffffff' size={20} />
             </TouchableOpacity>
           </View>
         </View>

@@ -3,7 +3,6 @@ import styles from './CategoryItem.style';
 import { TouchableOpacity, Text, View, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import Icon from 'react-native-vector-icons/AntDesign';
 export class CategoryItem extends Component {
 
   minusProduct = (id) => {
@@ -67,15 +66,15 @@ export class CategoryItem extends Component {
         {
           !checkAlcohol ?
           <TouchableOpacity onPress={() => this.toggleModal(id)} style={styles.editBtn}>
-            <Icon raised name='edit' color='#ffffff' size={18} />
+            <Text>Edit</Text>
           </TouchableOpacity> :
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
-              <Icon raised name='minus' color='#ffffff' size={18}/>
+              <Text color='#ffffff'>-</Text>
             </TouchableOpacity>
             <Text style={styles.quantity}>{currentCount}</Text>
             <TouchableOpacity onPress={() => this.addProduct(id)} style={styles.btnPlus}>
-              <Icon raised name='plus' color='#ffffff' size={18} />
+              <Text color='#ffffff'>+</Text>
             </TouchableOpacity>
           </View>
           }
