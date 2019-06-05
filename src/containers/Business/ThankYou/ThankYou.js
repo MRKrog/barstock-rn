@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { View, Image, Button, Text, StyleSheet, TouchableOpacity, ImageBackground, Dimensions } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 class ThankYou extends Component {
 

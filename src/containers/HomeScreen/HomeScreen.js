@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, ImageBackground } from "react-native";
 import { Avatar } from 'react-native-elements';
 import Loading from '../../components/Loading/Loading';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import OrderContainer from "../Business/OrderContainer/OrderContainer";
 import { fetchAllItems } from "../../redux/thunks/fetchAllItems";
 import { fetchBusinessItems } from "../../redux/thunks/fetchBusinessItems"

@@ -3,7 +3,6 @@ import styles from './LiquorCategory.style';
 import { TouchableOpacity, ScrollView, Text, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
-import Icon from 'react-native-vector-icons/AntDesign';
 
 export class LiquorCategory extends Component{
   constructor(){
@@ -37,10 +36,10 @@ export class LiquorCategory extends Component{
     let iconDisplay;
 
     if(this.state.expanded === true){
-      iconDisplay = <Icon name='minus' color='#ffffff' size={20} style={styles.iconStyle}/>
+      iconDisplay = <Text color='#ffffff'>-</Text>
       expandedStyles = styles.expandedTrue
     } else {
-      iconDisplay = <Icon name='plus' color='#ffffff' size={20} style={styles.iconStyle} />
+      iconDisplay = <Text color='#ffffff'>+</Text>
       expandedStyles = styles.expandedFalse
     }
 

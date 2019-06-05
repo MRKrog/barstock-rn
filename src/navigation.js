@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import LogoTitle from './components/LogoTitle/LogoTitle';
 import { Avatar } from 'react-native-elements';
 import HomeScreen from './containers/HomeScreen/HomeScreen';
@@ -12,22 +11,15 @@ import SetUpScreen from './containers/LoginScreen/SetUpScreen';
 import SideMenu from './containers/Business/SideMenu/SideMenu';
 import SubmitOrder from "./containers/Business/SubmitOrder/SubmitOrder"
 import ThankYou from "./containers/Business/ThankYou/ThankYou"
-
+import { Text, Button } from "react-native";
 import Inventory from "./containers/Distributor/Inventory/Inventory"
-import DistSideMenu from "./containers/Distributor/DistSideMenu/DistSideMenu"
+import DistSideMenu from "./containers/Distributor/DistSideMenu/DistSideMenu";
+import { Icon } from 'react-native-elements';
 
 const header = ({ navigation }) => {
   return {
     headerLeft: (
-      <Icon.Button
-        onPress={navigation.toggleDrawer}
-        name="bars"
-        size={25}
-        backgroundColor="#232121"
-        padding={0}
-        marginLeft={15}
-        color="#fff"
-      />
+      <Text></Text>
     ),
     headerTitle: ( <LogoTitle /> ),
     headerRight: (
@@ -83,15 +75,7 @@ const Drawer = createDrawerNavigator({
 const headerDistributor = ({ navigation }) => {
   return {
     headerLeft: (
-      <Icon.Button
-        onPress={navigation.toggleDrawer}
-        name="bars"
-        size={25}
-        backgroundColor="#232121"
-        padding={0}
-        marginLeft={15}
-        color="#fff"
-      />
+      <Text>=</Text>
     ),
     headerTitle: ( <LogoTitle /> ),
     headerStyle: {

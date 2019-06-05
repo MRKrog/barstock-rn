@@ -12,9 +12,7 @@ export default {
     justifyContent: "flex-start",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingVertical: 20,
-    // borderBottomColor: '#ececec',
-    // borderBottomWidth: .2,
+    paddingVertical: 20
   },
   iconStyle: {
     marginRight: 15

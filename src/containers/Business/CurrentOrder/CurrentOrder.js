@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { connect } from "react-redux"
 import * as actions from "../../../redux/actions";
 import styles from "./CurrentOrder.style";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Swipeout from 'react-native-swipeout';
 import { generateCost, generateReturn } from "../../../utility/liquorCleaner.js"
 import Footer from "../../../components/Footer/Footer";
@@ -116,12 +115,12 @@ export class CurrentOrder extends Component {
       let itemMargin = this.getSingleMargin(alcoholInfo)
       let marginColor = this.getRowColor(itemMargin)
       let swipeoutBtns = [{
-          text: (<Icon name='edit' color='#A2CADD' size={20} />),
+          text: (<Text color='#ffffff'>edit</Text>),
           backgroundColor: "#006FA2",
           underlayColor: "#2c4969",
           onPress: () => { this.toggleModal(alcoholInfo.id) }
         }, {
-          text: (<Icon name='trash' color='#F9B7BC' size={20} />),
+          text: (<Text color='#ffffff'>Trash</Text>),
           backgroundColor: '#F03A47',
           underlayColor: "#DB504A",
           onPress: () => { this.removeFromCart(alcoholInfo.id) }
