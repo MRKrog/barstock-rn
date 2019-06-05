@@ -7,6 +7,7 @@ import Swipeout from 'react-native-swipeout';
 import { generateCost, generateReturn } from "../../../utility/liquorCleaner.js"
 import Footer from "../../../components/Footer/Footer";
 import AlcoholModal from "../AlcoholModal/AlcoholModal";
+import SvgUri from 'react-native-svg-uri';
 
 export class CurrentOrder extends Component {
 
@@ -115,12 +116,12 @@ export class CurrentOrder extends Component {
       let itemMargin = this.getSingleMargin(alcoholInfo)
       let marginColor = this.getRowColor(itemMargin)
       let swipeoutBtns = [{
-          text: (<Text color='#ffffff'>edit</Text>),
+          text: (<SvgUri width="20" height="20" fill="#A2CADD" source={require('../../../../assets/edit.svg')}/>),
           backgroundColor: "#006FA2",
           underlayColor: "#2c4969",
           onPress: () => { this.toggleModal(alcoholInfo.id) }
         }, {
-          text: (<Text color='#ffffff'>Trash</Text>),
+          text: (<SvgUri width="20" height="20" fill="#F9B7BC" source={require('../../../../assets/delete.svg')}/>),
           backgroundColor: '#F03A47',
           underlayColor: "#DB504A",
           onPress: () => { this.removeFromCart(alcoholInfo.id) }
