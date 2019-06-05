@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from './LiquorCategory.style';
-import { TouchableOpacity, ScrollView, Text, StyleSheet, Dimensions, View, LayoutAnimation } from "react-native";
+import { TouchableOpacity, ScrollView, Text, View, LayoutAnimation } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
 import { Icon } from 'native-base';

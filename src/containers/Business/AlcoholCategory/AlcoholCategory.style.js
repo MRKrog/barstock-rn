@@ -34,7 +34,7 @@ export default {
     letterSpacing: 1,
   },
   alc_catInventory: {
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   category_item: {
     padding: 10
