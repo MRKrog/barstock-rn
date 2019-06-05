@@ -3,6 +3,7 @@ import styles from './CategoryItem.style';
 import { TouchableOpacity, Text, View, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions";
+import SvgUri from "react-native-svg-uri"
 export class CategoryItem extends Component {
 
   minusProduct = (id) => {
@@ -70,11 +71,11 @@ export class CategoryItem extends Component {
           </TouchableOpacity> :
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>
-              <Text color='#ffffff'>-</Text>
+              <SvgUri width="20" height="20" fill="#fff" source={require('../../../../assets/minus.svg')} />
             </TouchableOpacity>
             <Text style={styles.quantity}>{currentCount}</Text>
             <TouchableOpacity onPress={() => this.addProduct(id)} style={styles.btnPlus}>
-              <Text color='#ffffff'>+</Text>
+              <SvgUri width="20" height="20" fill="#fff" source={require('../../../../assets/plus.svg')} />
             </TouchableOpacity>
           </View>
           }

@@ -34,5 +34,12 @@ export default {
     right: 2,
     fontSize: 25,
     color: "#ffffff"
+  },
+  alc_toggle: {
+    color: "#ffffff",
+    fontSize: 30,
+    right: 5,
+    top: -5,
+    position: "absolute"
   }
 }

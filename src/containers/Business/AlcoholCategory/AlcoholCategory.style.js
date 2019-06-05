@@ -38,4 +38,8 @@ export default {
   category_item: {
     // padding: 10
   },
+  alc_toggle: {
+    color: "#ffffff",
+    fontSize: 30
+  }
 };

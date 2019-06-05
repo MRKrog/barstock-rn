@@ -33,9 +33,9 @@ export class AlcoholCategory extends Component{
     })
 
     if(this.props.selectedCategory === this.props.title){
-      iconDisplay = <Text color='#ffffff'>-</Text>
+      iconDisplay = <Text style={styles.alc_toggle}>-</Text>
     } else {
-      iconDisplay = <Text color='#ffffff'>+</Text>
+      iconDisplay = <Text style={styles.alc_toggle}>+</Text>
     }
 
     return (
