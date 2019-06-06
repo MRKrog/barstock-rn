@@ -67,7 +67,7 @@ export class CategoryItem extends Component {
         {
           !checkAlcohol ?
           <TouchableOpacity onPress={() => this.toggleModal(id)} style={styles.editBtn}>
-            <Text>Edit</Text>
+            <Text style={styles.alc_toggle}>+</Text>
           </TouchableOpacity> :
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={() => this.minusProduct(id)} style={[btnMinus, btnStatus]} disabled={quantityStatus}>

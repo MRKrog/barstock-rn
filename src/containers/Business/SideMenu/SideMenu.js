@@ -21,23 +21,21 @@ export class SideMenu extends Component {
   }
 
   makeCall = () => {
-   const { attributes } = this.props.business.data;
-   const args = {
-     number: `${attributes.phone_number}`,
-     prompt: true
-   }
+    const args = {
+      number: `${this.props.businessInfo.business.data.attributes.representative.rep_phone_number}`,
+      prompt: true
+    }
     call(args).catch(console.error)
   }
 
   handleEmail = () => {
-    const { attributes } = this.props.business.data;
-    const to = [`${attributes.representative.rep_email}`]
+    const to = [`${this.props.businessInfo.business.data.attributes.representative.rep_email}`]
+
     email(to, {
-      subject: `${attributes.name}`,
-      body: 'Body'
+      subject: `${this.props.businessInfo.business.data.attributes.name}`,
+      body: "Inquiry"
     }).catch(console.error)
   }
-
 
   render () {
     return (
