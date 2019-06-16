@@ -126,6 +126,6 @@ export const AppConatiner = createAppContainer(
     Finish: ThankYou
   },
   {
-    initialRouteName: 'MainApp',
+    initialRouteName: 'Login',
   })
 );

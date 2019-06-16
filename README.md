@@ -1,13 +1,17 @@
 # README
 ## Description
 
-BarStock is a 13-day, four-person project during Mod 4 of 4, for Turing School's Back-End Engineering Program. Our team consists of two Front-End Developers and two Back-End Developers.
-
-Our challenge was to create a native application from idea to inception by integrating our skills as Front-End and Back-End Developers to solve a real-world problem.
-
-Thus, BarStock was born. BarStock is a web application designed to solve the communication challenges between bar owners and distributors when placing inventory orders. In the bar industry, it is frequently common practice to place weekly inventory orders via text messages/emails. Bar owners are not provided with pricing sheets, nor available inventory, and often receive incorrect shipments. BarStock is intended to alleviate this headache by providing bar owners with user interface to view distributor inventory, analyze profit margins, and automate text message/email ordering.
+BarStock is a native application designed to solve the communication challenges between bar owners and distributors when placing inventory orders. In the bar industry, it is frequently common practice to place weekly inventory orders via text messages/emails. Bar owners are not provided with pricing sheets, nor available inventory, and often receive incorrect shipments. BarStock is intended to alleviate this headache by providing bar owners with user interface to view distributor inventory, analyze profit margins, and automate text message/email ordering.
 
 BarStock utilizes React Native, Redux, Jest, and Enzyme, and communicates with the [BarStock Back-End](https://github.com/MRKrog/barstock-ui) via API requests/responses.
+
+Login Screen             |  Selecting Inventory
+:-------------------------:|:-------------------------:
+<img src="assets/gifs/login.gif" alt="Login Screen">  |  <img src="assets/gifs/inventoryItems.gif" alt="Selecting Inventory">
+**View Margin/Profits**             |  **Place Order**
+<img src="assets/gifs/editInventory.gif" alt="View Margin Profits">  |  <img src="assets/gifs/placeOrder.gif" alt="Place Order">
+**Account Information**             |  **Reorder**
+<img src="assets/gifs/accountInfo.gif" alt="Account Information">  |  <img src="assets/gifs/reorder.gif" alt="Reorder">
 
 <!-- #### [**_Utilizes BarStock Back-End in Production_**](https://barstock-backend.herokuapp.com) -->
 
@@ -17,7 +21,6 @@ BarStock utilizes React Native, Redux, Jest, and Enzyme, and communicates with t
 ## Available Endpoints
 All available endpoints have been documented on [Swagger](https://app.swaggerhub.com/apis-docs/BarStock/BarStockBackEnd/1.0.0).
 ![Alt text](https://github.com/MRKrog/barstock_backend/blob/master/public/images/Swagger_Giphy.gif?raw=true)
-
 
 ## Representative Notifications of Order
 
@@ -80,9 +83,3 @@ INSERT KNOWN ISSUES HERE -->
 * [Michael Krog](https://github.com/MRKrog)
 * [Julia Marco](https://github.com/juliamarco)
 * [Mackenzie Frey](https://github.com/Mackenzie-Frey)
-
-### Acknowledgments
-* [David Whitaker](https://github.com/damwhit)
-* [Dione Wilson](https://github.com/dionew1)
-* [Cory Westerfield](https://github.com/corywest)
-* [Will Mitchell](https://github.com/wvmitchell)
