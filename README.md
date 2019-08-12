@@ -9,7 +9,10 @@ Thus, BarStock was born. BarStock is a web application designed to solve the com
 
 BarStock utilizes React Native, Redux, Jest, and Enzyme, and communicates with the [BarStock Back-End](https://github.com/MRKrog/barstock-ui) via API requests/responses.
 
-<!-- #### [**_Utilizes BarStock Back-End in Production_**](https://barstock-backend.herokuapp.com) -->
+## User Interface
+![Alt text](https://github.com/MRKrog/barstock_backend/raw/master/public/images/barstock_giphy.gif?raw=true "User Interface")
+
+#### [**_Utilizes BarStock Back-End in Production_**](https://barstock-backend.herokuapp.com)
 
 ## Schema
 ![Alt text](https://github.com/MRKrog/barstock_backend/raw/master/public/images/schema.png?raw=true "Database Schema")
